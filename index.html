@@ -786,9 +786,9 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <style id="v17-6-7-desktop-version-label">
 @media (min-width:701px){
   .app > .side > .nav > #versionBadge span{font-size:0!important;}
-  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.6.11"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.6.14"!important;font-size:10px!important;display:inline!important;}
   .app > .side > .owner .label{font-size:0!important;}
-  .app > .side > .owner .label:after{content:"Version 17.6.11"!important;font-size:11px!important;}
+  .app > .side > .owner .label:after{content:"Version 17.6.14"!important;font-size:11px!important;}
 }
 </style>
 
@@ -835,6 +835,53 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   .alphaIdLoginOverlay .alphaIdLoginCard .loginField input{
     width:100%!important;
     box-sizing:border-box!important;
+  }
+}
+</style>
+
+<style id="v17-6-13-dashboard-scroll-fix">
+@media(max-width:700px){
+  /* MOBILE DASHBOARD: restore native page scrolling. Pull-to-refresh is suppressed
+     by overscroll-behavior, while the page itself remains fully touch-scrollable. */
+  html,body{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    touch-action:auto!important;
+    overscroll-behavior-y:none!important;
+  }
+  body{
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .app{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:100vh!important;
+    overflow:visible!important;
+    touch-action:auto!important;
+  }
+  .main{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    touch-action:auto!important;
+  }
+  .page,.page.active{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    touch-action:auto!important;
+  }
+  .alphaIdLoginOverlay{
+    touch-action:auto!important;
   }
 }
 </style>
@@ -896,8 +943,8 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <button onclick="page('stock',this)"><i class="navIcon">!</i><span>Low Stock</span></button>
 <button onclick="page('deleted',this)"><i class="navIcon">⌫</i><span>Deleted Products</span></button>
 <button onclick="page('backup',this)"><i class="navIcon">↥</i><span>Backup / Restore</span></button>
-<button onclick="page('settings',this)"><i class="navIcon">⚙</i><span>Settings</span></button><button onclick="page('security',this)"><i class="navIcon">⌾</i><span>Security</span></button><button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.6.11"><i class="navIcon">Ⓥ</i><span>VERSION 17.6.11</span></button><button type="button" id="mobileEmptyNavSlot" class="mobileEmptyNavSlot" aria-hidden="true" tabindex="-1"><i class="navIcon">♛</i><span>ACCESS</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.6.11</span></div></aside>
+<button onclick="page('settings',this)"><i class="navIcon">⚙</i><span>Settings</span></button><button onclick="page('security',this)"><i class="navIcon">⌾</i><span>Security</span></button><button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.6.14"><i class="navIcon">Ⓥ</i><span>VERSION 17.6.14</span></button><button type="button" id="mobileEmptyNavSlot" class="mobileEmptyNavSlot" aria-hidden="true" tabindex="-1"><i class="navIcon">♛</i><span>ACCESS</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.6.14</span></div></aside>
 <main class="main">
 <div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off"><div id="searchSuggestions" class="searchSuggestions"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
@@ -2721,9 +2768,9 @@ function renderReports(){let inWindow=reportWindow(),salesList=data.sales.filter
 function renderSettings(){['Name','Address','Phone','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
 document.addEventListener('change',e=>{if(e.target.id==='setLogo'&&e.target.files[0]){let r=new FileReader();r.onload=()=>{data.settings.logo=r.result;persist();renderSettings()};r.readAsDataURL(e.target.files[0])}});
-function normalizeLoginSettings(){data.settings=data.settings||{};if(!data.settings.ownerId)data.settings.ownerId='owner';data.settings.ownerPassword='Owner123';if(!data.settings.staffId)data.settings.staffId='staff';if(!data.settings.staffPassword)data.settings.staffPassword=data.settings.staffPin||'';if(data.settings.ownerPin!==undefined)delete data.settings.ownerPin;if(data.settings.staffPin!==undefined)delete data.settings.staffPin} normalizeLoginSettings(); persist(); if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadRememberedLogin);else loadRememberedLogin(); function validLoginId(v){return /^[A-Za-z0-9._-]{3,20}$/.test(v)} function validPassword(v){return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,32}$/.test(v)} function saveSecurity(){if(!ownerOnly())return;let oi=(document.getElementById('ownerId')?.value||'').trim(),op=(document.getElementById('ownerPassword')?.value||'').trim(),si=(document.getElementById('staffId')?.value||'').trim(),sp=(document.getElementById('staffPassword')?.value||'').trim(),restricted=document.getElementById('staffRestricted')?.checked!==false;if(!validLoginId(oi))return alert('Owner Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(!validPassword(op))return alert('Owner Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&!validLoginId(si))return alert('Staff Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(sp&&!validPassword(sp))return alert('Staff Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&oi.toLowerCase()===si.toLowerCase())return alert('Owner aur Staff Login ID alag hone chahiye.');data.settings.ownerId=oi;data.settings.ownerPassword=op;data.settings.staffId=si;data.settings.staffPassword=sp;data.settings.staffRestricted=restricted;persist();renderAll();alert('Login security saved successfully. Ab login me aapka updated ID + Password use hoga.')} function lockApp(){sessionRole='locked';document.body.classList.add('login-locked');let id=document.getElementById('loginId'),pw=document.getElementById('loginPassword'),overlay=document.getElementById('loginOverlay');if(!overlay||!id||!pw)return alert('Security screen load nahi hui.');id.value='';pw.value='';overlay.style.display='flex';overlay.classList.add('show');setTimeout(()=>id.focus(),50)} function loadRememberedLogin(){try{let raw=localStorage.getItem('alpha_store_remember_login');if(!raw)return;let x=JSON.parse(raw);let id=document.getElementById('loginId');if(id&&x&&x.id)id.value=String(x.id);let pw=document.getElementById('loginPassword');if(pw)pw.value='';}catch(e){try{localStorage.removeItem('alpha_store_remember_login')}catch(_){}}}
+function normalizeLoginSettings(){data.settings=data.settings||{};if(!data.settings.ownerId)data.settings.ownerId='owner';data.settings.ownerPassword='Owner123';if(!data.settings.staffId)data.settings.staffId='staff';if(!data.settings.staffPassword)data.settings.staffPassword=data.settings.staffPin||'';if(data.settings.ownerPin!==undefined)delete data.settings.ownerPin;if(data.settings.staffPin!==undefined)delete data.settings.staffPin} normalizeLoginSettings(); persist(); if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadRememberedLogin);else loadRememberedLogin(); function validLoginId(v){return /^[A-Za-z0-9._-]{3,20}$/.test(v)} function validPassword(v){return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,32}$/.test(v)} function saveSecurity(){if(!ownerOnly())return;let oi=(document.getElementById('ownerId')?.value||'').trim(),op=(document.getElementById('ownerPassword')?.value||'').trim(),si=(document.getElementById('staffId')?.value||'').trim(),sp=(document.getElementById('staffPassword')?.value||'').trim(),restricted=document.getElementById('staffRestricted')?.checked!==false;if(!validLoginId(oi))return alert('Owner Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(!validPassword(op))return alert('Owner Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&!validLoginId(si))return alert('Staff Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(sp&&!validPassword(sp))return alert('Staff Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&oi.toLowerCase()===si.toLowerCase())return alert('Owner aur Staff Login ID alag hone chahiye.');data.settings.ownerId=oi;data.settings.ownerPassword=op;data.settings.staffId=si;data.settings.staffPassword=sp;data.settings.staffRestricted=restricted;persist();renderAll();alert('Login security saved successfully. Ab login me aapka updated ID + Password use hoga.')} function lockApp(){try{sessionStorage.removeItem('alpha_store_session_role')}catch(e){}sessionRole='locked';document.body.classList.add('login-locked');let id=document.getElementById('loginId'),pw=document.getElementById('loginPassword'),overlay=document.getElementById('loginOverlay');if(!overlay||!id||!pw)return alert('Security screen load nahi hui.');id.value='';pw.value='';overlay.style.display='flex';overlay.classList.add('show');setTimeout(()=>id.focus(),50)} function loadRememberedLogin(){try{let raw=localStorage.getItem('alpha_store_remember_login');if(!raw)return;let x=JSON.parse(raw);let id=document.getElementById('loginId');if(id&&x&&x.id)id.value=String(x.id);let pw=document.getElementById('loginPassword');if(pw)pw.value='';}catch(e){try{localStorage.removeItem('alpha_store_remember_login')}catch(_){}}}
 function saveRememberedLogin(id,pw){try{localStorage.setItem('alpha_store_remember_login',JSON.stringify({id:id}))}catch(e){}} 
-function unlockApp(){normalizeLoginSettings();let id=(document.getElementById('loginId')?.value||'').trim(),pw=document.getElementById('loginPassword')?.value||'',overlay=document.getElementById('loginOverlay');if(!id||!pw)return alert('ID aur Password dono enter karein.');if(id.toLowerCase()===String(data.settings.ownerId||'owner').toLowerCase()&&pw===String(data.settings.ownerPassword||'')){sessionRole='owner';document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();return}if(data.settings.staffId&&id.toLowerCase()===String(data.settings.staffId).toLowerCase()&&data.settings.staffPassword&&pw===String(data.settings.staffPassword)){sessionRole='staff';document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();page('dashboard');return}alert('Wrong ID or Password')} function applyTheme(){document.body.dataset.theme=data.settings?.theme||'dark';updateThemeButtons()} function setThemeMode(mode){if(!ownerOnly())return;data.settings.theme=mode==='light'?'light':'dark';persist();applyTheme();renderAll()} function updateThemeButtons(){document.getElementById('themeDarkBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='dark');document.getElementById('themeLightBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='light')}
+function unlockApp(){normalizeLoginSettings();let id=(document.getElementById('loginId')?.value||'').trim(),pw=document.getElementById('loginPassword')?.value||'',overlay=document.getElementById('loginOverlay');if(!id||!pw)return alert('ID aur Password dono enter karein.');if(id.toLowerCase()===String(data.settings.ownerId||'owner').toLowerCase()&&pw===String(data.settings.ownerPassword||'')){sessionRole='owner';try{sessionStorage.setItem('alpha_store_session_role','owner')}catch(e){}document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();return}if(data.settings.staffId&&id.toLowerCase()===String(data.settings.staffId).toLowerCase()&&data.settings.staffPassword&&pw===String(data.settings.staffPassword)){sessionRole='staff';try{sessionStorage.setItem('alpha_store_session_role','staff')}catch(e){}document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();page('dashboard');return}alert('Wrong ID or Password')} function applyTheme(){document.body.dataset.theme=data.settings?.theme||'dark';updateThemeButtons()} function setThemeMode(mode){if(!ownerOnly())return;data.settings.theme=mode==='light'?'light':'dark';persist();applyTheme();renderAll()} function updateThemeButtons(){document.getElementById('themeDarkBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='dark');document.getElementById('themeLightBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='light')}
 function customerSuggest(){let q=(document.getElementById('customerName')?.value||'').toLowerCase().trim(),dl=document.getElementById('customerList');if(!dl)return;dl.innerHTML=data.customers.filter(c=>!q||c.name.toLowerCase().includes(q)).slice(0,20).map(c=>`<option value="${esc(c.name)}">`).join('');let c=data.customers.find(x=>x.name.toLowerCase()===q);if(c&&c.phone&&!document.getElementById('customerPhone').value)document.getElementById('customerPhone').value=c.phone}
 function toggleCredit(){let m=document.getElementById('paymentMode')?.value,r=document.getElementById('creditRow'),n=document.getElementById('customerName'),ph=document.getElementById('customerPhone');let credit=m==='Credit / उधार';if(r)r.style.display=credit?'flex':'none';if(n)n.placeholder=credit?'Name / नाम (Required / अनिवार्य)':'Name (optional)';if(ph)ph.placeholder=credit?'10-digit mobile / 10 अंकों का मोबाइल (Required / अनिवार्य)':'Phone (optional)';if(credit){document.getElementById('amountReceived').value=0}}
 function renderHeldBills(){const el=document.getElementById('heldBills');if(!el)return;el.innerHTML=heldBills.length?heldBills.map((b,i)=>`<div class="hold-item"><b>${esc(b.customer||'Walk-in')}</b><span>${b.items.reduce((a,x)=>a+Number(x.qty||0),0)} items • ${money(b.total)}</span><button class="gold" onclick="resumeHeld(${b.id})">Resume</button><button class="danger" onclick="deleteHeld(${b.id})">×</button></div>`).join(''):'<div class="muted">No held bills</div>';}
@@ -3315,6 +3362,120 @@ function refreshDashboardWithFeedback(btn){
 }
 </style>
 
+
+<style id="v17-6-11-combined-stability-fix">
+html,body{overscroll-behavior-y:none!important;}
+@media(max-width:700px){
+  .alphaIdLoginOverlay{overscroll-behavior-y:contain!important;}
+  .alphaIdLoginOverlay .loginField input{scroll-margin-top:24px!important;scroll-margin-bottom:180px!important;}
+}
+</style>
+<script id="v17-6-11-combined-stability-js">
+(function(){
+  /* Prevent Android/browser pull-to-refresh only when the page is being pulled
+     downward from the top. Normal vertical scrolling remains enabled. */
+  var touchStartY=0;
+  /* Deliberately do not intercept touchmove: app scrolling must remain fully enabled.
+     CSS overscroll-behavior above prevents browser pull-to-refresh without blocking scroll. */
+
+  function keepLoginFieldVisible(el){
+    if(!el)return;
+    setTimeout(function(){try{el.scrollIntoView({block:'center',inline:'nearest',behavior:'smooth'});}catch(e){try{el.scrollIntoView(false)}catch(_){}}},120);
+  }
+  function bindKeyboard(){
+    var ids=['loginId','loginPassword'];
+    ids.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&!el.dataset.alphaKeyboardFix){
+        el.dataset.alphaKeyboardFix='1';
+        el.addEventListener('focus',function(){keepLoginFieldVisible(el);});
+      }
+    });
+    if(window.visualViewport&&!window.visualViewport.__alphaKeyboardFix){
+      window.visualViewport.__alphaKeyboardFix=true;
+      window.visualViewport.addEventListener('resize',function(){
+        var el=document.activeElement;
+        if(el&&(el.id==='loginId'||el.id==='loginPassword')) keepLoginFieldVisible(el);
+      });
+    }
+  }
+  function restoreSession(){
+    try{
+      var r=sessionStorage.getItem('alpha_store_session_role');
+      if(r!=='owner'&&r!=='staff')return;
+      if(typeof sessionRole!=='undefined') sessionRole=r;
+      document.body.classList.remove('login-locked');
+      var ov=document.getElementById('loginOverlay');
+      if(ov){ov.style.display='none';ov.classList.remove('show');}
+      if(typeof normalizeLoginSettings==='function') normalizeLoginSettings();
+      if(typeof renderAll==='function') renderAll();
+      if(typeof page==='function') page('dashboard');
+    }catch(e){console.error('ALPHA STORE session restore:',e);}
+  }
+  function init(){
+    bindKeyboard();
+    restoreSession();
+    setTimeout(bindKeyboard,250);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
+<style id="v17-6-14-mobile-root-scroll-final">
+@media(max-width:700px){
+  /* FINAL MOBILE SCROLL: keep the document as the single native scroller.
+     Pull-to-refresh is suppressed on the root without intercepting touch events. */
+  html{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    overscroll-behavior-y:none!important;
+    touch-action:pan-y!important;
+  }
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:100%!important;
+    margin:0!important;
+    overflow-x:hidden!important;
+    overflow-y:visible!important;
+    overscroll-behavior-y:auto!important;
+    touch-action:pan-y!important;
+    position:static!important;
+  }
+  .app{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    touch-action:pan-y!important;
+  }
+  .app>.side{
+    position:relative!important;
+    top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+    width:100%!important;height:auto!important;min-height:0!important;
+    max-height:none!important;overflow:visible!important;
+    touch-action:pan-y!important;
+  }
+  .app>.main{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;
+    margin:0!important;padding:10px!important;
+    overflow:visible!important;
+    touch-action:pan-y!important;
+  }
+  .main>.top.dashboardTopLayout{position:relative!important;top:auto!important;}
+  .page{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;touch-action:pan-y!important;}
+  #dashboard{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;touch-action:pan-y!important;}
+}
+</style>
 </body>
 
 
