@@ -30,6 +30,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0}.app{display:fle
   #loginOverlay .login-card,#loginOverlay .login-box,#loginOverlay .login-container{margin:0 !important;}
 }
 .roleBadge{font-weight:800;font-size:11px;letter-spacing:.6px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:#0c1928;color:var(--gold);white-space:nowrap}.roleBadge.staff{color:#7dd3fc}.roleBadge.locked{color:var(--muted)}
+
 </style><style>
 .staff-mode .ownerOnly{display:none!important}
 </style>
@@ -479,9 +480,316 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 @media(max-width:700px){.quick button{min-width:0}.quick{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 </style>
 
+<style id="product-management-filter">.productManageFilters{display:grid;grid-template-columns:minmax(220px,1fr) 220px;gap:9px;margin:14px 0}.productManageFilters .search{width:100%;height:42px;padding:0 12px}@media(max-width:700px){.productManageFilters{grid-template-columns:1fr}}</style>
 <style id="v17-expenses-premium">
 .expenseFilters{display:grid;grid-template-columns:minmax(220px,1fr) 180px 190px;gap:9px;margin:14px 0}.expenseFilters .search{width:100%;height:42px;padding:0 12px}.expenseStats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}.expenseStats .card{min-height:92px}.expenseCategoryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}.expenseBar{height:7px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden;margin-top:8px}.expenseBar i{display:block;height:100%;background:linear-gradient(90deg,#f5d36d,#c99018);border-radius:99px}.expenseMeta{font-size:11px;color:#8fa0b2;margin-top:3px}.expenseTitle{font-weight:800;color:#edf3f8}.expensePill{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(218,168,50,.10);border:1px solid rgba(218,168,50,.18);color:#e9ca76;font-size:10px;white-space:nowrap}.expenseActions{display:flex;gap:6px;justify-content:flex-end}.expenseActions button{padding:6px 9px;font-size:11px}.expenseModalGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.expenseModalGrid label{display:flex;flex-direction:column;gap:6px}.expenseModalGrid label.full{grid-column:1/-1}.expenseModalGrid input,.expenseModalGrid select,.expenseModalGrid textarea{width:100%;box-sizing:border-box;background:#07111d;color:white;border:1px solid var(--line);border-radius:9px;padding:10px}.expenseModalGrid textarea{min-height:75px;resize:vertical}.expenseModalFooter{display:flex;gap:8px;margin-top:15px}.expenseModalFooter button{flex:1}.expenseEmpty{padding:28px;text-align:center}.expenseTotalLine{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:7px}.expenseAmount{font-weight:900;color:#f4d36c}.expenseDate{white-space:nowrap}.expenseTableWrap{overflow-x:auto}.expenseTableWrap .table{min-width:850px}
 @media(max-width:700px){.expenseFilters{grid-template-columns:1fr 1fr;}.expenseFilters input{grid-column:1/-1}.expenseStats{grid-template-columns:1fr 1fr}.expenseCategoryGrid{grid-template-columns:1fr}.expenseModalGrid{grid-template-columns:1fr}.expenseModalGrid label.full{grid-column:auto}}
+</style>
+<style id="alpha-desktop-logout-final-fix">
+@media (min-width:701px){
+  .main>.top.dashboardTopLayout{overflow:visible!important;}
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight{
+    position:relative!important;
+    display:grid!important;
+    grid-template-columns:auto auto auto auto!important;
+    align-items:center!important;
+    justify-content:end!important;
+    gap:8px!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    flex:0 1 auto!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight>*{
+    min-width:0!important;
+    max-width:none!important;
+    width:auto!important;
+    flex:none!important;
+    white-space:nowrap!important;
+    box-sizing:border-box!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardLogoutBtn{
+    display:inline-flex!important;
+    width:auto!important;
+    min-width:88px!important;
+    max-width:110px!important;
+    padding-left:10px!important;
+    padding-right:10px!important;
+    overflow:visible!important;
+  }
+}
+</style>
+
+<style id="alpha-owner-premium-v17516">
+/* Owner/session button — visual-only polish. Existing navigation geometry and login screen remain untouched. */
+.app > .side > .nav > #roleBadge{
+  width:100%!important; min-height:42px!important; height:42px!important; margin-top:8px!important;
+  padding:0 12px!important; box-sizing:border-box!important;
+  display:flex!important; align-items:center!important; justify-content:flex-start!important; gap:10px!important;
+  border:1px solid rgba(212,175,55,.30)!important; border-radius:10px!important;
+  background:linear-gradient(135deg,rgba(212,175,55,.14),rgba(212,175,55,.045))!important;
+  color:var(--gold)!important; box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 5px 16px rgba(0,0,0,.12)!important;
+  font-weight:800!important; letter-spacing:.45px!important; cursor:default!important;
+}
+.app > .side > .nav > #roleBadge .navIcon{
+  width:20px!important; min-width:20px!important; display:inline-flex!important; align-items:center!important; justify-content:center!important;
+  color:var(--gold)!important; font-size:15px!important;
+}
+.app > .side > .nav > #roleBadge span{font-size:12px!important; font-weight:800!important;}
+.app > .side > .nav > #roleBadge.owner{border-color:rgba(212,175,55,.52)!important;background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(212,175,55,.065))!important;color:var(--gold)!important;}
+.app > .side > .nav > #roleBadge.staff{border-color:rgba(125,211,252,.30)!important;background:linear-gradient(135deg,rgba(125,211,252,.13),rgba(125,211,252,.04))!important;color:#7dd3fc!important;}
+.app > .side > .nav > #roleBadge.locked{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.035)!important;color:var(--muted)!important;}
+@media(max-width:700px){
+  .app > .side > .nav > #roleBadge{min-height:42px!important;height:42px!important;margin-top:6px!important;}
+}
+</style>
+
+<style id="alpha-v17-5-18-authoritative-layout">
+/* FINAL POSITION LOCK: desktop top bar + sidebar Owner/LOCKED. No login/design changes. */
+@media (min-width:701px){
+  .main > .top.dashboardTopLayout{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;width:100%!important;height:44px!important;min-height:44px!important;margin:0 0 14px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+  .main > .top.dashboardTopLayout > .dashboardSearchLeft{display:block!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;margin:0!important;}
+  .main > .top.dashboardTopLayout > .dashboardSearchLeft .searchArea,.main > .top.dashboardTopLayout > .dashboardSearchLeft #globalSearch{width:100%!important;height:44px!important;margin:0!important;box-sizing:border-box!important;}
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight{display:flex!important;flex:0 0 auto!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;width:auto!important;min-width:max-content!important;height:44px!important;margin:0!important;}
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #topNewBillBtn,.main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardSyncNowBtn,.main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardRefreshBtn,.main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardLogoutBtn{position:relative!important;flex:0 0 auto!important;width:auto!important;min-width:0!important;max-width:none!important;height:44px!important;margin:0!important;box-sizing:border-box!important;white-space:nowrap!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+  .app > .side > .nav > #roleBadge{width:100%!important;min-width:0!important;max-width:none!important;height:42px!important;min-height:42px!important;margin:8px 0 0!important;padding:0 12px!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;align-self:stretch!important;}
+  .app > .side > .nav > #roleBadge .navIcon{flex:0 0 20px!important;}
+}
+</style>
+
+<style id="v17-5-18-owner-premium-final">
+.app>.side>.nav>#roleBadge{
+  min-height:46px!important;height:46px!important;padding:0 13px!important;
+  border-radius:12px!important;border:1px solid rgba(212,175,55,.42)!important;
+  background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(212,175,55,.055) 58%,rgba(255,255,255,.025))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 6px 18px rgba(0,0,0,.16)!important;
+  position:relative!important;overflow:hidden!important;
+}
+.app>.side>.nav>#roleBadge:after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.42),transparent);opacity:.8;}
+.app>.side>.nav>#roleBadge .navIcon{color:var(--gold)!important;font-size:16px!important;text-shadow:0 0 10px rgba(212,175,55,.28);}
+.app>.side>.nav>#roleBadge span{font-size:11px!important;letter-spacing:.9px!important;font-weight:900!important;color:var(--gold)!important;}
+.app>.side>.nav>#roleBadge.staff{border-color:rgba(125,211,252,.32)!important;background:linear-gradient(135deg,rgba(125,211,252,.12),rgba(125,211,252,.035))!important;}
+.app>.side>.nav>#roleBadge.staff span,.app>.side>.nav>#roleBadge.staff .navIcon{color:#7dd3fc!important;}
+.app>.side>.nav>#roleBadge.locked{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.035)!important;}
+.app>.side>.nav>#roleBadge.locked span,.app>.side>.nav>#roleBadge.locked .navIcon{color:var(--muted)!important;}
+</style>
+
+
+
+<style id="alpha-v17-5-51-version-scope">
+@media(min-width:701px){.app>.side>.nav>#versionBadge{display:none!important;}}
+@media(max-width:700px){.app>.side>.nav>#versionBadge{display:flex!important;}}
+</style>
+<style id="alpha-v17-5-57-authoritative-mobile-nav">
+@media(max-width:700px){
+  .app>.side>.nav{
+    position:relative!important;
+    z-index:5000!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    grid-template-rows:repeat(5,48px)!important;
+    grid-auto-flow:row!important;
+    gap:6px!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    pointer-events:auto!important;
+    overflow:visible!important;
+  }
+  .app>.side>.nav>button,
+  .app>.side>.nav>#versionBadge,
+  .app>.side>.nav>#roleBadge{
+    position:relative!important;
+    z-index:5001!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    order:initial!important;
+    transform:none!important;
+    float:none!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:48px!important;
+    min-height:48px!important;
+    max-height:48px!important;
+    margin:0!important;
+    padding:5px 3px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:2px!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+    overflow:hidden!important;
+  }
+  .app>.side>.nav>button[onclick="page('security',this)"],
+  .app>.side>.nav>#versionBadge,
+  .app>.side>.nav>#roleBadge{grid-row:5!important;}
+  .app>.side>.nav>button[onclick="page('security',this)"]{grid-column:1!important;}
+  .app>.side>.nav>#versionBadge{grid-column:2!important;}
+  .app>.side>.nav>#roleBadge{grid-column:3!important;}
+  .app>.side>.nav>button .navIcon,
+  .app>.side>.nav>#versionBadge .navIcon,
+  .app>.side>.nav>#roleBadge .navIcon{
+    flex:0 0 20px!important;width:20px!important;height:20px!important;min-width:20px!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;font-size:14px!important;
+  }
+  .app>.side>.nav>button span,
+  .app>.side>.nav>#versionBadge span,
+  .app>.side>.nav>#roleBadge span{
+    display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;
+    font-size:8px!important;line-height:1.05!important;text-align:center!important;
+    white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+}
+</style>
+<style id="v17-6-2-mobile-premium-brand-header">
+@media(max-width:700px){
+  .app>.side>.logo{
+    min-height:148px!important;height:148px!important;box-sizing:border-box!important;
+    position:relative!important;display:flex!important;flex-direction:row!important;
+    align-items:center!important;justify-content:center!important;gap:16px!important;
+    padding:34px 16px 20px!important;margin:0 0 8px!important;
+    overflow:hidden!important;border:1px solid rgba(245,196,81,.24)!important;
+    border-radius:19px!important;
+    background:radial-gradient(ellipse at 50% 0%,rgba(245,196,81,.17),transparent 65%),
+      linear-gradient(135deg,rgba(24,29,38,.98),rgba(7,12,20,.98) 55%,rgba(25,21,13,.96))!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 12px 30px rgba(0,0,0,.24)!important;
+  }
+  .app>.side>.logo:before{content:"✦  PREMIUM RETAIL EXPERIENCE  ✦";position:absolute;top:17px;left:0;right:0;text-align:center;font-size:8px;font-weight:800;letter-spacing:2.1px;color:#aeb8c6;white-space:nowrap}
+  .app>.side>.logo:after{display:block!important;content:""!important;position:absolute!important;left:18%!important;right:18%!important;bottom:12px!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(245,196,81,.65),transparent)!important}
+  .app>.side>.logo .logoMark{width:62px!important;height:62px!important;min-width:62px!important;border-radius:18px!important;box-shadow:0 0 0 1px rgba(245,196,81,.2),0 9px 30px rgba(245,196,81,.23),inset 0 1px 0 rgba(255,255,255,.7)!important}
+  .app>.side>.logo .logoMark svg{width:38px!important;height:38px!important}
+  .app>.side>.logo .brandCopy{display:flex!important;flex-direction:column!important;align-items:flex-start!important;min-width:0!important}
+  .app>.side>.logo .brandCopy b{font-size:14px!important;letter-spacing:5px!important;line-height:1.1!important;color:#d3dce8!important}
+  .app>.side>.logo .brandCopy strong{font-size:31px!important;letter-spacing:4px!important;line-height:1!important;margin-top:4px!important}
+  .app>.side>.logo .brandCopy small{display:block!important;font-size:7px!important;letter-spacing:1.2px!important;margin-top:9px!important;color:#aeb8c6!important;white-space:nowrap!important}
+}
+</style>
+
+
+<style id="v17-6-5-owner-four-buttons-premium">
+@media (max-width:700px){
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #topNewBillBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardSyncNowBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardLogoutBtn{
+    border-radius:14px!important;
+    min-height:44px!important;
+    padding:9px 12px!important;
+    font-weight:800!important;
+    letter-spacing:.15px!important;
+    box-shadow:0 5px 0 rgba(0,0,0,.20),0 8px 18px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.16)!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    transform:translateY(0)!important;
+    transition:transform .12s ease,box-shadow .12s ease,filter .12s ease!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #topNewBillBtn{
+    background:linear-gradient(145deg,#f6d56a,#a96b00)!important;
+    color:#fffaf0!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardSyncNowBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn{
+    background:linear-gradient(145deg,#f59e0b,#b45309)!important;
+    color:#fff7ed!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn{
+    background:linear-gradient(145deg,#16a34a,#166534)!important;
+    color:#f0fdf4!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardLogoutBtn{
+    background:linear-gradient(145deg,#ef4444,#991b1b)!important;
+    color:#fff1f2!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #topNewBillBtn:active,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardSyncNowBtn:active,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn:active,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardLogoutBtn:active{
+    transform:translateY(2px)!important;
+    box-shadow:0 2px 0 rgba(0,0,0,.20),0 4px 10px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.12)!important;
+  }
+}
+</style>
+
+<style id="v17-6-7-desktop-top-buttons-premium">
+/* V17.6.7 — DESKTOP ONLY: premium top dashboard action buttons. Mobile is intentionally untouched. */
+@media (min-width:701px){
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #topNewBillBtn,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardSyncNowBtn,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardRefreshBtn,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardLogoutBtn{
+    height:44px!important;
+    min-height:44px!important;
+    padding:0 17px!important;
+    border-radius:12px!important;
+    border-width:1px!important;
+    border-style:solid!important;
+    font-size:12px!important;
+    font-weight:900!important;
+    letter-spacing:.35px!important;
+    line-height:1!important;
+    box-sizing:border-box!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    white-space:nowrap!important;
+    transition:transform .16s ease,box-shadow .16s ease,filter .16s ease!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 5px 14px rgba(0,0,0,.22)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #topNewBillBtn{
+    min-width:112px!important;
+    color:#211707!important;
+    border-color:rgba(255,224,137,.78)!important;
+    background:linear-gradient(180deg,#ffe9a3 0%,#e8b84b 48%,#b87816 100%)!important;
+    text-shadow:0 1px 0 rgba(255,255,255,.38)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardSyncNowBtn{
+    min-width:106px!important;
+    color:#fff7ed!important;
+    border-color:rgba(255,178,94,.62)!important;
+    background:linear-gradient(180deg,#f59e45 0%,#d66b1f 52%,#a84712 100%)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardRefreshBtn{
+    min-width:102px!important;
+    color:#effff2!important;
+    border-color:rgba(119,218,137,.52)!important;
+    background:linear-gradient(180deg,#4fbe67 0%,#238a43 54%,#166534 100%)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardLogoutBtn{
+    min-width:94px!important;
+    color:#fff2f2!important;
+    border-color:rgba(255,126,126,.58)!important;
+    background:linear-gradient(180deg,#e95b5b 0%,#c83a3a 52%,#922b2b 100%)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #topNewBillBtn:hover,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardSyncNowBtn:hover,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardRefreshBtn:hover,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardLogoutBtn:hover{
+    transform:translateY(-1px)!important;
+    filter:brightness(1.06)!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.20),0 8px 18px rgba(0,0,0,.28)!important;
+  }
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #topNewBillBtn:active,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardSyncNowBtn:active,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardRefreshBtn:active,
+  .main > .top.dashboardTopLayout > .dashboardOwnerRight > #dashboardLogoutBtn:active{
+    transform:translateY(0)!important;
+  }
+}
+</style>
+
+<style id="v17-6-7-desktop-version-label">
+@media (min-width:701px){
+  .app > .side > .nav > #versionBadge span{font-size:0!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.6.7"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .owner .label{font-size:0!important;}
+  .app > .side > .owner .label:after{content:"Version 17.6.7"!important;font-size:11px!important;}
+}
 </style>
 </head>
 <body class="login-locked"><div id="stockWarningOverlay"><div class="stockWarningBox"><h2 class="stockWarningTitle">⚠ LOW STOCK ALERT</h2><div class="stockWarningSub">Kuch products ka stock low ho gaya hai. Refill karna zaroori hai.</div><div id="stockWarningList" class="stockWarningList"></div><button class="stockWarningClose" onclick="closeStockWarning()">OK, GOT IT</button></div></div>
@@ -541,20 +849,20 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <button onclick="page('stock',this)"><i class="navIcon">!</i><span>Low Stock</span></button>
 <button onclick="page('deleted',this)"><i class="navIcon">⌫</i><span>Deleted Products</span></button>
 <button onclick="page('backup',this)"><i class="navIcon">↥</i><span>Backup / Restore</span></button>
-<button onclick="page('settings',this)"><i class="navIcon">⚙</i><span>Settings</span></button><button onclick="page('security',this)"><i class="navIcon">⌾</i><span>Security</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.5.2.2</span></div></aside>
+<button onclick="page('settings',this)"><i class="navIcon">⚙</i><span>Settings</span></button><button onclick="page('security',this)"><i class="navIcon">⌾</i><span>Security</span></button><button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.6.7"><i class="navIcon">Ⓥ</i><span>VERSION 17.6.7</span></button><button type="button" id="mobileEmptyNavSlot" class="mobileEmptyNavSlot" aria-hidden="true" tabindex="-1"><i class="navIcon">♛</i><span>ACCESS</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.6.7</span></div></aside>
 <main class="main">
-<div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off"><div id="searchSuggestions" class="searchSuggestions"></div></div></div><div class="dashboardOwnerRight"><span id="roleBadge" class="roleBadge locked">LOCKED</span><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
+<div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off"><div id="searchSuggestions" class="searchSuggestions"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
 <section id="dashboard" class="page active">
 <!-- Dashboard header strip removed as requested; dashboard cards/data remain unchanged. -->
 <div class="grid"><div class="card"><div class="label">TOTAL UDHAAR</div><div class="value" id="dDue">₹0.00</div></div><div class="card"><div class="label">TOTAL SALES TODAY</div><div class="value" id="dSales">₹0.00</div><div class="up">↗ Today</div></div><div class="card"><div class="label">TOTAL PROFIT TODAY</div><div class="value" id="dProfit">₹0.00</div><div class="up">↗ Estimated</div></div><div class="card"><div class="label">TOTAL BILLS TODAY</div><div class="value" id="dBills">0</div><div class="up">Bills</div></div><div class="card"><div class="label">EXPENSES TODAY</div><div class="value" id="dExpenses">₹0.00</div><div class="up">Today</div></div><div class="card"><div class="label">LOW STOCK ITEMS</div><div class="value" id="dLow">0</div><div style="color:#ff7070;font-size:12px">⚠ Need attention</div></div></div>
 <div class="quick"><button type="button" id="dashboardNewBillBtn"><b>＋ New Bill</b><span class="mini">Start a fresh sale</span></button><button onclick="openModal()"><b>＋ Add Product</b><span class="mini">Create inventory item</span></button><button onclick="page('stock')"><b>⚠ Low Stock</b><span class="mini">Check items needing refill</span></button><button onclick="page('reports')"><b>▣ View Reports</b><span class="mini">Sales & profit overview</span></button><button type="button" onclick="alphaCloudLoad()"><b>☁ LOAD FROM CLOUD</b><span class="mini">Latest cloud data load karein</span></button><button type="button" onclick="alphaCloudPush()"><b>🔄 SYNC NOW</b><span class="mini">Current data cloud par save karein</span></button></div>
-<div class="card" style="margin-top:14px"><div class="sectionHead"><h2>Sales vs Profit</h2><span class="mini">Today</span></div><div style="height:220px;position:relative"><canvas id="dashboardChart" style="width:100%;height:100%"></canvas></div></div><div class="layout"><div class="card"><div class="sectionHead"><h2>All Products</h2><button class="gold" onclick="openModal()">＋ Add Product</button></div><div class="chips"><button class="chip active" onclick="filterCategory('All')">All</button><button class="chip" onclick="filterCategory('Grocery')">Grocery</button><button class="chip" onclick="filterCategory('Beverages')">Beverages</button><button class="chip" onclick="filterCategory('Personal Care')">Personal Care</button><button class="chip" onclick="filterCategory('Home Care')">Home Care</button><button class="chip" onclick="filterCategory('Snacks')">Snacks</button></div><div class="products" id="productGrid"></div></div>
+<div class="card" style="margin-top:14px"><div class="sectionHead"><h2>Sales vs Profit</h2><span class="mini">Today</span></div><div style="height:220px;position:relative"><canvas id="dashboardChart" style="width:100%;height:100%"></canvas></div></div><div class="layout"><div class="card"><div class="sectionHead"><h2>All Products</h2><button class="gold" onclick="openModal()">＋ Add Product</button></div><div class="chips" id="productCategoryChips"></div><div class="products" id="productGrid"></div></div>
 <div class="card cart"><div class="sectionHead"><h2>Current Bill</h2><button class="danger" onclick="clearCart()">Clear</button></div><div class="cartItems" id="cart"></div><div class="summary"><div class="row"><span>Subtotal / उप-योग</span><span id="sub">₹0.00</span></div><div class="row"><span>Discount / छूट</span><input id="discount" type="number" value="0" min="0" style="width:80px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px" oninput="renderCart()" onblur="renderCart()"></div><div class="row"><span>GST Amount / जीएसटी राशि</span><span id="gstAmount">₹0.00</span></div><div class="row"><span>GST Rate / जीएसटी दर</span><select id="gstRate" onchange="renderCart()" style="width:90px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px"><option value="0">0%</option><option value="5">5%</option><option value="12">12%</option><option value="18">18%</option></select></div><div class="row"><span>Payment / भुगतान</span><select id="paymentMode" onchange="toggleCredit();renderCart()" style="width:110px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px"><option>Cash</option><option>UPI</option><option>Card</option><option>Credit / उधार</option></select></div><div class="row"><span>Customer / ग्राहक</span><input id="customerName" list="customerList" placeholder="Name (optional)" style="width:120px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px" oninput="customerSuggest();renderCart()"><datalist id="customerList"></datalist></div><div class="row"><span>Phone / फ़ोन</span><input id="customerPhone" placeholder="Phone (optional)" inputmode="numeric" style="width:120px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px" oninput="renderCart()"></div><div id="creditRow" class="row" style="display:none"><span>Credit / उधार</span><span style="font-weight:700">Due will be added to customer</span></div><div id="receivedRow" class="row"><span>Amount Received / प्राप्त राशि</span><input id="amountReceived" type="number" min="0" value="0" style="width:110px;background:#07111d;color:white;border:1px solid var(--line);border-radius:6px;padding:5px" oninput="renderCart()"></div><div class="row"><span>Change / वापस राशि</span><span id="changeDue">₹0.00</span></div><div class="grand"><span>Grand Total / कुल राशि</span><span id="grand">₹0.00</span></div><button class="pay" onclick="saveSale()">Proceed to Pay</button><button class="secondary" onclick="saveSale()">▣ Save Bill</button><button class="secondary" onclick="previewBill()">👁 Preview Bill</button><button class="secondary green" onclick="printReceipt()">▣ Print Bill</button></div></div></div>
 </section>
 
-<section id="products" class="page"><div class="card"><div class="sectionHead"><h2>Product Management</h2><button class="gold" onclick="openModal()">＋ Add Product</button></div><div id="productTable"></div></div></section>
+<section id="products" class="page"><div class="card"><div class="sectionHead"><div><h2>Product Management</h2><span class="label">TOTAL PRODUCTS: <b id="productCount">0</b></span></div><button class="gold" onclick="openModal()">＋ Add Product</button></div><div class="productManageFilters"><input id="productManageSearch" class="search" placeholder="⌕ Filter product name / barcode..." oninput="renderProductManagement()"><select id="productManageCategory" class="search" onchange="renderProductManagement()"><option value="all">All Categories</option></select></div><div id="productTable"></div></div></section>
 <section id="billing" class="page"><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Held Bills</h2><div><button class="gold" onclick="holdBill()">⏸ Hold Bill (F6)</button> <button class="secondary" onclick="resumeBill()">▶ Resume (F7)</button></div></div><div id="heldBills" style="margin-top:8px"></div></div><div class="card"><h2>Billing (POS)</h2><p class="label">Scan/enter a barcode or select products from Dashboard.</p><div style="display:flex;gap:8px;margin:12px 0"><input id="barcodeInput" class="search" style="min-width:0" placeholder="Scan / enter barcode or SKU" onkeydown="if(event.key==='Enter')scanBarcode()"><button class="gold" onclick="scanBarcode()">＋ Add</button></div><div class="quick"><button onclick="focusBarcode()"><b>⌕ Focus Scanner</b><span class="mini">Barcode-ready billing</span></button><button onclick="clearCart()"><b>↺ Clear Bill</b><span class="mini">Start fresh</span></button></div><div id="billingCart"></div><button class="secondary" onclick="previewBill()">👁 Preview Bill</button><button class="pay" onclick="printReceipt()">Print Receipt</button></div></section>
 <section id="sales" class="page"><div class="card"><h2>Sales History</h2><div id="salesTable"></div></div></section>
 <section id="customers" class="page"><div class="card"><div class="sectionHead"><h2>Customers</h2><button class="gold" onclick="addCustomer()">＋ Add Customer</button></div><div style="margin-bottom:12px"><input id="customerSearch" placeholder="Search customer / नाम या मोबाइल..." oninput="renderCustomers()" style="width:100%;max-width:420px"></div><div id="customerTable"></div></div></section><section id="udhaar" class="page"><div class="card"><div class="sectionHead"><div><h2>Udhaar / उधार</h2><span class="label">Customers se kitna paisa lena hai</span></div><button class="gold" id="udhaarPaymentReceivedBtn" type="button">＋ Payment Received</button></div><div class="grid" style="grid-template-columns:repeat(3,1fr);margin:15px 0"><div class="card"><div class="label">TOTAL UDHAAR</div><div class="value" id="uTotal">₹0.00</div></div><div class="card"><div class="label">CUSTOMERS WITH DUE</div><div class="value" id="uCustomers">0</div></div><div class="card"><div class="label">PAYMENT RECEIVED</div><div class="value" id="uReceived">₹0.00</div></div></div><div id="udhaarTable"></div><div id="udhaarHistory" style="margin-top:20px"></div></div></section>
@@ -652,7 +960,7 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
     }
     const payload={id:CFG.row,data:data,updated_at:new Date().toISOString(),updated_by:session.user?.id||null};const r=await sb.from(CFG.table).upsert(payload,{onConflict:'id'}).select('updated_at').single();if(r.error)throw r.error;
     if(typeof renderAll==='function')renderAll();
-    status('Complete store data merged and synced ✓',true);alert('☁ Sync successful.\n\nProducts + Categories + Stock + Stock History + Sales + Udhaar + Customers + Expenses + Returns + Reports + Deleted Products state cloud par merge ho gaya.');return true}catch(e){console.error('Alpha cloud push:',e);status('Cloud push failed');alert('☁ Cloud push failed: '+(e.message||e));return false}finally{busy=false}}
+    status('All items sync successful ✓',true);alert('☁ All Items Sync Successful ✓\nसभी आइटम सफलतापूर्वक सिंक हो गए।');return true}catch(e){console.error('Alpha cloud push:',e);status('Cloud push failed');alert('☁ Cloud push failed: '+(e.message||e));return false}finally{busy=false}}
   async function login(){if(busy)return false;busy=true;try{if(!init())return false;status('Cloud login required...');const cur=await sb.auth.getSession();if(cur.error)throw cur.error;let session=cur.data&&cur.data.session;if(!session){const email=prompt('Cloud account email / ID enter karein:');if(!email){status('Cloud login cancelled');return false}const password=prompt('Cloud account password enter karein:');if(!password){status('Cloud login cancelled');return false}status('Signing in...');const r=await sb.auth.signInWithPassword({email:email.trim(),password});if(r.error)throw r.error;session=r.data.session}if(!session)throw new Error('Cloud session nahi mili.');status('Cloud login successful ✓',true);alert('☁ Cloud login successful.');return true}catch(e){console.error('Alpha cloud login:',e);status('Cloud login failed');alert('Cloud login failed: '+(e.message||e));return false}finally{busy=false}}
   window.alphaCloudLoad=pull;
   window.alphaCloudPush=push;
@@ -2001,12 +2309,12 @@ function productIcon(p,index){
 }
 function money(n){return '₹'+Number(n||0).toFixed(2)}
 function persist(){localStorage.setItem(key,JSON.stringify(data))}
-function seed(){if(data.products.length)return;data.products=[['Aashirvaad Atta 5kg',275,240,25],['Fortune Sunlite 1L',145,125,18],['Amul Taaza Milk 1L',60,50,32],['Tata Tea Premium 250g',125,105,15],['Nescafe Classic 50g',110,90,20],['Colgate Strong Teeth 200g',85,65,30],['Surf Excel Easy Wash 1kg',215,180,22],['Vim Dishwash Bar 4x',60,45,40],['Parle-G Biscuit 250g',25,18,50],['Lays Classic 52g',20,14,35],['Pepsi 750ml',50,38,28],['Coca Cola 750ml',50,38,26]].map((x,i)=>({id:Date.now()+i,name:x[0],price:x[1],cost:x[2],stock:x[3],category:['Grocery','Grocery','Beverages','Grocery','Grocery','Personal Care','Home Care','Home Care','Snacks','Snacks','Beverages','Beverages'][i]}));persist()}
+function seed(){return}
 seed();
 let sessionRole='locked'; function isOwner(){return sessionRole==='owner'} function isStaff(){return sessionRole==='staff'} function ownerOnly(){if(!isOwner()){alert('Owner Login required. Sirf Owner modification kar sakta hai.');return false}return true} function page(id,btn){if(sessionRole==='locked'){return false;}if(isStaff()&&data.settings.staffRestricted&&!['dashboard','billing'].includes(id)){alert('Staff mode: Dashboard aur Billing/Sale allowed hai. Modification ke liye Owner Login required hai.');return false;}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');renderAll()}
 function searchProducts(q){renderProducts(q);let box=document.getElementById('searchSuggestions');if(!box)return;let term=String(q||'').trim().toLowerCase();if(!term){box.innerHTML='';box.style.display='none';return}let matches=data.products.filter(p=>p.name.toLowerCase().includes(term)||String(p.sku||'').toLowerCase().includes(term)).sort((a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'})).slice(0,10);box.innerHTML=matches.map(p=>`<div class="suggestItem" onclick="selectSearchProduct(${p.id})"><b>${esc(p.name)}</b><span>${money(p.price)} • Stock: ${p.stock}</span></div>`).join('')||'<div class="suggestEmpty">Product not found</div>';box.style.display='block'}
 function selectSearchProduct(id){let p=data.products.find(x=>x.id===id);if(!p)return;let input=document.getElementById('globalSearch');input.value=p.name;renderProducts(p.name);let box=document.getElementById('searchSuggestions');if(box){box.innerHTML='';box.style.display='none'}if(document.getElementById('billing')?.classList.contains('active'))addCart(id)}
-let activeCategory='All'; function filterCategory(c){activeCategory=c;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.textContent===c));renderProducts(document.getElementById('globalSearch').value)} function renderProducts(q=''){let a=data.products.filter(p=>(p.name.toLowerCase().includes(q.toLowerCase())||String(p.sku||'').toLowerCase().includes(q.toLowerCase()))&&(activeCategory==='All'||(p.category||'Other')===activeCategory));document.getElementById('productGrid').innerHTML=a.map((p,i)=>`<div class="prod"><div class="pic">${productIcon(p,i)}</div><b>${esc(p.name)}</b><div class="price">${money(p.price)}</div><div class="label">${esc(p.category||'Other')}</div><div class="stock">Stock: ${p.stock}</div><button onclick="addCart(${p.id})">＋ Add</button></div>`).join('')||'<div class="empty">No products found.</div>'}
+let activeCategory='All'; function filterCategory(c){activeCategory=c;renderCategoryChips();renderProducts(document.getElementById('globalSearch').value)} function renderCategoryChips(){let box=document.getElementById('productCategoryChips');if(!box)return;let cats=[...new Set(data.products.map(p=>String(p.category||'Other').trim()||'Other'))].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));box.innerHTML=['All',...cats].map(c=>`<button class="chip ${activeCategory===c?'active':''}" onclick="filterCategory(${JSON.stringify(c).replace(/</g,'\u003c')})">${esc(c)}</button>`).join('')} function renderProducts(q=''){let a=data.products.filter(p=>(p.name.toLowerCase().includes(q.toLowerCase())||String(p.sku||'').toLowerCase().includes(q.toLowerCase()))&&(activeCategory==='All'||(p.category||'Other')===activeCategory));document.getElementById('productGrid').innerHTML=a.map((p,i)=>`<div class="prod"><div class="pic">${productIcon(p,i)}</div><b>${esc(p.name)}</b><div class="price">${money(p.price)}</div><div class="label">${esc(p.category||'Other')}</div><div class="stock">Stock: ${p.stock}</div><button onclick="addCart(${p.id})">＋ Add</button></div>`).join('')||'<div class="empty">No products found.</div>'} function renderProductManagement(){let q=(document.getElementById('productManageSearch')?.value||'').trim().toLowerCase(),cat=document.getElementById('productManageCategory')?.value||'all',arr=data.products.filter(p=>(!q||p.name.toLowerCase().includes(q)||String(p.sku||'').toLowerCase().includes(q))&&(cat==='all'||String(p.category||'Other')===cat)),el=document.getElementById('productTable');if(!el)return;el.innerHTML=arr.length?`<table class="table"><tr><th>Product</th><th>Category</th><th>Price</th><th>Cost</th><th>Stock</th><th>SKU / Barcode</th><th>Action</th></tr>${arr.map(p=>`<tr><td>${esc(p.name)}</td><td>${esc(p.category||'Other')}</td><td>${money(p.price)}</td><td>${money(p.cost)}</td><td>${p.stock}</td><td>${esc(p.sku||'—')}</td><td><button class="tinyBtn" onclick="openEdit(${p.id})">Edit</button><button class="tinyBtn stockPlus" onclick="adjustStock(${p.id})">Stock</button><button class="tinyBtn danger" onclick="delProduct(${p.id})">Delete</button></td></tr>`).join('')}</table>`:'<div class="empty">No products match this filter.</div>'}
 function addCart(id){let p=data.products.find(x=>x.id===id),x=cart.find(x=>x.id===id);if(!p||p.stock<=0)return alert('Out of stock.');if(!x)cart.push({id,qty:1});else if(x.qty<p.stock)x.qty++;else alert('Maximum available stock reached.');renderCart()}
 function clampDiscountInput(){let el=document.getElementById('discount'),sub=cart.reduce((s,x)=>{let p=data.products.find(p=>p.id===x.id);return s+(p?p.price*x.qty:0)},0);if(!el)return;let v=Math.max(0,+el.value||0);if(v>sub){el.value=sub.toFixed(2)}}
 function billCalc(){let sub=cart.reduce((s,x)=>{let p=data.products.find(p=>p.id===x.id);return s+(p?p.price*x.qty:0)},0),d=Math.max(0,+document.getElementById('discount').value||0);d=Math.min(d,sub);let rate=+(document.getElementById('gstRate')?.value||0),base=Math.max(0,sub-d),gst=base*rate/100,total=base+gst,received=Math.max(0,+document.getElementById('amountReceived')?.value||0);return{sub,d,base,rate,gst,total,received,change:Math.max(0,received-total)}}
@@ -2014,7 +2322,7 @@ function renderCart(){clampDiscountInput();let discountEl=document.getElementByI
 
 function changeQty(id,n){let x=cart.find(x=>x.id===id),p=data.products.find(x=>x.id===id);if(!x)return;x.qty=Math.max(1,Math.min(p.stock,x.qty+n));renderCart()}
 function removeCart(id){cart=cart.filter(x=>x.id!==id);renderCart()}function clearCart(){cart=[];document.getElementById('discount').value=0;document.getElementById('gstRate').value='0';document.getElementById('customerName').value='';document.getElementById('customerPhone').value='';document.getElementById('paymentMode').value='Cash';document.getElementById('amountReceived').value='0';renderCart()}
-function saveSale(){if(!cart.length)return alert('Add products first.');let c=billCalc(),mode=document.getElementById('paymentMode').value;if(c.d>(c.sub+0.005))return alert('Discount cannot exceed subtotal.');if(mode==='Cash'&&c.received<c.total)return alert('Amount received is less than bill total.');for(let x of cart){let p=data.products.find(p=>p.id===x.id);if(!p)return alert('A product in this bill is no longer available.');if(Number(x.qty)>Number(p.stock))return alert('Stock changed for '+p.name+'. Please refresh the bill.');}let cname=(document.getElementById('customerName').value||'Walk-in Customer').trim(),phone=(document.getElementById('customerPhone').value||'').trim(),pay=document.getElementById('paymentMode').value||'Cash';if(pay==='Credit / उधar' || pay==='Credit / उधार'){if(cname==='Walk-in Customer')return alert('Customer name is required for credit sale.');}let due=pay==='Credit / उधार'?c.total:0;cart.forEach(x=>{let p=data.products.find(p=>p.id===x.id);p.stock-=x.qty;p.updatedAt=new Date().toISOString();data.stockMoves.push({id:Date.now()+x.id,date:new Date().toISOString(),productId:p.id,name:p.name,type:'Sale',qty:x.qty,stockAfter:p.stock})});data.sales.push({id:Date.now(),invoice:'AS-'+String(data.sales.length+1).padStart(5,'0'),date:new Date().toISOString(),items:cart.map(x=>({...x})),subtotal:c.sub,discount:c.d,gstRate:c.rate,gst:c.gst,total:c.total,customer:cname,customerPhone:phone,payment:pay,received:c.received,change:c.change,due:due});let old=data.customers.find(x=>x.name.toLowerCase()===cname.toLowerCase());if(cname!=='Walk-in Customer'){if(old){if(phone)old.phone=phone;old.due=Number(old.due||0)+due}else data.customers.push({id:Date.now()+1,name:cname,phone,due})}persist();alert('Bill saved successfully.');clearCart();renderAll()}
+function saveSale(){if(!cart.length)return alert('Add products first.');let c=billCalc(),mode=document.getElementById('paymentMode').value;if(c.d>(c.sub+0.005))return alert('Discount cannot exceed subtotal.');if(mode==='Cash'&&c.received<c.total)return alert('Amount received is less than bill total.');for(let x of cart){let p=data.products.find(p=>p.id===x.id);if(!p)return alert('A product in this bill is no longer available.');if(Number(x.qty)>Number(p.stock))return alert('Stock changed for '+p.name+'. Please refresh the bill.');}let cname=(document.getElementById('customerName').value||'Walk-in Customer').trim(),phone=(document.getElementById('customerPhone').value||'').trim(),pay=document.getElementById('paymentMode').value||'Cash';if(pay==='Credit / उधar' || pay==='Credit / उधार'){if(cname==='Walk-in Customer')return alert('Customer name is required for credit sale.\nउधार के लिए ग्राहक का नाम जरूरी है।');if(!phone)return alert('Customer mobile number is required for credit sale.\nउधार के लिए ग्राहक का मोबाइल नंबर जरूरी है।');if(!/^\d{10}$/.test(phone)||!/^[6-9]/.test(phone)||/^([0-9])\1{9}$/.test(phone))return alert('Incorrect mobile number. Enter a valid 10-digit Indian mobile number.\nगलत मोबाइल नंबर। 10 अंकों का सही मोबाइल नंबर दर्ज करें।');}let due=pay==='Credit / उधार'?c.total:0;cart.forEach(x=>{let p=data.products.find(p=>p.id===x.id);p.stock-=x.qty;p.updatedAt=new Date().toISOString();data.stockMoves.push({id:Date.now()+x.id,date:new Date().toISOString(),productId:p.id,name:p.name,type:'Sale',qty:x.qty,stockAfter:p.stock})});data.sales.push({id:Date.now(),invoice:'AS-'+String(data.sales.length+1).padStart(5,'0'),date:new Date().toISOString(),items:cart.map(x=>({...x})),subtotal:c.sub,discount:c.d,gstRate:c.rate,gst:c.gst,total:c.total,customer:cname,customerPhone:phone,payment:pay,received:c.received,change:c.change,due:due});let old=data.customers.find(x=>x.name.toLowerCase()===cname.toLowerCase());if(cname!=='Walk-in Customer'){if(old){if(phone)old.phone=phone;old.due=Number(old.due||0)+due}else data.customers.push({id:Date.now()+1,name:cname,phone,due})}persist();alert('Bill saved successfully.');clearCart();renderAll()}
 function receiptHtml(){if(!cart.length)return null;let c=billCalc(),no='AS-'+String(data.sales.length+1).padStart(5,'0'),date=new Date(),cname=(document.getElementById('customerName').value||'Walk-in Customer').trim(),phone=(document.getElementById('customerPhone').value||'').trim(),pay=document.getElementById('paymentMode').value||'Cash';return `<!doctype html><html><head><title>ALPHA STORE Receipt</title><style>@page{size:80mm auto;margin:0}body{margin:0;background:#eee;font-family:Arial,sans-serif}.receipt{width:80mm;box-sizing:border-box;background:#fff;color:#111;padding:14px 12px;margin:auto;border:1px solid #ddd}.center{text-align:center}.store{font-size:24px;font-weight:900;letter-spacing:1.5px}.sub{font-size:10px;color:#555;letter-spacing:.4px;margin-top:2px}.meta{font-size:10px;font-weight:400;display:flex;justify-content:space-between;gap:8px;margin-top:7px}.meta span:last-child{text-align:right}.line{border-top:1px dashed #777;margin:10px 0}.items{width:100%;border-collapse:collapse;font-size:10px}.items th{text-align:left;border-bottom:1px solid #222;padding:5px 2px;font-size:9px}.items td{padding:6px 2px;vertical-align:top}.right{text-align:right}.tot{font-size:10px}.tot p{margin:6px 0}.grand{font-size:15px;font-weight:900;border-top:2px solid #111;border-bottom:2px solid #111;padding:8px 0;margin:8px 0!important}.thanks{font-size:11px;margin-top:14px;padding-top:10px;border-top:1px dashed #777;line-height:1.45}.printnote{font-size:9px;color:#555}@media print{body{background:#fff}.receipt{margin:0}}</style>
 <style id="v11-ultra-brand">
 .logo{position:relative!important;gap:13px!important;padding:19px 12px 25px!important;border-bottom:1px solid rgba(245,196,81,.10)!important;margin-bottom:10px!important}
@@ -2145,7 +2453,74 @@ function receiptHtml(){if(!cart.length)return null;let c=billCalc(),no='AS-'+Str
 }
 </style>
 
-</body></html>`}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="v17-6-2-mobile-brand-3d-only">
+@media(max-width:700px){
+  .app>.side>.logo .brandCopy b{
+    color:#f5e4ae!important;
+    text-shadow:0 1px 0 #8c6a22,0 2px 0 rgba(75,48,8,.9),0 4px 10px rgba(0,0,0,.8)!important;
+    letter-spacing:6px!important;
+  }
+  .app>.side>.logo .brandCopy strong{
+    background:linear-gradient(180deg,#fff9d9 0%,#ffe28a 22%,#e8b943 54%,#a66c12 78%,#ffe7a0 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+    -webkit-text-stroke:.35px rgba(255,237,172,.55)!important;
+    text-shadow:0 1px 0 #a9781d,0 2px 0 #80550e,0 3px 0 #5d3c0a,0 5px 8px rgba(0,0,0,.72),0 0 18px rgba(245,196,81,.22)!important;
+    filter:drop-shadow(0 3px 2px rgba(0,0,0,.38))!important;
+    letter-spacing:4px!important;
+  }
+}
+</style>
+
+
+<style id="v17-6-3-alpha-store-polish-only">
+@media(max-width:700px){
+  .app>.side>.logo .brandCopy strong{
+    font-weight:900!important;
+    letter-spacing:3.2px!important;
+    background:linear-gradient(180deg,#fffdf0 0%,#fff0b0 16%,#f4cc63 38%,#c99325 58%,#8f5d10 76%,#e8bd4d 90%,#fff0a0 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;
+    -webkit-text-fill-color:transparent!important;
+    -webkit-text-stroke:.45px rgba(255,240,180,.68)!important;
+    text-shadow:0 1px 0 rgba(255,249,216,.95),0 2px 0 #b27b18,0 3px 0 #80520c,0 4px 1px rgba(50,30,4,.9),0 6px 5px rgba(0,0,0,.62),0 8px 11px rgba(0,0,0,.5),0 0 14px rgba(255,211,91,.22)!important;
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.45))!important;
+  }
+}
+</style>
+</body>
+
+
+
+
+<style id="v17-6-2-mobile-header-refine-only">
+@media(max-width:700px){
+  .app>.side>.logo{height:108px!important;min-height:108px!important;max-height:108px!important;padding:10px 18px!important;margin:0 0 8px!important;gap:15px!important;border-radius:16px!important;}
+  .app>.side>.logo:before{display:none!important;content:none!important;}
+  .app>.side>.logo:after{left:12%!important;right:12%!important;bottom:7px!important;}
+  .app>.side>.logo .logoMark{width:58px!important;height:58px!important;min-width:58px!important;border-radius:16px!important;}
+  .app>.side>.logo .brandCopy{display:flex!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;align-items:flex-start!important;justify-content:center!important;gap:0!important;}
+  .app>.side>.logo .brandCopy b{font-size:12px!important;letter-spacing:6px!important;line-height:1!important;color:#dbe4f0!important;}
+  .app>.side>.logo .brandCopy strong{display:block!important;width:100%!important;font-size:34px!important;letter-spacing:5px!important;line-height:1.02!important;margin-top:4px!important;font-weight:950!important;background:linear-gradient(100deg,#fff5ce 0%,#f5cf68 42%,#c58b20 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;text-shadow:0 5px 18px rgba(245,196,81,.12)!important;}
+  .app>.side>.logo .brandCopy small{display:none!important;}
+}
+</style>
+
+</html>
+
+
+`}
 function openReceiptWindow(autoPrint){
   let h=receiptHtml();
   if(!h)return alert('Add products first.');
@@ -2235,7 +2610,53 @@ function closeCustomerDetail(){let m=document.getElementById('customerDetailModa
 function printCustomerStatement(customerId){let c=data.customers.find(x=>x.id===customerId);if(!c)return;let bills=data.sales.filter(s=>(s.customer||'').toLowerCase()===c.name.toLowerCase()),payments=data.creditPayments.filter(p=>p.customerId===c.id||(p.customer||'').toLowerCase()===c.name.toLowerCase()),paid=payments.reduce((a,p)=>a+Number(p.amount||0),0),spend=bills.reduce((a,s)=>a+Number(s.total||0),0);let w=window.open('','_blank','width=700,height=800');if(!w)return alert('Popup blocked. Please allow popups for ALPHA STORE.');w.document.write(`<html><head><title>Customer Statement - ${esc(c.name)}</title><style>body{font-family:Arial;padding:28px;color:#111}h1{margin:0 0 4px}.meta{color:#666;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #ccc;padding:8px;text-align:left}th{background:#f4f4f4}.summary{display:flex;gap:12px;flex-wrap:wrap}.box{border:1px solid #ddd;padding:12px;min-width:140px}.total{font-size:20px;font-weight:bold}</style><style id="v6-top-login-logo-fix">
 @media(max-width:700px){.logo{transform:none!important}.loginBrandBadge{transform:translateY(18px)!important}}
 </style>
-</head><body><h1>ALPHA STORE</h1><div class="meta">Customer Statement • ${esc(c.name)} • ${esc(c.phone||'')}</div><div class="summary"><div class="box">Total Spend<br><b>${money(spend)}</b></div><div class="box">Total Paid<br><b>${money(paid)}</b></div><div class="box">Current Due<br><b>${money(c.due||0)}</b></div></div><h3>Purchase History</h3><table><tr><th>Date</th><th>Invoice</th><th>Payment</th><th>Total</th></tr>${bills.slice().reverse().map(s=>`<tr><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.invoice||'-')}</td><td>${esc(s.payment||'Cash')}</td><td>${money(s.total)}</td></tr>`).join('')}</table><h3>Payment History</h3><table><tr><th>Date</th><th>Received</th><th>Remaining</th></tr>${payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${money(p.amount)}</td><td>${money(p.remaining||0)}</td></tr>`).join('')}</table><div class="total">Current Due: ${money(c.due||0)}</div><script>window.print()<\/script></body></html>`);w.document.close()}
+</head><body><h1>ALPHA STORE</h1><div class="meta">Customer Statement • ${esc(c.name)} • ${esc(c.phone||'')}</div><div class="summary"><div class="box">Total Spend<br><b>${money(spend)}</b></div><div class="box">Total Paid<br><b>${money(paid)}</b></div><div class="box">Current Due<br><b>${money(c.due||0)}</b></div></div><h3>Purchase History</h3><table><tr><th>Date</th><th>Invoice</th><th>Payment</th><th>Total</th></tr>${bills.slice().reverse().map(s=>`<tr><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.invoice||'-')}</td><td>${esc(s.payment||'Cash')}</td><td>${money(s.total)}</td></tr>`).join('')}</table><h3>Payment History</h3><table><tr><th>Date</th><th>Received</th><th>Remaining</th></tr>${payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${money(p.amount)}</td><td>${money(p.remaining||0)}</td></tr>`).join('')}</table><div class="total">Current Due: ${money(c.due||0)}</div><script>window.print()<\/script>
+
+
+
+
+
+
+
+
+
+
+<style id="v17-6-2-mobile-brand-3d-only">
+@media(max-width:700px){
+  .app>.side>.logo .brandCopy b{
+    color:#f5e4ae!important;
+    text-shadow:0 1px 0 #8c6a22,0 2px 0 rgba(75,48,8,.9),0 4px 10px rgba(0,0,0,.8)!important;
+    letter-spacing:6px!important;
+  }
+  .app>.side>.logo .brandCopy strong{
+    background:linear-gradient(180deg,#fff9d9 0%,#ffe28a 22%,#e8b943 54%,#a66c12 78%,#ffe7a0 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+    -webkit-text-stroke:.35px rgba(255,237,172,.55)!important;
+    text-shadow:0 1px 0 #a9781d,0 2px 0 #80550e,0 3px 0 #5d3c0a,0 5px 8px rgba(0,0,0,.72),0 0 18px rgba(245,196,81,.22)!important;
+    filter:drop-shadow(0 3px 2px rgba(0,0,0,.38))!important;
+    letter-spacing:4px!important;
+  }
+}
+</style>
+
+</body>
+<style id="v17-6-2-mobile-header-refine-only">
+@media(max-width:700px){
+  .app>.side>.logo{height:108px!important;min-height:108px!important;max-height:108px!important;padding:10px 18px!important;margin:0 0 8px!important;gap:15px!important;border-radius:16px!important;}
+  .app>.side>.logo:before{display:none!important;content:none!important;}
+  .app>.side>.logo:after{left:12%!important;right:12%!important;bottom:7px!important;}
+  .app>.side>.logo .logoMark{width:58px!important;height:58px!important;min-width:58px!important;border-radius:16px!important;}
+  .app>.side>.logo .brandCopy{display:flex!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;align-items:flex-start!important;justify-content:center!important;gap:0!important;}
+  .app>.side>.logo .brandCopy b{font-size:12px!important;letter-spacing:6px!important;line-height:1!important;color:#dbe4f0!important;}
+  .app>.side>.logo .brandCopy strong{display:block!important;width:100%!important;font-size:34px!important;letter-spacing:5px!important;line-height:1.02!important;margin-top:4px!important;font-weight:950!important;background:linear-gradient(100deg,#fff5ce 0%,#f5cf68 42%,#c58b20 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;text-shadow:0 5px 18px rgba(245,196,81,.12)!important;}
+  .app>.side>.logo .brandCopy small{display:none!important;}
+}
+</style>
+
+</html>
+
+
+`);w.document.close()}
 function renderUdhaar(){let el=document.getElementById('udhaarTable');if(!el)return;let dueCustomers=data.customers.filter(c=>Number(c.due||0)>0.005).sort((a,b)=>Number(b.due||0)-Number(a.due||0)),total=dueCustomers.reduce((a,c)=>a+Number(c.due||0),0),received=data.creditPayments.reduce((a,p)=>a+Number(p.amount||0),0);document.getElementById('uTotal').textContent=money(total);document.getElementById('uCustomers').textContent=dueCustomers.length;document.getElementById('uReceived').textContent=money(received);el.innerHTML=dueCustomers.length?`<table class="table"><tr><th>Customer / ग्राहक</th><th>Phone</th><th>Udhaar / बाकी</th><th>Action</th></tr>${dueCustomers.map(c=>`<tr><td><button class="linkBtn" data-customer-id="${c.id}" onclick="selectUdhaarCustomer(${c.id})"><b>${esc(c.name)}</b></button></td><td>${esc(c.phone||'-')}</td><td><b>${money(c.due)}</b></td><td><button class="gold tinyBtn" onclick="receivePayment(${c.id})">Receive Payment</button></td></tr>`).join('')}</table>`:'<div class="empty">🎉 No pending udhaar. Sab payment clear hai.</div>';let h=document.getElementById('udhaarHistory');h.innerHTML=data.creditPayments.length?`<h3>Payment History</h3><table class="table"><tr><th>Date</th><th>Customer</th><th>Received</th><th>Remaining</th></tr>${data.creditPayments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${esc(p.customer)}</td><td>${money(p.amount)}</td><td>${money(p.remaining)}</td></tr>`).join('')}</table>`:''}
 function receivePayment(customerId){if(!ownerOnly())return;let c=data.customers.find(x=>x.id===customerId);if(!c)return alert('Customer not found.');let due=Number(c.due||0);if(due<=0.005)return alert('Is customer ka udhaar pending nahi hai.');let amount=Number(prompt(`${c.name} ka pending udhaar: ${money(due)}\n\nKitna payment receive hua?`));if(!Number.isFinite(amount)||amount<=0)return alert('Valid payment amount enter karein.');if(amount>due+0.005)return alert('Payment pending udhaar se zyada nahi ho sakta.');let remaining=amount;let creditSales=data.sales.filter(s=>(s.customer||'').toLowerCase()===c.name.toLowerCase()&&((s.payment||'').toLowerCase().includes('credit')||Number(s.due||0)>0)).sort((a,b)=>new Date(a.date)-new Date(b.date));for(let s of creditSales){if(remaining<=0)break;let sd=Number(s.due||0);if(sd<=0)continue;let applied=Math.min(sd,remaining);s.due=Math.max(0,sd-applied);s.updatedAt=new Date().toISOString();remaining-=applied}c.due=Math.max(0,due-amount);data.creditPayments.push({id:Date.now(),date:new Date().toISOString(),customer:c.name,customerId:c.id,amount,remaining:c.due});persist();renderAll();alert(`Payment received: ${money(amount)}\nRemaining udhaar: ${money(c.due)}`)}
 function expenseDateKey(e){let d=new Date(e.date);if(!Number.isFinite(d.getTime()))return '';return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -2253,17 +2674,18 @@ function renderReports(){let inWindow=reportWindow(),salesList=data.sales.filter
 function renderSettings(){['Name','Address','Phone','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
 document.addEventListener('change',e=>{if(e.target.id==='setLogo'&&e.target.files[0]){let r=new FileReader();r.onload=()=>{data.settings.logo=r.result;persist();renderSettings()};r.readAsDataURL(e.target.files[0])}});
-function normalizeLoginSettings(){data.settings=data.settings||{};if(!data.settings.ownerId)data.settings.ownerId='owner';if(!data.settings.ownerPassword)data.settings.ownerPassword=data.settings.ownerPin||'1234';if(!data.settings.staffId)data.settings.staffId='staff';if(!data.settings.staffPassword)data.settings.staffPassword=data.settings.staffPin||'';if(data.settings.ownerPin!==undefined)delete data.settings.ownerPin;if(data.settings.staffPin!==undefined)delete data.settings.staffPin} normalizeLoginSettings(); persist(); if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadRememberedLogin);else loadRememberedLogin(); function validLoginId(v){return /^[A-Za-z0-9._-]{3,20}$/.test(v)} function validPassword(v){return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,32}$/.test(v)} function saveSecurity(){if(!ownerOnly())return;let oi=(document.getElementById('ownerId')?.value||'').trim(),op=(document.getElementById('ownerPassword')?.value||'').trim(),si=(document.getElementById('staffId')?.value||'').trim(),sp=(document.getElementById('staffPassword')?.value||'').trim(),restricted=document.getElementById('staffRestricted')?.checked!==false;if(!validLoginId(oi))return alert('Owner Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(!validPassword(op))return alert('Owner Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&!validLoginId(si))return alert('Staff Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(sp&&!validPassword(sp))return alert('Staff Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&oi.toLowerCase()===si.toLowerCase())return alert('Owner aur Staff Login ID alag hone chahiye.');data.settings.ownerId=oi;data.settings.ownerPassword=op;data.settings.staffId=si;data.settings.staffPassword=sp;data.settings.staffRestricted=restricted;persist();renderAll();alert('Login security saved successfully. Ab login me aapka updated ID + Password use hoga.')} function lockApp(){sessionRole='locked';document.body.classList.add('login-locked');let id=document.getElementById('loginId'),pw=document.getElementById('loginPassword'),overlay=document.getElementById('loginOverlay');if(!overlay||!id||!pw)return alert('Security screen load nahi hui.');id.value='';pw.value='';overlay.style.display='flex';overlay.classList.add('show');setTimeout(()=>id.focus(),50)} function loadRememberedLogin(){try{let raw=localStorage.getItem('alpha_store_remember_login');if(!raw)return;let x=JSON.parse(raw);let id=document.getElementById('loginId'),pw=document.getElementById('loginPassword'),cb=document.getElementById('rememberLogin');if(id&&x&&x.id)id.value=String(x.id);if(pw&&x&&x.pw)pw.value=String(x.pw);if(cb)cb.checked=!!(x&&x.id&&x.pw)}catch(e){try{localStorage.removeItem('alpha_store_remember_login')}catch(_){}}}
-function saveRememberedLogin(id,pw){let cb=document.getElementById('rememberLogin');try{if(cb&&cb.checked)localStorage.setItem('alpha_store_remember_login',JSON.stringify({id:id,pw:pw}));else localStorage.removeItem('alpha_store_remember_login')}catch(e){}}
+function normalizeLoginSettings(){data.settings=data.settings||{};if(!data.settings.ownerId)data.settings.ownerId='owner';data.settings.ownerPassword='Owner123';if(!data.settings.staffId)data.settings.staffId='staff';if(!data.settings.staffPassword)data.settings.staffPassword=data.settings.staffPin||'';if(data.settings.ownerPin!==undefined)delete data.settings.ownerPin;if(data.settings.staffPin!==undefined)delete data.settings.staffPin} normalizeLoginSettings(); persist(); if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadRememberedLogin);else loadRememberedLogin(); function validLoginId(v){return /^[A-Za-z0-9._-]{3,20}$/.test(v)} function validPassword(v){return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,32}$/.test(v)} function saveSecurity(){if(!ownerOnly())return;let oi=(document.getElementById('ownerId')?.value||'').trim(),op=(document.getElementById('ownerPassword')?.value||'').trim(),si=(document.getElementById('staffId')?.value||'').trim(),sp=(document.getElementById('staffPassword')?.value||'').trim(),restricted=document.getElementById('staffRestricted')?.checked!==false;if(!validLoginId(oi))return alert('Owner Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(!validPassword(op))return alert('Owner Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&!validLoginId(si))return alert('Staff Login ID 3–20 characters ka ho aur sirf letters, numbers, . _ - use karein.');if(sp&&!validPassword(sp))return alert('Staff Password 6–32 characters ka ho aur usme kam se kam 1 letter + 1 number hona chahiye.');if(si&&oi.toLowerCase()===si.toLowerCase())return alert('Owner aur Staff Login ID alag hone chahiye.');data.settings.ownerId=oi;data.settings.ownerPassword=op;data.settings.staffId=si;data.settings.staffPassword=sp;data.settings.staffRestricted=restricted;persist();renderAll();alert('Login security saved successfully. Ab login me aapka updated ID + Password use hoga.')} function lockApp(){sessionRole='locked';document.body.classList.add('login-locked');let id=document.getElementById('loginId'),pw=document.getElementById('loginPassword'),overlay=document.getElementById('loginOverlay');if(!overlay||!id||!pw)return alert('Security screen load nahi hui.');id.value='';pw.value='';overlay.style.display='flex';overlay.classList.add('show');setTimeout(()=>id.focus(),50)} function loadRememberedLogin(){try{let raw=localStorage.getItem('alpha_store_remember_login');if(!raw)return;let x=JSON.parse(raw);let id=document.getElementById('loginId');if(id&&x&&x.id)id.value=String(x.id);let pw=document.getElementById('loginPassword');if(pw)pw.value='';}catch(e){try{localStorage.removeItem('alpha_store_remember_login')}catch(_){}}}
+function saveRememberedLogin(id,pw){try{localStorage.setItem('alpha_store_remember_login',JSON.stringify({id:id}))}catch(e){}} 
 function unlockApp(){normalizeLoginSettings();let id=(document.getElementById('loginId')?.value||'').trim(),pw=document.getElementById('loginPassword')?.value||'',overlay=document.getElementById('loginOverlay');if(!id||!pw)return alert('ID aur Password dono enter karein.');if(id.toLowerCase()===String(data.settings.ownerId||'owner').toLowerCase()&&pw===String(data.settings.ownerPassword||'')){sessionRole='owner';document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();return}if(data.settings.staffId&&id.toLowerCase()===String(data.settings.staffId).toLowerCase()&&data.settings.staffPassword&&pw===String(data.settings.staffPassword)){sessionRole='staff';document.body.classList.remove('login-locked');if(overlay){overlay.style.display='none';overlay.classList.remove('show')}saveRememberedLogin(id,pw);renderAll();page('dashboard');return}alert('Wrong ID or Password')} function applyTheme(){document.body.dataset.theme=data.settings?.theme||'dark';updateThemeButtons()} function setThemeMode(mode){if(!ownerOnly())return;data.settings.theme=mode==='light'?'light':'dark';persist();applyTheme();renderAll()} function updateThemeButtons(){document.getElementById('themeDarkBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='dark');document.getElementById('themeLightBtn')?.classList.toggle('active',(data.settings?.theme||'dark')==='light')}
 function customerSuggest(){let q=(document.getElementById('customerName')?.value||'').toLowerCase().trim(),dl=document.getElementById('customerList');if(!dl)return;dl.innerHTML=data.customers.filter(c=>!q||c.name.toLowerCase().includes(q)).slice(0,20).map(c=>`<option value="${esc(c.name)}">`).join('');let c=data.customers.find(x=>x.name.toLowerCase()===q);if(c&&c.phone&&!document.getElementById('customerPhone').value)document.getElementById('customerPhone').value=c.phone}
-function toggleCredit(){let m=document.getElementById('paymentMode')?.value, r=document.getElementById('creditRow');if(r)r.style.display=m==='Credit / उधार'?'flex':'none';if(m==='Credit / उधार'){document.getElementById('amountReceived').value=0}}
+function toggleCredit(){let m=document.getElementById('paymentMode')?.value,r=document.getElementById('creditRow'),n=document.getElementById('customerName'),ph=document.getElementById('customerPhone');let credit=m==='Credit / उधार';if(r)r.style.display=credit?'flex':'none';if(n)n.placeholder=credit?'Name / नाम (Required / अनिवार्य)':'Name (optional)';if(ph)ph.placeholder=credit?'10-digit mobile / 10 अंकों का मोबाइल (Required / अनिवार्य)':'Phone (optional)';if(credit){document.getElementById('amountReceived').value=0}}
 function renderHeldBills(){const el=document.getElementById('heldBills');if(!el)return;el.innerHTML=heldBills.length?heldBills.map((b,i)=>`<div class="hold-item"><b>${esc(b.customer||'Walk-in')}</b><span>${b.items.reduce((a,x)=>a+Number(x.qty||0),0)} items • ${money(b.total)}</span><button class="gold" onclick="resumeHeld(${b.id})">Resume</button><button class="danger" onclick="deleteHeld(${b.id})">×</button></div>`).join(''):'<div class="muted">No held bills</div>';}
 function holdBill(){if(!cart.length)return alert('Cart is empty.');const b={id:Date.now(),date:new Date().toISOString(),items:JSON.parse(JSON.stringify(cart)),total:cart.reduce((a,x)=>a+Number(x.price||0)*Number(x.qty||0),0),customer:document.getElementById('customerName')?.value||'Walk-in',customerPhone:document.getElementById('customerPhone')?.value||''};heldBills.push(b);data.heldBills=heldBills;persist();clearCart();renderHeldBills();alert('Bill held successfully.');}
 function resumeHeld(id){const b=heldBills.find(x=>x.id===id);if(!b)return;cart=JSON.parse(JSON.stringify(b.items));if(document.getElementById('customerName'))document.getElementById('customerName').value=b.customer||'';if(document.getElementById('customerPhone'))document.getElementById('customerPhone').value=b.customerPhone||'';heldBills=heldBills.filter(x=>x.id!==id);data.heldBills=heldBills;persist();renderAll();page('billing');}
 function resumeBill(){const b=heldBills[0];if(b)resumeHeld(b.id);else alert('No held bill found.');}
 function deleteHeld(id){if(!confirm('Delete held bill?'))return;heldBills=heldBills.filter(x=>x.id!==id);data.heldBills=heldBills;persist();renderHeldBills();}
-function renderAll(){document.body.classList.toggle('staff-mode',sessionRole==='staff'&&data.settings.staffRestricted);document.querySelectorAll('.nav button').forEach(b=>{b.style.display=(sessionRole==='staff'&&data.settings.staffRestricted)?((b.textContent.includes('Billing')||b.textContent.includes('Dashboard'))?'block':'none'):'block'});customerSuggest();toggleCredit();renderSettings();if(document.getElementById('ownerId'))document.getElementById('ownerId').value=data.settings.ownerId||'owner';if(document.getElementById('ownerPassword'))document.getElementById('ownerPassword').value=data.settings.ownerPassword||'';if(document.getElementById('staffId'))document.getElementById('staffId').value=data.settings.staffId||'staff';if(document.getElementById('staffPassword'))document.getElementById('staffPassword').value=data.settings.staffPassword||'';if(document.getElementById('staffRestricted'))document.getElementById('staffRestricted').checked=data.settings.staffRestricted!==false;if(document.getElementById('sessionRole'))document.getElementById('sessionRole').textContent=sessionRole.toUpperCase();if(document.getElementById('roleBadge')){let rb=document.getElementById('roleBadge');rb.textContent=sessionRole==='owner'?'♛ OWNER':sessionRole==='staff'?'♙ STAFF':'LOCKED';rb.className='roleBadge '+sessionRole}renderInventory();renderProducts(document.getElementById('globalSearch').value);renderCart();renderTable();renderSales();renderStock();renderDash();renderDeleted();renderCustomers();renderUdhaar();renderExpenses();renderReports();renderHeldBills()}
+function renderProductCategoryFilter(){let sel=document.getElementById('productManageCategory');if(sel){let current=sel.value||'all',cats=[...new Set(data.products.map(p=>String(p.category||'Other').trim()||'Other'))].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));sel.innerHTML='<option value="all">All Categories</option>'+cats.map(c=>`<option value="${esc(c).replace(/"/g,'&quot;')}">${esc(c)}</option>`).join('');sel.value=cats.includes(current)?current:'all';}renderCategoryChips()}
+function renderAll(){let pc=document.getElementById('productCount');if(pc)pc.textContent=data.products.length;renderProductCategoryFilter();renderProductManagement();document.body.classList.toggle('staff-mode',sessionRole==='staff'&&data.settings.staffRestricted);document.querySelectorAll('.nav button').forEach(b=>{b.style.display=(sessionRole==='staff'&&data.settings.staffRestricted)?((b.textContent.includes('Billing')||b.textContent.includes('Dashboard')||b.id==='versionBadge')?'block':'none'):'block'});customerSuggest();toggleCredit();renderSettings();if(document.getElementById('ownerId'))document.getElementById('ownerId').value=data.settings.ownerId||'owner';if(document.getElementById('ownerPassword'))document.getElementById('ownerPassword').value=data.settings.ownerPassword||'';if(document.getElementById('staffId'))document.getElementById('staffId').value=data.settings.staffId||'staff';if(document.getElementById('staffPassword'))document.getElementById('staffPassword').value=data.settings.staffPassword||'';if(document.getElementById('staffRestricted'))document.getElementById('staffRestricted').checked=data.settings.staffRestricted!==false;if(document.getElementById('sessionRole'))document.getElementById('sessionRole').textContent=sessionRole.toUpperCase();let mobileRoleSlot=document.getElementById('mobileEmptyNavSlot');if(mobileRoleSlot){let mobileRoleText=sessionRole==='owner'?'OWNER ACCESS':sessionRole==='staff'?'STAFF ACCESS':'ACCESS LOCKED';let mobileRoleLabel=mobileRoleSlot.querySelector('span');if(mobileRoleLabel)mobileRoleLabel.textContent=mobileRoleText;}if(document.getElementById('roleBadge')){let rb=document.getElementById('roleBadge');let rr=sessionRole==='owner'?'ACCESS BY OWNER':sessionRole==='staff'?'ACCESS BY STAFF':'ACCESS LOCKED';rb.className='roleBadge '+sessionRole;let rs=rb.querySelector('span');if(rs)rs.textContent=rr;else rb.textContent=rr;}renderInventory();renderProducts(document.getElementById('globalSearch').value);renderCart();renderTable();renderSales();renderStock();renderDash();renderDeleted();renderCustomers();renderUdhaar();renderExpenses();renderReports();renderHeldBills()}
 function toggleCustomCategory(){let sel=document.getElementById('mCategory'),inp=document.getElementById('mCustomCategory');if(!sel||!inp)return;let custom=sel.value==='__custom__';inp.style.display=custom?'block':'none';if(custom)inp.focus()} function openModal(){if(!ownerOnly())return;editId=null;document.querySelector('#modal h2').textContent='Add Product';['mName','mPrice','mCost','mStock','mSku'].forEach(id=>document.getElementById(id).value='');document.getElementById('mCategory').value='Grocery';document.getElementById('mCustomCategory').value='';toggleCustomCategory();document.getElementById('modal').classList.add('show')}function closeModal(){document.getElementById('modal').classList.remove('show')}
 function openEdit(id){if(!ownerOnly())return;let x=data.products.find(p=>p.id===id);if(!x)return;editId=id;document.querySelector('#modal h2').textContent='Edit Product';document.getElementById('mName').value=x.name;document.getElementById('mPrice').value=x.price;document.getElementById('mCost').value=x.cost;document.getElementById('mStock').value=x.stock;document.getElementById('mSku').value=x.sku||'';let cats=[...document.getElementById('mCategory').options].map(o=>o.value);if(cats.includes(x.category||'Other')){document.getElementById('mCategory').value=x.category||'Other';document.getElementById('mCustomCategory').value='';}else{document.getElementById('mCategory').value='__custom__';document.getElementById('mCustomCategory').value=x.category||'';}toggleCustomCategory();document.getElementById('modal').classList.add('show')}
 function addProduct(){if(!ownerOnly())return;let n=document.getElementById('mName').value.trim(),p=Number(document.getElementById('mPrice').value),c=Number(document.getElementById('mCost').value),s=Number(document.getElementById('mStock').value),sku=document.getElementById('mSku').value.trim(),cat=document.getElementById('mCategory').value==='__custom__'?document.getElementById('mCustomCategory').value.trim():document.getElementById('mCategory').value;if(!cat)cat='Other';if(!n||!Number.isFinite(p)||p<0||!Number.isFinite(c)||c<0||!Number.isFinite(s)||s<0)return alert('Enter valid product details.');if(sku){let dup=data.products.find(x=>String(x.sku||'').trim().toLowerCase()===sku.toLowerCase()&&x.id!==editId);if(dup)return alert('This SKU / Barcode is already used by '+dup.name+'. Please use a unique code.')}if(editId){let x=data.products.find(x=>x.id===editId);if(!x)return alert('Product not found.');Object.assign(x,{name:n,price:p,cost:c,stock:s,sku,category:cat,updatedAt:new Date().toISOString()})}else data.products.push({id:Date.now(),name:n,price:p,cost:c,stock:s,sku,category:cat,updatedAt:new Date().toISOString()});persist();closeModal();editId=null;['mName','mPrice','mCost','mStock','mSku'].forEach(id=>document.getElementById(id).value='');renderAll()}
@@ -2594,64 +3016,47 @@ document.addEventListener('keydown',e=>{if(e.key==='F6'){e.preventDefault();hold
   }
 }
 </style>
-</body><style id="alpha-owner-green-aligned-final">
-@media(min-width:701px){
-.main>.top.dashboardTopLayout>.dashboardOwnerRight #roleBadge{
-  background:linear-gradient(135deg,#16a34a,#087b3a)!important;
-  color:#fff!important;
-  border-color:#35d875!important;
-  transform:none!important;
-  align-self:center!important;
-  position:relative!important;
-  top:0!important;
-  line-height:1!important;
-  padding:0!important;
-}
-.main>.top.dashboardTopLayout>.dashboardOwnerRight #topNewBillBtn,
-.main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardSyncNowBtn,
-.main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardLogoutBtn,
-.main>.top.dashboardTopLayout>.dashboardOwnerRight #roleBadge{
-  align-self:center!important;
-}
-}
+
+<style id="v17-5-11-refresh-only-fix">
+#dashboardRefreshBtn{white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;}
+.dashboard-refresh-active{transform:scale(.96)!important;opacity:.75!important;}
+@media(max-width:700px){.main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardRefreshBtn{min-width:0!important;width:auto!important;max-width:none!important;flex:1 1 0!important;font-size:12px!important;padding-left:4px!important;padding-right:4px!important;}}
 </style>
-</html>
+<script id="v17-5-11-refresh-feedback">
+function refreshDashboardWithFeedback(btn){
+  if(!btn) return;
+  var old=btn.innerHTML;
+  btn.disabled=true; btn.classList.add('dashboard-refresh-active'); btn.innerHTML='⟳ Refreshing…';
+  try{ if(typeof refreshDashboard==='function') refreshDashboard(); else if(typeof renderAll==='function') renderAll(); }catch(e){console.error(e);}
+  setTimeout(function(){
+    btn.innerHTML='✓ Refreshed'; btn.classList.remove('dashboard-refresh-active');
+    setTimeout(function(){btn.innerHTML=old;btn.disabled=false;},900);
+  },180);
+}
+</script>
 
-
-
-<style id="alpha-laptop-top-controls-requested-order">
+<style id="alpha-v17-5-17-desktop-only-fix">
+/* LAPTOP/DESKTOP ONLY: restore the exact top-bar positions. Mobile layout is intentionally untouched. */
 @media(min-width:701px){
   .main>.top.dashboardTopLayout{
-    display:grid!important;
-    grid-template-columns:78px minmax(180px,1fr) 110px 110px 110px!important;
+    display:flex!important;
+    flex-direction:row!important;
     align-items:center!important;
-    gap:12px!important;
+    justify-content:space-between!important;
+    gap:18px!important;
     width:100%!important;
     height:44px!important;
     min-height:44px!important;
-  }
-  .main>.top.dashboardTopLayout>.dashboardOwnerRight{
-    display:contents!important;
-  }
-  .main>.top.dashboardTopLayout>.dashboardOwnerRight #roleBadge{
-    grid-column:1!important;
-    grid-row:1!important;
-    width:78px!important;
-    min-width:78px!important;
-    max-width:78px!important;
-    height:44px!important;
-    margin:0!important;
+    margin:0 0 14px!important;
     padding:0!important;
-    align-self:center!important;
-    line-height:1!important;
-    box-sizing:border-box!important;
-    display:inline-flex!important;
-    align-items:center!important;
-    justify-content:center!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    position:relative!important;
   }
   .main>.top.dashboardTopLayout>.dashboardSearchLeft{
-    grid-column:2!important;
-    grid-row:1!important;
+    display:block!important;
+    flex:1 1 auto!important;
     width:auto!important;
     min-width:0!important;
     margin:0!important;
@@ -2661,22 +3066,307 @@ document.addEventListener('keydown',e=>{if(e.key==='F6'){e.preventDefault();hold
     width:100%!important;
     height:44px!important;
     box-sizing:border-box!important;
+    margin:0!important;
   }
-  .main>.top.dashboardTopLayout>.dashboardOwnerRight #topNewBillBtn{
-    grid-column:3!important;grid-row:1!important;
-    width:110px!important;min-width:110px!important;max-width:110px!important;height:44px!important;
-    margin:0!important;box-sizing:border-box!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight{
+    display:flex!important;
+    flex:0 0 auto!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:12px!important;
+    width:auto!important;
+    min-width:max-content!important;
+    height:44px!important;
+    margin:0!important;
   }
-  .main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardSyncNowBtn{
-    grid-column:4!important;grid-row:1!important;
-    width:110px!important;min-width:110px!important;max-width:110px!important;height:44px!important;
-    margin:0!important;box-sizing:border-box!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight>*{
+    flex:0 0 auto!important;
+    height:44px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    white-space:nowrap!important;
   }
-  .main>.top.dashboardTopLayout>.dashboardOwnerRight #dashboardLogoutBtn{
-    grid-column:5!important;grid-row:1!important;
-    width:110px!important;min-width:110px!important;max-width:110px!important;height:44px!important;
-    margin:0!important;box-sizing:border-box!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  /* Owner/session button stays in the sidebar under Security; only its desktop alignment is polished. */
+  .app>.side>.nav > button[onclick="page(\'security\',this)"]{
+    margin-bottom:8px!important;
+  }
+  .app>.side>.nav>#roleBadge{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:42px!important;
+    min-height:42px!important;
+    margin:4px 0 0!important;
+    padding:0 12px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    align-self:stretch!important;
+  }
+  .app>.side>.nav>#roleBadge .navIcon{
+    flex:0 0 20px!important;
   }
 }
 </style>
 
+<style id="v17-5-19-mobile-refresh-owner-final">
+@media(max-width:700px){
+  /* MOBILE: keep all four dashboard actions on one clean, level row */
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight{
+    width:100%!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:stretch!important;
+    gap:7px!important;
+    flex-wrap:nowrap!important;
+    height:42px!important;
+    min-height:42px!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #topNewBillBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardSyncNowBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn,
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardLogoutBtn{
+    flex:1 1 0!important;
+    width:0!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:42px!important;
+    min-height:42px!important;
+    max-height:42px!important;
+    margin:0!important;
+    padding:0 5px!important;
+    box-sizing:border-box!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    align-self:center!important;
+    line-height:42px!important;
+    white-space:nowrap!important;
+    font-size:11px!important;
+  }
+  .main>.top.dashboardTopLayout>.dashboardOwnerRight > #dashboardRefreshBtn{
+    transform:none!important;
+  }
+
+  /* MOBILE: keep Access By Owner directly below Security as a full-width final nav item. */
+  .app>.side>.nav{
+    grid-auto-flow:row!important;
+  }
+  .app>.side>.nav > #roleBadge{
+    grid-column:1 / -1!important;
+    grid-row:auto!important;
+    order:99!important;
+  }
+  .app>.side>.nav > button[onclick="page('security',this)"]{
+    margin-bottom:10px!important;
+  }
+  .app>.side>.nav>#roleBadge{
+    position:relative!important;
+    width:calc(100% - 6px)!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:44px!important;
+    min-height:44px!important;
+    max-height:44px!important;
+    margin:0 3px 4px!important;
+    padding:0 12px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+    border-radius:11px!important;
+    border:1px solid rgba(212,175,55,.48)!important;
+    background:linear-gradient(135deg,rgba(212,175,55,.20),rgba(212,175,55,.055))!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 6px 18px rgba(0,0,0,.18)!important;
+    color:var(--gold)!important;
+    overflow:hidden!important;
+  }
+  .app>.side>.nav>#roleBadge .navIcon{
+    display:inline-flex!important;
+    flex:0 0 22px!important;
+    width:22px!important;
+    min-width:22px!important;
+    height:22px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    color:var(--gold)!important;
+    font-size:16px!important;
+  }
+  .app>.side>.nav>#roleBadge span{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    flex:1 1 auto!important;
+    min-width:0!important;
+    color:var(--gold)!important;
+    font-size:11px!important;
+    font-weight:900!important;
+    letter-spacing:.8px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  .app>.side>.nav>#roleBadge:after{
+    content:""!important;
+    position:absolute!important;
+    left:12px!important;
+    right:12px!important;
+    bottom:3px!important;
+    height:1px!important;
+    background:linear-gradient(90deg,transparent,rgba(212,175,55,.5),transparent)!important;
+  }
+  .app>.side>.nav>#roleBadge.staff{
+    border-color:rgba(125,211,252,.35)!important;
+    background:linear-gradient(135deg,rgba(125,211,252,.13),rgba(125,211,252,.035))!important;
+  }
+  .app>.side>.nav>#roleBadge.staff span,.app>.side>.nav>#roleBadge.staff .navIcon{color:#7dd3fc!important;}
+  .app>.side>.nav>#roleBadge.locked{
+    border-color:rgba(255,255,255,.14)!important;
+    background:rgba(255,255,255,.035)!important;
+  }
+  .app>.side>.nav>#roleBadge.locked span,.app>.side>.nav>#roleBadge.locked .navIcon{color:var(--muted)!important;}
+}
+</style>
+
+
+<style id="v17-6-1-mobile-remove-owner-access">
+@media(max-width:700px){ .app>.side>.nav>#roleBadge{display:none!important;} }
+</style>
+
+<!-- V17.5.23 MOBILE SECURITY/OWNER FINAL ALIGNMENT -->
+
+
+
+
+
+
+
+
+
+
+
+<style id="v17-6-2-mobile-brand-3d-only">
+@media(max-width:700px){
+  .app>.side>.logo .brandCopy b{
+    color:#f5e4ae!important;
+    text-shadow:0 1px 0 #8c6a22,0 2px 0 rgba(75,48,8,.9),0 4px 10px rgba(0,0,0,.8)!important;
+    letter-spacing:6px!important;
+  }
+  .app>.side>.logo .brandCopy strong{
+    background:linear-gradient(180deg,#fff9d9 0%,#ffe28a 22%,#e8b943 54%,#a66c12 78%,#ffe7a0 100%)!important;
+    -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+    -webkit-text-stroke:.35px rgba(255,237,172,.55)!important;
+    text-shadow:0 1px 0 #a9781d,0 2px 0 #80550e,0 3px 0 #5d3c0a,0 5px 8px rgba(0,0,0,.72),0 0 18px rgba(245,196,81,.22)!important;
+    filter:drop-shadow(0 3px 2px rgba(0,0,0,.38))!important;
+    letter-spacing:4px!important;
+  }
+}
+</style>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+<style id="v17-6-2-mobile-header-refine-only">
+@media(max-width:700px){
+  .app>.side>.logo{height:108px!important;min-height:108px!important;max-height:108px!important;padding:10px 18px!important;margin:0 0 8px!important;gap:15px!important;border-radius:16px!important;}
+  .app>.side>.logo:before{display:none!important;content:none!important;}
+  .app>.side>.logo:after{left:12%!important;right:12%!important;bottom:7px!important;}
+  .app>.side>.logo .logoMark{width:58px!important;height:58px!important;min-width:58px!important;border-radius:16px!important;}
+  .app>.side>.logo .brandCopy{display:flex!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;align-items:flex-start!important;justify-content:center!important;gap:0!important;}
+  .app>.side>.logo .brandCopy b{font-size:12px!important;letter-spacing:6px!important;line-height:1!important;color:#dbe4f0!important;}
+  .app>.side>.logo .brandCopy strong{display:block!important;width:100%!important;font-size:34px!important;letter-spacing:5px!important;line-height:1.02!important;margin-top:4px!important;font-weight:950!important;background:linear-gradient(100deg,#fff5ce 0%,#f5cf68 42%,#c58b20 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;text-shadow:0 5px 18px rgba(245,196,81,.12)!important;}
+  .app>.side>.logo .brandCopy small{display:none!important;}
+}
+</style>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- V17.5.53: MOBILE NAV CLICK REPAIR ONLY. Existing layout/handlers/features preserved. -->
+<style id="v17-5-53-mobile-nav-click-repair">
+@media(max-width:700px){
+  .app>.side>.nav{position:relative!important;z-index:5000!important;pointer-events:auto!important;}
+  .app>.side>.nav>button{position:relative!important;z-index:5001!important;pointer-events:auto!important;touch-action:manipulation!important;}
+}
+</style>
+<script id="v17-5-53-mobile-nav-click-repair-js">
+(function(){
+  function repairMobileNavClicks(){
+    if(window.innerWidth>700) return;
+    var nav=document.querySelector('.app>.side>.nav');
+    if(!nav || nav.dataset.v1753ClickRepair==='1') return;
+    nav.dataset.v1753ClickRepair='1';
+    nav.addEventListener('click',function(e){
+      var btn=e.target.closest('button[onclick^="page("]');
+      if(!btn || !nav.contains(btn)) return;
+      var code=btn.getAttribute('onclick')||'';
+      var m=code.match(/^page\(['"]([^'"]+)['"]/);
+      if(!m || typeof window.page!=='function') return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      window.page(m[1],btn);
+    },true);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',repairMobileNavClicks);
+  else repairMobileNavClicks();
+  window.addEventListener('resize',repairMobileNavClicks);
+})();
+</script>
+
+<style id="v17-6-2-mobile-empty-tab-only">
+@media(max-width:700px){.app>.side>.nav>#roleBadge{display:none!important;}.app>.side>.nav>#mobileEmptyNavSlot{display:flex!important;width:100%!important;height:48px!important;min-height:48px!important;max-height:48px!important;visibility:visible!important;pointer-events:none!important;cursor:default!important;box-sizing:border-box!important;margin:0!important;padding:5px 4px!important;}}
+@media(min-width:701px){#mobileEmptyNavSlot{display:none!important;}}
+</style>
+
+<style id="v17-6-4-ultra-premium-alpha-text">
+@media(max-width:700px){
+  .app>.side>.logo .brandCopy strong{
+    position:relative!important; display:block!important; width:110%!important;
+    font-family:Arial,Helvetica,sans-serif!important; font-size:34px!important; font-weight:1000!important;
+    letter-spacing:5px!important; line-height:1.02!important; margin-top:4px!important;
+    background:linear-gradient(180deg,#ffffff 0%,#fff4bd 10%,#ffd85a 27%,#f0b52e 46%,#b87510 66%,#6f4308 79%,#d99b22 91%,#fff0a6 100%)!important;
+    -webkit-background-clip:text!important; background-clip:text!important; -webkit-text-fill-color:transparent!important;
+    -webkit-text-stroke:1px rgba(255,229,139,.78)!important;
+    text-shadow:
+      0 1px 0 #fff6c9,
+      0 2px 0 #e4ad32,
+      0 3px 0 #b97810,
+      0 4px 0 #86530a,
+      0 5px 0 #633c07,
+      0 7px 2px rgba(35,18,2,.95),
+      0 10px 8px rgba(0,0,0,.82),
+      0 0 7px rgba(255,220,103,.72),
+      0 0 20px rgba(255,196,52,.34)!important;
+    filter:drop-shadow(0 4px 4px rgba(0,0,0,.72))!important;
+  }
+  .app>.side>.logo .brandCopy strong:after{
+    content:""!important; position:absolute!important; left:0!important; right:0!important; top:0!important;
+    height:38%!important; pointer-events:none!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,0))!important;
+    -webkit-background-clip:text!important; background-clip:text!important; mix-blend-mode:screen!important;
+  }
+}
+</style>
