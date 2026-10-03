@@ -798,9 +798,9 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <style id="v17-6-7-desktop-version-label">
 @media (min-width:701px){
   .app > .side > .nav > #versionBadge span{font-size:0!important;}
-  .app > .side > .nav > #versionBadge span:after{content:"VERSION 18.1.4"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 18.1.9"!important;font-size:10px!important;display:inline!important;}
   .app > .side > .owner .label{font-size:0!important;}
-  .app > .side > .owner .label:after{content:"Version 18.1.4"!important;font-size:11px!important;}
+  .app > .side > .owner .label:after{content:"Version 18.1.9"!important;font-size:11px!important;}
 }
 </style>
 
@@ -1637,7 +1637,7 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 
 
 <style id="v18-1-0-billing-blank-space-fix">
-/* V18.1.4 — remove only the unused vertical stretch beneath the bill/receipt controls.
+/* V18.1.9 — remove only the unused vertical stretch beneath the bill/receipt controls.
    Billing/product/sale logic is untouched. */
 .layout{align-items:start!important;}
 .layout>.card{align-self:start!important;height:auto!important;min-height:0!important;}
@@ -1717,8 +1717,8 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   <span class="alphaHomePageTabIcon17628">⌂</span><span class="alphaHomePageTabText17628">HOME PAGE</span>
 </div>
 <div class="nav" style="margin-top:0!important;padding-top:0!important;">
-<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 18.1.4"><i class="navIcon">Ⓥ</i><span>VERSION 18.1.4</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 18.1.4</span></div></aside>
+<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 18.1.9"><i class="navIcon">Ⓥ</i><span>VERSION 18.1.9</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 18.1.9</span></div></aside>
 <main class="main">
 <div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea" style="display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; gap:10px !important; width:100% !important; position:relative !important; box-sizing:border-box !important; overflow:visible !important;"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off" style="display:block !important; flex:1 1 auto !important; width:auto !important; min-width:0 !important; max-width:none !important; position:relative !important; margin:0 !important; box-sizing:border-box !important;"><button type="button" id="globalSearchBtn" class="globalSearchBtn" onclick="searchProducts(document.getElementById('globalSearch').value)" style="display:flex !important; flex:0 0 92px !important; width:92px !important; min-width:92px !important; max-width:92px !important; height:44px !important; position:relative !important; margin:0 !important; align-items:center !important; justify-content:center !important; box-sizing:border-box !important; white-space:nowrap !important;">Search</button><div id="searchSuggestions" class="searchSuggestions" style="position:absolute !important; left:0 !important; right:102px !important; top:calc(100% + 6px) !important; width:auto !important; z-index:9999 !important;"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
@@ -5151,7 +5151,7 @@ function renderReports(){
 }
 function renderSettings(){['Name','Address','Phone','Email','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Email:'email',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.email=document.getElementById('setEmail')?.value.trim()||'';data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
-/* V18.1.4 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
+/* V18.1.9 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
 (function(){
   const map={setName:'storeName',setAddress:'address',setPhone:'phone',setEmail:'email',setGstin:'gstin'};
   function bindStoreInfoAutoSave(){
@@ -6561,7 +6561,7 @@ html,body{overscroll-behavior-y:none!important;}
 })();
 </script>
 
-<!-- ALPHA STORE V18.1.4 — Live Update Checker. Does not clear or modify app data. -->
+<!-- ALPHA STORE V18.1.11 — Live Update Checker. Does not clear or modify app data. -->
 <style id="alphaUpdateSystem171012">
 #alphaUpdateOverlay171012{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;z-index:2147483000;padding:20px}
 #alphaUpdateOverlay171012.open{display:flex}
@@ -6588,14 +6588,14 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V18.1.4';
+  var CURRENT='V18.1.13';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
   function currentUrl(){return location.href.split('#')[0];}
-  function showUpdate(remote){
+  function showUpdate(remote,force){
     if(!newer(remote,CURRENT))return;
-    try{if(localStorage.getItem(KEY)===remote)return;}catch(e){}
+    if(!force){try{if(localStorage.getItem(KEY)===remote)return;}catch(e){}}
     var o=document.getElementById('alphaUpdateOverlay171012'),t=document.getElementById('alphaUpdateText171012');
     if(!o)return;
     if(t)t.textContent='New ALPHA STORE '+remote+' is available. Your local products, sales and other saved data will not be cleared by this update.';
@@ -6608,21 +6608,44 @@ html,body{overscroll-behavior-y:none!important;}
       location.href=currentUrl()+'?alpha_update='+Date.now();
     };
   }
-  function check(){
+  function check(force){
     var url=currentUrl()+(currentUrl().indexOf('?')>=0?'&':'?')+'alpha_version_check='+Date.now();
-    fetch(url,{cache:'no-store',credentials:'same-origin'}).then(function(r){if(!r.ok)throw new Error('version check '+r.status);return r.text();}).then(function(html){
+    if(force){
+      try{
+        var item=document.querySelector('[data-alpha-menu-action="update"]');
+        if(item){var sm=item.querySelector('.miText small');if(sm)sm.textContent='Checking for update…';}
+      }catch(e){}
+    }
+    if(location.protocol==='file:'){
+      if(force)setTimeout(function(){alert('ALPHA STORE\n\nYou are up to date.\nCurrent Version: '+CURRENT);},80);
+      return;
+    }
+    fetch(url,{cache:'no-store',credentials:'same-origin'}).then(function(r){
+      if(!r.ok)throw new Error('version check '+r.status);
+      return r.text();
+    }).then(function(html){
       var found=html.match(/V\d+\.\d+\.\d+/g)||[];
       var remote=found.reduce(function(best,v){return !best||newer(v,best)?v:best;},null);
-      if(remote)showUpdate(remote);
-    }).catch(function(){});
+      if(remote&&newer(remote,CURRENT)){
+        showUpdate(remote,!!force);
+      }else if(force){
+        alert('ALPHA STORE\n\nYou are up to date.\nCurrent Version: '+CURRENT);
+      }
+    }).catch(function(){
+      if(force) alert('ALPHA STORE\n\nYou are up to date.\nCurrent Version: '+CURRENT);
+    }).finally(function(){
+      if(force){try{var item=document.querySelector('[data-alpha-menu-action="update"]');if(item){var sm=item.querySelector('.miText small');if(sm)sm.textContent='Check latest version';}}catch(e){}}
+    });
   }
-  function start(){setTimeout(check,1800);setInterval(check,30*60*1000);}
+
+  window.alphaCheckForUpdate=function(){check(true);};
+  function start(){setTimeout(function(){check(false);},1800);setInterval(function(){check(false);},30*60*1000);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
 </script>
 <script id="v18-1-4-mobile-new-bill-pos-mount">
 (function(){
-  /* V18.1.4 — Mobile New Bill only. Reuse the existing fully functional Current Bill POS card; do not duplicate IDs or billing logic. */
+  /* V18.1.10 — Mobile New Bill only. Reuse the existing fully functional Current Bill POS card; do not duplicate IDs or billing logic. */
   var originalParent=null, originalNext=null, moved=false;
   function mobile(){return window.innerWidth<=700;}
   function mount(){
@@ -7591,7 +7614,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.4</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.13</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7636,9 +7659,14 @@ html,body{overscroll-behavior-y:none!important;}
         if(navigator.share) navigator.share(shareData).catch(function(){});
         else alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management');
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.4');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.13');
       }else if(action==='update'){
-        alert('ALPHA STORE\nYou are using V18.1.4.');
+        /* Manual update check must never trigger dashboard/home navigation or any underlying click handler. */
+        e.preventDefault(); e.stopPropagation();
+        if(typeof e.stopImmediatePropagation==='function') e.stopImmediatePropagation();
+        if(typeof window.alphaCheckForUpdate==='function') window.alphaCheckForUpdate();
+        else alert('ALPHA STORE\nUpdate checker is loading. Please try again.');
+        return false;
       }else if(action==='address'){
         var ast=data.settings||{}; var addr=ast.address||'Not added';
         alert('ALPHA STORE\n\n📍 Shop Address\n'+addr);
@@ -7646,7 +7674,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V18.1.4');
+        alert('ALPHA STORE\n\nApp Version: V18.1.13');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
