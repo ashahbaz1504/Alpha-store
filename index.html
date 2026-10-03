@@ -1544,6 +1544,31 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 .layout .sectionHead > div{margin-left:auto!important;display:flex!important;align-items:center!important;gap:8px!important;}
 .layout .sectionHead > div button{height:40px!important;min-height:40px!important;box-sizing:border-box!important;}
 </style>
+
+<style id="v17-10-16-reports-mobile-fix">
+#reports{width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
+#reports>.card{width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
+#reports .sectionHead{flex-wrap:wrap;gap:10px}
+#reports .sectionHead>div:last-child{display:flex;flex-wrap:wrap;gap:6px}
+#reports #reportChart,#reports #reportTable{width:100%;max-width:100%;box-sizing:border-box}
+#reports #reportTable .settingsGrid{width:100%;max-width:100%;box-sizing:border-box}
+#reports #reportTable .card{min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:700px){
+  #reports{overflow-x:hidden}
+  #reports>.card{padding:12px!important}
+  #reports .sectionHead{align-items:flex-start}
+  #reports .sectionHead>div:first-child{width:100%}
+  #reports .sectionHead>div:last-child{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  #reports .sectionHead>div:last-child .chip{width:100%;box-sizing:border-box;text-align:center;margin:0}
+  #reports>.card>.grid{grid-template-columns:1fr 1fr!important;gap:9px!important}
+  #reports>.card>.grid>.card{min-width:0!important;width:auto!important;padding:11px!important}
+  #reports>.card>.grid>.card .value{font-size:19px!important;white-space:nowrap}
+  #reports #reportChart{overflow-x:auto}
+  #reports #reportTable .settingsGrid{grid-template-columns:1fr!important;gap:10px!important}
+  #reports #reportTable .table{width:100%;min-width:0!important;table-layout:fixed}
+  #reports #reportTable .table th,#reports #reportTable .table td{padding:8px 6px;word-break:break-word}
+}
+</style>
 </head>
 <body class="login-locked"><div id="stockWarningOverlay"><div class="stockWarningBox"><h2 class="stockWarningTitle">⚠ LOW STOCK ALERT</h2><div class="stockWarningSub">Kuch products ka stock low ho gaya hai. Refill karna zaroori hai.</div><div id="stockWarningList" class="stockWarningList"></div><button class="stockWarningClose" onclick="closeStockWarning()">OK, GOT IT</button></div></div>
 <div id="loginOverlay" class="alphaIdLoginOverlay">
@@ -4200,6 +4225,12 @@ function printCustomerStatement(customerId){let c=data.customers.find(x=>x.id===
   }
 }
 </style>
+
+<style id="v17-10-15-reports-fix">
+.reportGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.reportBox{min-width:0}.reportBox h3{margin-top:0}.reportBox .table{margin-top:8px}
+@media(max-width:1050px){.reportGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.reportGrid{grid-template-columns:1fr}.reportBox{overflow-x:auto}.reportBox .table{min-width:320px}}
+</style>
 </head><body><h1>ALPHA STORE</h1><div class="meta">Customer Statement • ${esc(c.name)} • ${esc(c.phone||'')}</div><div class="summary"><div class="box">Total Spend<br><b>${money(spend)}</b></div><div class="box">Total Paid<br><b>${money(paid)}</b></div><div class="box">Current Due<br><b>${money(c.due||0)}</b></div></div><h3>Purchase History</h3><table><tr><th>Date</th><th>Invoice</th><th>Payment</th><th>Total</th></tr>${bills.slice().reverse().map(s=>`<tr><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.invoice||'-')}</td><td>${esc(s.payment||'Cash')}</td><td>${money(s.total)}</td></tr>`).join('')}</table><h3>Payment History</h3><table><tr><th>Date</th><th>Received</th><th>Remaining</th></tr>${payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${money(p.amount)}</td><td>${money(p.remaining||0)}</td></tr>`).join('')}</table><div class="total">Current Due: ${money(c.due||0)}</div><script>window.print()<\/script>
 
 
@@ -4989,12 +5020,41 @@ function closeExpenseModal(){document.getElementById('expenseModal')?.classList.
 function saveExpenseForm(){if(!ownerOnly())return;let m=document.getElementById('expenseModal'),title=document.getElementById('eTitle').value.trim(),amount=Number(document.getElementById('eAmount').value),date=document.getElementById('eDate').value||new Date().toISOString().slice(0,10);if(!title)return alert('Expense title enter karein.');if(!Number.isFinite(amount)||amount<=0)return alert('Valid amount enter karein.');let obj={title,amount,category:document.getElementById('eCategory').value||'Other',paymentMethod:document.getElementById('ePayment').value||'Cash',vendor:document.getElementById('eVendor').value.trim(),note:document.getElementById('eNote').value.trim(),date:new Date(date+'T12:00:00').toISOString(),updatedAt:new Date().toISOString()};let id=Number(m.dataset.editId||0);if(id){let e=data.expenses.find(x=>x.id===id);if(!e)return;Object.assign(e,obj,{id:e.id})}else{obj.id=Date.now();data.expenses.push(obj)}persist();closeExpenseModal();renderAll()}
 function addExpense(){openExpenseModal()}
 function editExpense(id){openExpenseModal(id)}
-function deleteExpense(id){if(!ownerOnly())return;let e=data.expenses.find(x=>x.id===id);if(!e)return;if(!confirm(`Delete expense: ${e.title} (${money(e.amount)})?`))return;data.expenses=data.expenses.filter(x=>x.id!==id);persist();renderAll()} let reportPeriod='today'; function setReportPeriod(p){reportPeriod=p;['today','week','month','all'].forEach(x=>document.getElementById('rp'+({today:'Today',week:'Week',month:'Month',all:'All'}[x]))?.classList.toggle('active',x===p));renderReports();renderHeldBills()} function saleGrossProfit(s){return (Number(s.subtotal||0)-Number(s.discount||0))-s.items.reduce((z,i)=>{let p=data.products.find(p=>p.id===i.id);return z+(p?Number(p.cost||0)*Number(i.qty||0):0)},0)}
-function reportWindow(){let now=Date.now();if(reportPeriod==='all')return ()=>true;let days=reportPeriod==='today'?1:reportPeriod==='week'?7:30;let from=now-days*86400000;return s=>{let t=new Date(s.date).getTime();return Number.isFinite(t)&&t>=from}}
-function renderReports(){let inWindow=reportWindow(),salesList=data.sales.filter(inWindow),expenseList=data.expenses.filter(e=>reportPeriod==='all'||new Date(e.date).getTime()>=(Date.now()-(reportPeriod==='today'?1:reportPeriod==='week'?7:30)*86400000));let sales=salesList.reduce((a,s)=>a+Number(s.total||0),0),expense=expenseList.reduce((a,e)=>a+Number(e.amount||0),0),gross=salesList.reduce((a,s)=>a+saleGrossProfit(s),0),gst=salesList.reduce((a,s)=>a+Number(s.gst||0),0),net=gross-expense;document.getElementById('rSales').textContent=money(sales);document.getElementById('rProfit').textContent=money(gross);document.getElementById('rExpense').textContent=money(expense);document.getElementById('rBills').textContent=salesList.length;let pay={Cash:0,UPI:0,Card:0,'Credit / उधार':0};salesList.forEach(s=>{let k=s.payment||'Cash';pay[k]=(pay[k]||0)+Number(s.total||0)});let products={};salesList.forEach(s=>(s.items||[]).forEach(i=>{products[i.name]=(products[i.name]||0)+Number(i.qty||0)}));let best=Object.entries(products).sort((a,b)=>b[1]-a[1]).slice(0,8),credit=salesList.filter(s=>String(s.payment||'').toLowerCase().includes('credit')).reduce((a,s)=>a+Number(s.total||0),0);let chart=salesList.length?`<h3>Sales vs Gross Profit</h3><div style="display:flex;align-items:flex-end;gap:10px;height:180px;padding:15px 5px;border-bottom:1px solid var(--line)">${salesList.slice(-10).map(s=>{let sp=Number(s.total||0),pr=saleGrossProfit(s),h=Math.max(8,Math.min(150,sp/Math.max(sales,1)*150)),hp=Math.max(5,Math.min(150,Math.max(0,pr)/Math.max(sales,1)*150));return `<div style="flex:1;text-align:center"><div style="height:${h}px;background:#d79b16;border-radius:5px 5px 0 0" title="Sales ${money(sp)}"></div><div style="height:${hp}px;background:#2fba67;border-radius:5px 5px 0 0;margin-top:3px" title="Gross Profit ${money(pr)}"></div><small>${new Date(s.date).toLocaleDateString()}</small></div>`}).join('')}</div><div class="label" style="margin-top:8px">Gold = Sales • Green = Gross Profit</div>`:'<div class="empty">No sales in selected period.</div>';document.getElementById('reportChart').innerHTML=chart;document.getElementById('reportTable').innerHTML=`<div class="settingsGrid"><div class="card"><h3>Financial Summary</h3><table class="table"><tr><th>Sales</th><td>${money(sales)}</td></tr><tr><th>GST Collected</th><td>${money(gst)}</td></tr><tr><th>Gross Profit</th><td>${money(gross)}</td></tr><tr><th>Expenses</th><td>${money(expense)}</td></tr><tr><th>Net Profit</th><td><b>${money(net)}</b></td></tr><tr><th>Credit Sales</th><td>${money(credit)}</td></tr></table></div><div class="card"><h3>Payment-wise Sales</h3><table class="table"><tr><th>Mode</th><th>Amount</th></tr>${Object.entries(pay).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${money(v)}</td></tr>`).join('')}</table></div><div class="card"><h3>Best-selling Products</h3><table class="table"><tr><th>Product</th><th>Qty</th></tr>${best.map(x=>`<tr><td>${esc(x[0])}</td><td>${x[1]}</td></tr>`).join('')||'<tr><td colspan="2">No data</td></tr>'}</table></div></div><div class="card" style="margin-top:14px"><h3>Highest-profit Products</h3><table class="table"><tr><th>Product</th><th>Qty</th><th>Profit</th></tr>${Object.entries(salesList.flatMap(s=>s.items||[]).reduce((m,i)=>{let p=data.products.find(p=>p.id===i.id);let profit=p?(Number(p.price||0)-Number(p.cost||0))*Number(i.qty||0):0;let k=i.name||'Unknown';if(!m[k])m[k]={qty:0,profit:0};m[k].qty+=Number(i.qty||0);m[k].profit+=profit;return m},{})).sort((a,b)=>b[1].profit-a[1].profit).slice(0,8).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.qty}</td><td>${money(v.profit)}</td></tr>`).join('')||'<tr><td colspan="3">No data</td></tr>'}</table></div><div class="card" style="margin-top:14px"><h3>GST Summary</h3><table class="table"><tr><th>GST Rate</th><th>Tax</th></tr>${[0,5,12,18].map(r=>`<tr><td>${r}%</td><td>${money(salesList.reduce((a,s)=>a+(Number(s.gstRate||0)===r?Number(s.gst||0):0),0))}</td></tr>`).join('')}<tr><th>Total GST</th><th>${money(gst)}</th></tr></table></div>`}
+function deleteExpense(id){if(!ownerOnly())return;let e=data.expenses.find(x=>x.id===id);if(!e)return;if(!confirm(`Delete expense: ${e.title} (${money(e.amount)})?`))return;data.expenses=data.expenses.filter(x=>x.id!==id);persist();renderAll()} let reportPeriod='today'; function setReportPeriod(p){reportPeriod=p;['today','week','month','all'].forEach(x=>document.getElementById('rp'+({today:'Today',week:'Week',month:'Month',all:'All'}[x]))?.classList.toggle('active',x===p));renderReports();renderHeldBills()} function saleGrossProfit(s){let items=Array.isArray(s?.items)?s.items:[];return (Number(s?.subtotal||0)-Number(s?.discount||0))-items.reduce((z,i)=>{let p=data.products.find(p=>p.id===i.id);return z+(p?Number(p.cost||0)*Number(i.qty||0):0)},0)}
+function reportWindow(){let now=Date.now();if(reportPeriod==='all')return ()=>true;let days=reportPeriod==='today'?1:reportPeriod==='week'?7:30;let from=now-days*86400000;return s=>{let t=new Date(s?.date).getTime();return Number.isFinite(t)&&t>=from}}
+function renderReports(){
+  let inWindow=reportWindow();
+  let salesList=(Array.isArray(data.sales)?data.sales:[]).filter(inWindow);
+  let expenseList=(Array.isArray(data.expenses)?data.expenses:[]).filter(e=>reportPeriod==='all'||new Date(e?.date).getTime()>=(Date.now()-(reportPeriod==='today'?1:reportPeriod==='week'?7:30)*86400000));
+  let sales=salesList.reduce((a,s)=>a+Number(s?.total||0),0);
+  let expense=expenseList.reduce((a,e)=>a+Number(e?.amount||0),0);
+  let gross=salesList.reduce((a,s)=>a+saleGrossProfit(s),0);
+  let gst=salesList.reduce((a,s)=>a+Number(s?.gst||0),0);
+  let net=gross-expense;
+  let set=(id,val)=>{let el=document.getElementById(id);if(el)el.textContent=val};
+  set('rSales',money(sales));set('rProfit',money(gross));set('rExpense',money(expense));set('rBills',salesList.length);
+  let pay={Cash:0,UPI:0,Card:0,'Credit / उधार':0};
+  salesList.forEach(s=>{let k=s?.payment||'Cash';pay[k]=(pay[k]||0)+Number(s?.total||0)});
+  let products={};
+  salesList.forEach(s=>(Array.isArray(s?.items)?s.items:[]).forEach(i=>{let k=i?.name||'Unknown Product';products[k]=(products[k]||0)+Number(i?.qty||0)}));
+  let best=Object.entries(products).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  let credit=salesList.filter(s=>String(s?.payment||'').toLowerCase().includes('credit')).reduce((a,s)=>a+Number(s?.total||0),0);
+  let profitByProduct={};
+  salesList.forEach(s=>(Array.isArray(s?.items)?s.items:[]).forEach(i=>{let p=data.products.find(p=>p.id===i.id);let profit=p?(Number(p.price||0)-Number(p.cost||0))*Number(i.qty||0):0;let k=i?.name||'Unknown Product';if(!profitByProduct[k])profitByProduct[k]={qty:0,profit:0};profitByProduct[k].qty+=Number(i?.qty||0);profitByProduct[k].profit+=profit;}));
+  let highProfit=Object.entries(profitByProduct).sort((a,b)=>b[1].profit-a[1].profit).slice(0,8);
+  let chart=salesList.length?`<h3>Sales vs Gross Profit</h3><div style="display:flex;align-items:flex-end;gap:10px;height:180px;padding:15px 5px;border-bottom:1px solid var(--line);overflow-x:auto">${salesList.slice(-10).map(s=>{let sp=Number(s?.total||0),pr=saleGrossProfit(s),h=Math.max(8,Math.min(150,sp/Math.max(sales,1)*150)),hp=Math.max(5,Math.min(150,Math.max(0,pr)/Math.max(sales,1)*150));return `<div style="flex:1;min-width:45px;text-align:center"><div style="height:${h}px;background:#d79b16;border-radius:5px 5px 0 0" title="Sales ${money(sp)}"></div><div style="height:${hp}px;background:#2fba67;border-radius:5px 5px 0 0;margin-top:3px" title="Gross Profit ${money(pr)}"></div><small>${new Date(s.date).toLocaleDateString()}</small></div>`}).join('')}</div><div class="label" style="margin-top:8px">Gold = Sales • Green = Gross Profit</div>`:'<div class="empty">No sales in selected period.</div>';
+  let financial=`<div class="card reportBox"><h3>Financial Summary</h3><table class="table"><tr><th>Sales</th><td>${money(sales)}</td></tr><tr><th>GST Collected</th><td>${money(gst)}</td></tr><tr><th>Gross Profit</th><td>${money(gross)}</td></tr><tr><th>Expenses</th><td>${money(expense)}</td></tr><tr><th>Net Profit</th><td><b>${money(net)}</b></td></tr><tr><th>Credit Sales</th><td>${money(credit)}</td></tr></table></div>`;
+  let payment=`<div class="card reportBox"><h3>Payment-wise Sales</h3><table class="table"><tr><th>Mode</th><th>Amount</th></tr>${Object.entries(pay).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${money(v)}</td></tr>`).join('')}</table></div>`;
+  let bestBox=`<div class="card reportBox"><h3>Best-selling Products</h3><table class="table"><tr><th>Product</th><th>Qty</th></tr>${best.map(x=>`<tr><td>${esc(x[0])}</td><td>${x[1]}</td></tr>`).join('')||'<tr><td colspan="2">No data</td></tr>'}</table></div>`;
+  let highBox=`<div class="card reportBox" style="margin-top:14px"><h3>Highest-profit Products</h3><table class="table"><tr><th>Product</th><th>Qty</th><th>Profit</th></tr>${highProfit.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.qty}</td><td>${money(v.profit)}</td></tr>`).join('')||'<tr><td colspan="3">No data</td></tr>'}</table></div>`;
+  let gstBox=`<div class="card reportBox" style="margin-top:14px"><h3>GST Summary</h3><table class="table"><tr><th>GST Rate</th><th>Tax</th></tr>${[0,5,12,18].map(r=>`<tr><td>${r}%</td><td>${money(salesList.reduce((a,s)=>a+(Number(s?.gstRate||0)===r?Number(s?.gst||0):0),0))}</td></tr>`).join('')}<tr><th>Total GST</th><th>${money(gst)}</th></tr></table></div>`;
+  let chartEl=document.getElementById('reportChart'),tableEl=document.getElementById('reportTable');
+  if(chartEl)chartEl.innerHTML=chart;
+  if(tableEl)tableEl.innerHTML=`<div class="reportGrid">${financial}${payment}${bestBox}</div>${highBox}${gstBox}`;
+}
 function renderSettings(){['Name','Address','Phone','Email','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Email:'email',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.email=document.getElementById('setEmail')?.value.trim()||'';data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
-/* V17.10.13 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
+/* V17.10.16 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
 (function(){
   const map={setName:'storeName',setAddress:'address',setPhone:'phone',setEmail:'email',setGstin:'gstin'};
   function bindStoreInfoAutoSave(){
@@ -6404,7 +6464,7 @@ html,body{overscroll-behavior-y:none!important;}
 })();
 </script>
 
-<!-- ALPHA STORE V17.10.13 — Live Update Checker. Does not clear or modify app data. -->
+<!-- ALPHA STORE V17.10.16 — Live Update Checker. Does not clear or modify app data. -->
 <style id="alphaUpdateSystem171012">
 #alphaUpdateOverlay171012{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;z-index:2147483000;padding:20px}
 #alphaUpdateOverlay171012.open{display:flex}
@@ -6431,7 +6491,7 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V17.10.13';
+  var CURRENT='V17.10.16';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
@@ -7398,7 +7458,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V17.10.13</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V17.10.16</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7443,9 +7503,9 @@ html,body{overscroll-behavior-y:none!important;}
         if(navigator.share) navigator.share(shareData).catch(function(){});
         else alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management');
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V17.10.13');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V17.10.16');
       }else if(action==='update'){
-        alert('ALPHA STORE\nYou are using V17.10.13.');
+        alert('ALPHA STORE\nYou are using V17.10.16.');
       }else if(action==='address'){
         var ast=data.settings||{}; var addr=ast.address||'Not added';
         alert('ALPHA STORE\n\n📍 Shop Address\n'+addr);
@@ -7453,7 +7513,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V17.10.13');
+        alert('ALPHA STORE\n\nApp Version: V17.10.16');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
