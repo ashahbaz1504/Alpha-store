@@ -798,9 +798,9 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <style id="v17-6-7-desktop-version-label">
 @media (min-width:701px){
   .app > .side > .nav > #versionBadge span{font-size:0!important;}
-  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.10.13"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 18.1.4"!important;font-size:10px!important;display:inline!important;}
   .app > .side > .owner .label{font-size:0!important;}
-  .app > .side > .owner .label:after{content:"Version 17.10.13"!important;font-size:11px!important;}
+  .app > .side > .owner .label:after{content:"Version 18.1.4"!important;font-size:11px!important;}
 }
 </style>
 
@@ -1562,12 +1562,109 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   #reports .sectionHead>div:last-child .chip{width:100%;box-sizing:border-box;text-align:center;margin:0}
   #reports>.card>.grid{grid-template-columns:1fr 1fr!important;gap:9px!important}
   #reports>.card>.grid>.card{min-width:0!important;width:auto!important;padding:11px!important}
-  #reports>.card>.grid>.card .value{font-size:19px!important;white-space:nowrap}
+  #reports>.card>.grid>.card .value{font-size:17px!important;white-space:nowrap}
   #reports #reportChart{overflow-x:auto}
   #reports #reportTable .settingsGrid{grid-template-columns:1fr!important;gap:10px!important}
   #reports #reportTable .table{width:100%;min-width:0!important;table-layout:fixed}
   #reports #reportTable .table th,#reports #reportTable .table td{padding:8px 6px;word-break:break-word}
 }
+</style>
+
+
+<style id="v17-10-18-mobile-login-button-ultra-premium">
+@media(max-width:800px){
+  #alphaLoginButton{
+    position:relative!important; isolation:isolate!important; display:flex!important; align-items:center!important; justify-content:space-between!important;
+    width:100%!important; min-height:58px!important; height:58px!important; margin-top:8px!important; padding:0 9px 0 20px!important;
+    border:1px solid rgba(255,231,157,.92)!important; border-radius:18px!important;
+    background:linear-gradient(145deg,#fff9d6 0%,#f8df83 15%,#e8bf4c 38%,#c99122 66%,#8b5b08 100%)!important;
+    color:#171006!important; font-size:11.5px!important; font-weight:950!important; letter-spacing:1.3px!important;
+    box-shadow:0 16px 34px rgba(173,112,9,.30),0 7px 16px rgba(0,0,0,.28),inset 0 2px 0 rgba(255,255,255,.95),inset 0 -2px 0 rgba(69,39,0,.42),inset 0 0 0 1px rgba(255,242,190,.25)!important;
+    overflow:hidden!important; cursor:pointer!important; transition:transform .18s ease,box-shadow .18s ease,filter .18s ease!important; -webkit-tap-highlight-color:transparent!important;
+  }
+  #alphaLoginButton:before{content:"";position:absolute;top:-55%;left:-75%;width:42%;height:210%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.82),rgba(255,255,255,.18),transparent);animation:v171018LoginShine 3.2s ease-in-out infinite;pointer-events:none;z-index:0;}
+  #alphaLoginButton:after{content:"";position:absolute;inset:2px;border-radius:16px;border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 0 18px rgba(255,247,207,.12);pointer-events:none;z-index:1;}
+  #alphaLoginButton span,#alphaLoginButton b{position:relative;z-index:2;}
+  #alphaLoginButton span{white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.35);}
+  #alphaLoginButton b{width:38px!important;height:38px!important;min-width:38px!important;border-radius:12px!important;display:grid!important;place-items:center!important;background:linear-gradient(145deg,rgba(255,255,255,.48),rgba(255,255,255,.13))!important;border:1px solid rgba(255,255,255,.48)!important;color:#241704!important;font-size:21px!important;line-height:1!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(91,52,0,.16),0 4px 10px rgba(74,42,0,.18)!important;transition:transform .18s ease,background .18s ease!important;}
+  #alphaLoginButton:hover{filter:saturate(1.06) brightness(1.03);box-shadow:0 18px 38px rgba(173,112,9,.34),0 8px 18px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.98),inset 0 -2px 0 rgba(69,39,0,.42)!important;}
+  #alphaLoginButton:hover b{transform:translateX(2px);background:linear-gradient(145deg,rgba(255,255,255,.58),rgba(255,255,255,.18))!important;}
+  #alphaLoginButton:active{transform:translateY(2px) scale(.992)!important;box-shadow:0 8px 18px rgba(120,75,5,.24),inset 0 2px 5px rgba(67,38,0,.22)!important;}
+}
+@keyframes v171018LoginShine{0%,58%{left:-75%;opacity:0}68%{opacity:1}82%{left:145%;opacity:.7}100%{left:145%;opacity:0}}
+</style>
+
+<style id="v17-10-19-mobile-login-page-ultra-premium">
+@media(max-width:800px){
+  .alphaIdLoginOverlay{
+    padding:9px!important; overflow:auto!important; isolation:isolate!important;
+    background:radial-gradient(circle at 50% -8%,rgba(255,221,125,.24),transparent 28%),radial-gradient(circle at -5% 48%,rgba(24,180,116,.16),transparent 30%),radial-gradient(circle at 105% 88%,rgba(12,105,73,.20),transparent 32%),linear-gradient(145deg,#02070b 0%,#06110f 38%,#071a13 68%,#020907 100%)!important;
+  }
+  .alphaIdLoginOverlay:before{background:linear-gradient(120deg,transparent 0 32%,rgba(255,255,255,.025) 32.2% 32.5%,transparent 32.7%),radial-gradient(circle at 50% 35%,rgba(245,196,81,.055),transparent 42%)!important;opacity:1!important;}
+  .alphaIdLoginOverlay:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.10) .7px,transparent .7px);background-size:22px 22px;opacity:.045;}
+  .loginShell{position:relative!important;isolation:isolate!important;width:100%!important;border-radius:24px!important;overflow:hidden!important;border:1px solid rgba(245,196,81,.24)!important;background:linear-gradient(160deg,rgba(8,21,18,.94),rgba(4,12,15,.97) 55%,rgba(7,25,18,.96))!important;box-shadow:0 28px 90px rgba(0,0,0,.68),0 0 0 1px rgba(255,255,255,.025),inset 0 1px 0 rgba(255,255,255,.10)!important;backdrop-filter:blur(22px)!important;}
+  .loginShell:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 50% 0%,rgba(255,220,130,.12),transparent 35%),linear-gradient(120deg,transparent 35%,rgba(255,255,255,.025) 50%,transparent 65%);}
+  .alphaIdLoginCard{position:relative!important;order:1!important;width:calc(100% - 24px)!important;padding:24px 0 18px!important;margin:0 auto!important;}
+  .alphaIdLoginCard:before{content:"";position:absolute;left:50%;top:7px;transform:translateX(-50%);width:58px;height:3px;border-radius:99px;background:linear-gradient(90deg,transparent,#f6d67d,#fff1b8,#f6d67d,transparent);box-shadow:0 0 14px rgba(245,196,81,.35);}
+  .alphaIdLoginCard h2{text-shadow:0 2px 16px rgba(0,0,0,.5)!important;letter-spacing:-.55px!important}.loginSub{color:#93a59f!important}.alphaIdLoginCard label{color:#d4c18a!important;letter-spacing:1.3px!important}
+  .loginField{isolation:isolate!important}.loginField:before{content:"";position:absolute;inset:-1px;border-radius:16px;z-index:-1;background:linear-gradient(135deg,rgba(255,229,151,.34),rgba(255,255,255,.05) 38%,rgba(51,190,133,.18));opacity:.72;pointer-events:none;}
+  .loginField input{height:54px!important;border-radius:15px!important;padding-left:18px!important;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.035))!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.075),inset 0 -8px 20px rgba(0,0,0,.10),0 8px 20px rgba(0,0,0,.12)!important;font-size:15px!important;}
+  .loginField input:focus{border-color:rgba(245,196,81,.72)!important;box-shadow:0 0 0 4px rgba(245,196,81,.09),0 10px 28px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.10)!important;}
+  .loginField>span{display:none!important}.loginField button{right:7px!important;width:40px!important;height:40px!important;border-radius:11px!important;background:rgba(255,255,255,.045)!important;border:1px solid rgba(255,255,255,.07)!important}
+  #alphaLoginButton{position:relative!important;isolation:isolate!important;overflow:hidden!important;height:58px!important;min-height:58px!important;margin-top:13px!important;padding:0 10px 0 21px!important;border-radius:17px!important;border:1px solid rgba(255,231,155,.72)!important;background:linear-gradient(135deg,#fff2b5 0%,#f0ca63 18%,#d9a832 45%,#a96f0b 76%,#704400 100%)!important;color:#171006!important;font-size:12px!important;font-weight:950!important;letter-spacing:1.15px!important;text-shadow:0 1px 0 rgba(255,255,255,.42)!important;box-shadow:0 17px 38px rgba(143,92,7,.32),0 8px 18px rgba(0,0,0,.30),inset 0 2px 0 rgba(255,255,255,.82),inset 0 -3px 7px rgba(72,42,0,.25)!important;}
+  #alphaLoginButton:before{content:"";position:absolute;top:-65%;left:-85%;width:38%;height:230%;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),rgba(255,250,218,.28),transparent);animation:v171019LoginShine 3.6s ease-in-out infinite;pointer-events:none;z-index:0;}
+  #alphaLoginButton:after{content:"";position:absolute;inset:2px;border-radius:15px;border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 0 22px rgba(255,246,201,.14);pointer-events:none;z-index:1}.loginSecure{color:#71837d!important}.rememberLogin{margin-top:14px!important;color:#a8b7b0!important}
+  #alphaLoginButton span,#alphaLoginButton b{position:relative!important;z-index:2!important}#alphaLoginButton b{width:38px!important;height:38px!important;min-width:38px!important;border-radius:12px!important;display:grid!important;place-items:center!important;background:linear-gradient(145deg,rgba(255,255,255,.52),rgba(255,255,255,.14))!important;border:1px solid rgba(255,255,255,.50)!important;color:#241704!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.70),0 5px 12px rgba(74,42,0,.18)!important}#alphaLoginButton:active{transform:translateY(2px) scale(.99)!important;box-shadow:0 8px 18px rgba(0,0,0,.25),inset 0 3px 6px rgba(65,37,0,.25)!important}
+  .loginShowcase{order:2!important;background:linear-gradient(145deg,rgba(245,196,81,.065),rgba(34,197,94,.045))!important;border-top:1px solid rgba(245,196,81,.10)!important}
+}
+@keyframes v171019LoginShine{0%,18%{left:-85%;opacity:0}28%{opacity:1}62%{left:125%;opacity:1}72%,100%{left:125%;opacity:0}}
+</style>
+
+<style id="v17-10-20-login-page-final-ultra-premium">
+@media(max-width:800px){
+  .alphaIdLoginOverlay{padding:6px!important;min-height:100dvh!important;box-sizing:border-box!important;background:radial-gradient(circle at 50% -5%,rgba(255,225,145,.28),transparent 30%),radial-gradient(circle at 0% 55%,rgba(19,190,122,.18),transparent 31%),radial-gradient(circle at 100% 82%,rgba(11,116,79,.22),transparent 34%),linear-gradient(145deg,#010609 0%,#04110d 36%,#062017 67%,#010806 100%)!important;}
+  .loginShell{width:100%!important;min-height:calc(100dvh - 12px)!important;height:auto!important;border-radius:28px!important;border:1px solid rgba(245,196,81,.30)!important;background:radial-gradient(circle at 50% 0%,rgba(255,224,137,.075),transparent 28%),linear-gradient(160deg,rgba(7,24,19,.97),rgba(3,12,15,.985) 52%,rgba(6,28,19,.97))!important;box-shadow:0 30px 90px rgba(0,0,0,.72),0 0 0 1px rgba(255,255,255,.025),inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(0,0,0,.5)!important;}
+  .loginShell:after{content:"";position:absolute;inset:1px;border-radius:27px;pointer-events:none;z-index:5;border:1px solid rgba(255,240,190,.075);box-shadow:inset 0 0 55px rgba(245,196,81,.035);}
+  .alphaIdLoginCard{width:min(430px,calc(100% - 28px))!important;padding-top:27px!important;padding-bottom:20px!important}.loginField input{height:56px!important;border-radius:16px!important}#alphaLoginButton{height:60px!important;min-height:60px!important;border-radius:18px!important}
+  #alphaCloudLoadButton,#alphaCloudSyncButton{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:49px!important;height:49px!important;margin-top:9px!important;padding:0 14px!important;border-radius:15px!important;overflow:hidden!important;border:1px solid rgba(245,196,81,.25)!important;color:#e9f4ef!important;font-size:10.5px!important;font-weight:900!important;letter-spacing:.65px!important;background:linear-gradient(145deg,rgba(18,48,38,.92),rgba(7,25,22,.97))!important;box-shadow:0 9px 22px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.075),inset 0 -1px 0 rgba(0,0,0,.35)!important;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease!important;}
+  #alphaCloudLoadButton:before,#alphaCloudSyncButton:before{content:"";position:absolute;inset:1px;border-radius:14px;pointer-events:none;background:linear-gradient(105deg,rgba(255,226,139,.09),transparent 38%,rgba(47,205,144,.07));}
+  #alphaCloudLoadButton:hover,#alphaCloudSyncButton:hover{transform:translateY(-1px)!important;border-color:rgba(245,196,81,.48)!important;background:linear-gradient(145deg,rgba(25,62,48,.98),rgba(8,30,25,.98))!important;box-shadow:0 13px 28px rgba(0,0,0,.30),0 0 20px rgba(245,196,81,.06),inset 0 1px 0 rgba(255,255,255,.10)!important;}
+  #alphaCloudLoadButton:active,#alphaCloudSyncButton:active{transform:translateY(1px) scale(.992)!important}#alphaCloudLoadButton:disabled{opacity:.62!important;transform:none!important}
+  #alphaCloudLoginStatus{padding:7px 10px!important;margin-top:8px!important;border-radius:10px!important;border:1px solid rgba(255,255,255,.055)!important;background:rgba(255,255,255,.025)!important;color:#80958d!important;font-size:8.5px!important;line-height:1.45!important}.loginSecure{margin-top:12px!important}
+}
+@media(max-width:380px){.alphaIdLoginOverlay{padding:4px!important}.loginShell{min-height:calc(100dvh - 8px)!important;border-radius:24px!important}.loginShell:after{border-radius:23px!important}.alphaIdLoginCard{width:calc(100% - 22px)!important}#alphaCloudLoadButton,#alphaCloudSyncButton{font-size:9.5px!important}}
+</style>
+
+
+<style id="v18-1-0-billing-blank-space-fix">
+/* V18.1.4 — remove only the unused vertical stretch beneath the bill/receipt controls.
+   Billing/product/sale logic is untouched. */
+.layout{align-items:start!important;}
+.layout>.card{align-self:start!important;height:auto!important;min-height:0!important;}
+#billing{min-height:0!important;height:auto!important;}
+#billing>.card{height:auto!important;min-height:0!important;align-self:start!important;}
+</style>
+
+<style id="v18-1-7-qty-controls-aligned">
+/* V18.1.7 — ONLY Current Bill quantity controls: align − / qty / + / × and enlarge them. */
+.qty{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;white-space:nowrap!important;}
+.qty button{width:30px!important;height:30px!important;min-width:30px!important;padding:0!important;margin:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:9px!important;font-size:19px!important;font-weight:900!important;line-height:1!important;}
+.qty button.danger{width:30px!important;height:30px!important;min-width:30px!important;font-size:18px!important;margin-left:2px!important;}
+@media(max-width:700px){
+  .item{grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;}
+  .qty{gap:5px!important;}
+  .qty button,.qty button.danger{width:32px!important;height:32px!important;min-width:32px!important;border-radius:9px!important;font-size:18px!important;}
+}
+</style>
+
+<style id="v18-1-8-low-stock-manage">
+.lowStockManageList{display:flex;flex-direction:column;gap:10px}
+.lowStockManageRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.07);border-radius:14px;background:rgba(255,255,255,.025)}
+.lowStockManageInfo{min-width:0;display:flex;flex-direction:column;gap:4px}
+.lowStockManageInfo b{overflow-wrap:anywhere}
+.lowStockManageActions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.lowStockManageActions button{white-space:nowrap}
+@media(max-width:700px){.lowStockManageRow{align-items:flex-start;flex-direction:column}.lowStockManageActions{width:100%;display:grid;grid-template-columns:1fr 1fr}.lowStockManageActions button{width:100%;min-height:40px}}
 </style>
 </head>
 <body class="login-locked"><div id="stockWarningOverlay"><div class="stockWarningBox"><h2 class="stockWarningTitle">⚠ LOW STOCK ALERT</h2><div class="stockWarningSub">Kuch products ka stock low ho gaya hai. Refill karna zaroori hai.</div><div id="stockWarningList" class="stockWarningList"></div><button class="stockWarningClose" onclick="closeStockWarning()">OK, GOT IT</button></div></div>
@@ -1620,8 +1717,8 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   <span class="alphaHomePageTabIcon17628">⌂</span><span class="alphaHomePageTabText17628">HOME PAGE</span>
 </div>
 <div class="nav" style="margin-top:0!important;padding-top:0!important;">
-<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.10.13"><i class="navIcon">Ⓥ</i><span>VERSION 17.10.13</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.10.13</span></div></aside>
+<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 18.1.4"><i class="navIcon">Ⓥ</i><span>VERSION 18.1.4</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 18.1.4</span></div></aside>
 <main class="main">
 <div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea" style="display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; gap:10px !important; width:100% !important; position:relative !important; box-sizing:border-box !important; overflow:visible !important;"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off" style="display:block !important; flex:1 1 auto !important; width:auto !important; min-width:0 !important; max-width:none !important; position:relative !important; margin:0 !important; box-sizing:border-box !important;"><button type="button" id="globalSearchBtn" class="globalSearchBtn" onclick="searchProducts(document.getElementById('globalSearch').value)" style="display:flex !important; flex:0 0 92px !important; width:92px !important; min-width:92px !important; max-width:92px !important; height:44px !important; position:relative !important; margin:0 !important; align-items:center !important; justify-content:center !important; box-sizing:border-box !important; white-space:nowrap !important;">Search</button><div id="searchSuggestions" class="searchSuggestions" style="position:absolute !important; left:0 !important; right:102px !important; top:calc(100% + 6px) !important; width:auto !important; z-index:9999 !important;"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
@@ -1634,7 +1731,7 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 </section>
 
 <section id="products" class="page"><div class="card"><div class="sectionHead"><div><h2>Product Management</h2><span class="label">TOTAL PRODUCTS: <b id="productCount">0</b></span></div><button class="gold" onclick="openModal()">＋ Add Product</button></div><div class="productManageFilters"><input id="productManageSearch" class="search" placeholder="⌕ Filter product name / barcode..." oninput="renderProductManagement()"><select id="productManageCategory" class="search" onchange="renderProductManagement()"><option value="all">All Categories</option></select></div><div id="productTable"></div></div></section>
-<section id="billing" class="page"><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Held Bills</h2><div><button class="gold" onclick="holdBill()">⏸ Hold Bill (F6)</button> <button class="secondary" onclick="resumeBill()">▶ Resume (F7)</button></div></div><div id="heldBills" style="margin-top:8px"></div></div><div class="card"><h2>Billing (POS)</h2><p class="label">Scan/enter a barcode or select products from Dashboard.</p><div style="display:flex;gap:8px;margin:12px 0"><input id="barcodeInput" class="search" style="min-width:0" placeholder="Scan / enter barcode or SKU" onkeydown="if(event.key==='Enter')scanBarcode()"><button class="gold" onclick="scanBarcode()">＋ Add</button></div><div class="quick"><button onclick="focusBarcode()"><b>⌕ Focus Scanner</b><span class="mini">Barcode-ready billing</span></button><button onclick="clearCart()"><b>↺ Clear Bill</b><span class="mini">Start fresh</span></button></div><div id="billingCart"></div><button class="secondary" onclick="previewBill()">👁 Preview Bill</button><button class="pay" onclick="printReceipt()">Print Receipt</button></div></section>
+<section id="billing" class="page"><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">Held Bills</h2><div><button class="gold" onclick="holdBill()">⏸ Hold Bill (F6)</button> <button class="secondary" onclick="resumeBill()">▶ Resume (F7)</button></div></div><div id="heldBills" style="margin-top:8px"></div></div><div class="card"><h2>Billing (POS)</h2><p class="label">Scan/enter a barcode or select products from Dashboard.</p><div style="display:flex;gap:8px;margin:12px 0"><input id="barcodeInput" class="search" style="min-width:0" placeholder="Scan / enter barcode or SKU" onkeydown="if(event.key==='Enter')scanBarcode()"><button class="gold" onclick="scanBarcode()">＋ Add</button></div><div class="quick"><button onclick="focusBarcode()"><b>⌕ Focus Scanner</b><span class="mini">Barcode-ready billing</span></button><button onclick="clearCart()"><b>↺ Clear Bill</b><span class="mini">Start fresh</span></button></div><div id="billingCart"></div></div></section>
 <section id="sales" class="page"><div class="card"><h2>Sales History</h2><div id="salesTable"></div></div></section>
 <section id="customers" class="page"><div class="card"><div class="sectionHead"><h2>Customers</h2><button class="gold" onclick="addCustomer()">＋ Add Customer</button></div><div style="margin-bottom:12px"><input id="customerSearch" placeholder="Search customer / नाम या मोबाइल..." oninput="renderCustomers()" style="width:100%;max-width:420px"></div><div id="customerTable"></div></div></section><section id="udhaar" class="page"><div class="card"><div class="sectionHead"><div><h2>Udhaar / उधार</h2><span class="label">Customers se kitna paisa lena hai</span></div><button class="gold" id="udhaarPaymentReceivedBtn" type="button">＋ Payment Received</button></div><div class="grid" style="grid-template-columns:repeat(3,1fr);margin:15px 0"><div class="card"><div class="label">TOTAL UDHAAR</div><div class="value" id="uTotal">₹0.00</div></div><div class="card"><div class="label">CUSTOMERS WITH DUE</div><div class="value" id="uCustomers">0</div></div><div class="card"><div class="label">PAYMENT RECEIVED</div><div class="value" id="uReceived">₹0.00</div></div></div><div id="udhaarTable"></div><div id="udhaarHistory" style="margin-top:20px"></div></div></section>
 <div id="customerDetailModal" class="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;padding:20px;overflow:auto"><div class="card" style="max-width:900px;margin:30px auto;position:relative"><button class="gold" onclick="closeCustomerDetail()" style="position:absolute;right:15px;top:15px">✕</button><div id="customerDetailBody" style="padding-top:10px"></div></div></div>
@@ -3099,7 +3196,7 @@ let activeCategory='All'; function filterCategory(c){activeCategory=c;renderCate
 function addCart(id){let p=data.products.find(x=>x.id===id),x=cart.find(x=>x.id===id);if(!p||p.stock<=0)return alert('Out of stock.');if(!x)cart.push({id,qty:1});else if(x.qty<p.stock)x.qty++;else alert('Maximum available stock reached.');renderCart()}
 function clampDiscountInput(){let el=document.getElementById('discount'),sub=cart.reduce((s,x)=>{let p=data.products.find(p=>p.id===x.id);return s+(p?p.price*x.qty:0)},0);if(!el)return;let v=Math.max(0,+el.value||0);if(v>sub){el.value=sub.toFixed(2)}}
 function billCalc(){let sub=cart.reduce((s,x)=>{let p=data.products.find(p=>p.id===x.id);return s+(p?p.price*x.qty:0)},0),d=Math.max(0,+document.getElementById('discount').value||0);d=Math.min(d,sub);let rate=+(document.getElementById('gstRate')?.value||0),base=Math.max(0,sub-d),gst=base*rate/100,total=base+gst,received=Math.max(0,+document.getElementById('amountReceived')?.value||0);return{sub,d,base,rate,gst,total,received,change:Math.max(0,received-total)}}
-function renderCart(){clampDiscountInput();let discountEl=document.getElementById('discount');if(discountEl){let raw=+discountEl.value||0;let subtotalNow=cart.reduce((sum,x)=>{let p=data.products.find(p=>p.id===x.id);return sum+(p?p.price*x.qty:0)},0);discountEl.max=subtotalNow.toFixed(2);if(raw>subtotalNow)discountEl.value=subtotalNow.toFixed(2);if(raw<0)discountEl.value='0'}let c=billCalc();document.getElementById('cart').innerHTML=cart.map(x=>{let p=data.products.find(y=>y.id===x.id),t=p.price*x.qty;return `<div class="item"><div><b>${esc(p.name)}</b><div class="label">${money(p.price)} × ${x.qty}${p.sku?' • '+esc(p.sku):''}</div></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button> <button onclick="changeQty(${p.id},1)">+</button><button class="danger" onclick="removeCart(${p.id})">×</button></div></div>`}).join('')||'<div class="empty">Add products to create a bill.</div>';document.getElementById('sub').textContent=money(c.sub);if(document.getElementById('gstAmount'))document.getElementById('gstAmount').textContent=money(c.gst);document.getElementById('grand').textContent=money(c.total);if(document.getElementById('changeDue'))document.getElementById('changeDue').textContent=money(c.change);let cash=document.getElementById('paymentMode')?.value==='Cash';if(document.getElementById('receivedRow'))document.getElementById('receivedRow').style.display=cash?'flex':'none';if(!cash&&document.getElementById('amountReceived'))document.getElementById('amountReceived').value=c.total.toFixed(2);document.getElementById('billingCart').innerHTML=document.getElementById('cart').innerHTML+`<div class="summary"><div class="row"><span>Subtotal / उप-योग</span><b>${money(c.sub)}</b></div><div class="row"><span>Discount / छूट</span><b>${money(c.d)}</b></div><div class="row"><span>GST (${c.rate}%)</span><b>${money(c.gst)}</b></div><div class="grand"><span>Total</span><span>${money(c.total)}</span></div></div>`}
+function renderCart(){clampDiscountInput();let discountEl=document.getElementById('discount');if(discountEl){let raw=+discountEl.value||0;let subtotalNow=cart.reduce((sum,x)=>{let p=data.products.find(p=>p.id===x.id);return sum+(p?p.price*x.qty:0)},0);discountEl.max=subtotalNow.toFixed(2);if(raw>subtotalNow)discountEl.value=subtotalNow.toFixed(2);if(raw<0)discountEl.value='0'}let c=billCalc();document.getElementById('cart').innerHTML=cart.map(x=>{let p=data.products.find(y=>y.id===x.id),t=p.price*x.qty;return `<div class="item"><div><b>${esc(p.name)}</b><div class="label">${money(p.price)} × ${x.qty}${p.sku?' • '+esc(p.sku):''}</div></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button> <button onclick="changeQty(${p.id},1)">+</button><button class="danger" onclick="removeCart(${p.id})">×</button></div></div>`}).join('')||'<div class="empty">Add products to create a bill.</div>';document.getElementById('sub').textContent=money(c.sub);if(document.getElementById('gstAmount'))document.getElementById('gstAmount').textContent=money(c.gst);document.getElementById('grand').textContent=money(c.total);if(document.getElementById('changeDue'))document.getElementById('changeDue').textContent=money(c.change);let cash=document.getElementById('paymentMode')?.value==='Cash';if(document.getElementById('receivedRow'))document.getElementById('receivedRow').style.display=cash?'flex':'none';if(!cash&&document.getElementById('amountReceived'))document.getElementById('amountReceived').value=c.total.toFixed(2);document.getElementById('billingCart').innerHTML=document.getElementById('cart').innerHTML}
 
 function changeQty(id,n){let x=cart.find(x=>x.id===id),p=data.products.find(x=>x.id===id);if(!x)return;x.qty=Math.max(1,Math.min(p.stock,x.qty+n));renderCart()}
 function removeCart(id){cart=cart.filter(x=>x.id!==id);renderCart()}function clearCart(){cart=[];document.getElementById('discount').value=0;document.getElementById('gstRate').value='0';document.getElementById('customerName').value='';document.getElementById('customerPhone').value='';document.getElementById('paymentMode').value='Cash';document.getElementById('amountReceived').value='0';renderCart()}
@@ -4151,7 +4248,7 @@ function returnSale(id){if(!ownerOnly())return;const s=data.sales.find(x=>x.id==
 function renderSales(){document.getElementById('salesTable').innerHTML=data.sales.length?`<table class="table"><tr><th>Invoice</th><th>Date</th><th>Customer / ग्राहक</th><th>Payment / भुगतान</th><th>Items</th><th>Total</th></tr>${data.sales.slice().reverse().map(s=>`<tr><td>${s.invoice||'AS-'+String(data.sales.indexOf(s)+1).padStart(5,'0')}</td><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.customer||'Walk-in Customer')}</td><td>${esc(s.payment||'Cash')}</td><td>${s.items.reduce((a,x)=>a+x.qty,0)}</td><td>${money(s.total)}</td></tr>`).join('')}</table>`:'<div class="empty">No sales yet.</div>'}
 function renderInventory(){let units=data.products.reduce((a,p)=>a+Number(p.stock||0),0),value=data.products.reduce((a,p)=>a+Number(p.stock||0)*Number(p.cost||0),0);document.getElementById('iProducts').textContent=data.products.length;document.getElementById('iUnits').textContent=units;document.getElementById('iValue').textContent=money(value);let mt=document.getElementById('inventoryMarginTable');if(mt)mt.innerHTML=data.products.length?`<table class="table"><tr><th>Product</th><th>Cost</th><th>Price</th><th>Profit / Unit</th><th>Margin</th></tr>${data.products.map(p=>{let cost=Number(p.cost||0),price=Number(p.price||0),profit=price-cost,margin=price>0?(profit/price)*100:0;return `<tr><td>${esc(p.name)}</td><td>${money(cost)}</td><td>${money(price)}</td><td>${money(profit)}</td><td><b>${margin.toFixed(1)}%</b></td></tr>`}).join('')}</table>`:'<div class="empty">No products added yet.</div>';let el=document.getElementById('inventoryTable');if(!el)return;el.innerHTML=data.stockMoves.length?`<table class="table"><tr><th>Date</th><th>Product</th><th>Type</th><th>Qty</th><th>Stock</th></tr>${data.stockMoves.slice().reverse().slice(0,80).map(m=>`<tr><td>${new Date(m.date).toLocaleString()}</td><td>${esc(m.name)}</td><td>${esc(m.type)}</td><td>${m.qty}</td><td>${m.stockAfter}</td></tr>`).join('')}</table>`:'<div class="empty">No stock movements yet.</div>'}
 function stockEntry(id,direction){if(!ownerOnly())return;let p=id?data.products.find(x=>x.id===id):null;if(!p){let n=prompt('Enter product name or barcode:');if(!n)return;let q=n.trim().toLowerCase();p=data.products.find(x=>x.name.toLowerCase()===q||String(x.sku||'').toLowerCase()===q);if(!p)return alert('Product not found.');direction=1}let label=direction<0?'REMOVE':'ADD',qty=prompt('Quantity to '+label+':',1);if(qty===null)return;qty=Number(qty);if(!Number.isFinite(qty)||qty<=0)return alert('Enter a valid quantity greater than 0.');let delta=(direction<0?-1:1)*qty;if(Number(p.stock||0)+delta<0)return alert('Stock cannot go below 0.');p.stock=Number(p.stock||0)+delta;p.updatedAt=new Date().toISOString();data.stockMoves.push({id:Date.now()+Math.floor(Math.random()*1000),date:new Date().toISOString(),productId:p.id,name:p.name,type:delta>0?'Stock In':'Stock Out',qty:Math.abs(delta),stockAfter:p.stock});persist();renderAll()}
-function renderStock(){let a=data.products.filter(p=>p.stock<=Number(data.settings.lowStock||5));document.getElementById('stockTable').innerHTML=a.length?`<table class="table"><tr><th>Product</th><th>Stock</th></tr>${a.map(p=>`<tr><td>${esc(p.name)}</td><td style="color:#ff7070">${p.stock}</td></tr>`).join('')}</table>`:'<div class="empty">✓ No low-stock products.</div>'}
+function renderStock(){let a=data.products.filter(p=>p.stock<=Number(data.settings.lowStock||5));document.getElementById('stockTable').innerHTML=a.length?`<div class="lowStockManageList">${a.map(p=>`<div class="lowStockManageRow"><div class="lowStockManageInfo"><b>${esc(p.name)}</b><span style="color:#ff7070">Stock: ${p.stock}</span></div><div class="lowStockManageActions"><button class="secondary" type="button" onclick="adjustStock(${p.id})">Update Stock</button><button class="gold" type="button" onclick="openEdit(${p.id})">Edit Product</button></div></div>`).join('')}</div>`:'<div class="empty">✓ No low-stock products.</div>'}
 function showStockWarning(){let low=data.products.filter(p=>Number(p.stock||0)<=Number(data.settings.lowStock||5));let ov=document.getElementById('stockWarningOverlay'),list=document.getElementById('stockWarningList');if(!ov||!list)return;if(!low.length){ov.classList.remove('show');return}list.innerHTML=low.map(p=>`<div class="stockWarningItem"><b>${esc(p.name)}</b><span class="stockWarningQty">Stock: ${Number(p.stock||0)}</span></div>`).join('');ov.classList.add('show')}
 function closeStockWarning(){document.getElementById('stockWarningOverlay')?.classList.remove('show')}
 function refreshDashboard(){
@@ -5054,7 +5151,7 @@ function renderReports(){
 }
 function renderSettings(){['Name','Address','Phone','Email','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Email:'email',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.email=document.getElementById('setEmail')?.value.trim()||'';data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
-/* V17.10.16 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
+/* V18.1.4 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
 (function(){
   const map={setName:'storeName',setAddress:'address',setPhone:'phone',setEmail:'email',setGstin:'gstin'};
   function bindStoreInfoAutoSave(){
@@ -6464,7 +6561,7 @@ html,body{overscroll-behavior-y:none!important;}
 })();
 </script>
 
-<!-- ALPHA STORE V17.10.16 — Live Update Checker. Does not clear or modify app data. -->
+<!-- ALPHA STORE V18.1.4 — Live Update Checker. Does not clear or modify app data. -->
 <style id="alphaUpdateSystem171012">
 #alphaUpdateOverlay171012{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;z-index:2147483000;padding:20px}
 #alphaUpdateOverlay171012.open{display:flex}
@@ -6491,7 +6588,7 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V17.10.16';
+  var CURRENT='V18.1.4';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
@@ -6521,6 +6618,42 @@ html,body{overscroll-behavior-y:none!important;}
   }
   function start(){setTimeout(check,1800);setInterval(check,30*60*1000);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+<script id="v18-1-4-mobile-new-bill-pos-mount">
+(function(){
+  /* V18.1.4 — Mobile New Bill only. Reuse the existing fully functional Current Bill POS card; do not duplicate IDs or billing logic. */
+  var originalParent=null, originalNext=null, moved=false;
+  function mobile(){return window.innerWidth<=700;}
+  function mount(){
+    if(!mobile()||moved)return;
+    var billing=document.getElementById('billing');
+    var cartCard=document.querySelector('#dashboard .layout>.card.cart');
+    if(!billing||!cartCard)return;
+    var m=document.getElementById('v18NewBillPOSMount');
+    if(!m){m=document.createElement('div');m.id='v18NewBillPOSMount';m.style.cssText='margin-top:12px;';billing.appendChild(m);}
+    originalParent=cartCard.parentNode; originalNext=cartCard.nextSibling;
+    m.appendChild(cartCard); moved=true;
+    try{if(typeof renderCart==='function')renderCart();}catch(e){}
+  }
+  function restore(){
+    if(!moved||!originalParent)return;
+    var c=document.querySelector('#billing .card.cart');
+    if(c){ if(originalNext&&originalNext.parentNode===originalParent) originalParent.insertBefore(c,originalNext); else originalParent.appendChild(c); }
+    moved=false; originalParent=null; originalNext=null;
+  }
+  function sync(){
+    if(!mobile())return;
+    var billing=document.getElementById('billing');
+    if(billing&&billing.classList.contains('active')) mount(); else restore();
+  }
+  document.addEventListener('click',function(e){
+    if(!mobile())return;
+    var b=e.target.closest&&e.target.closest('#topNewBillBtn,.dashMenuGrid17627 button,.app>.side>.nav button');
+    if(b)setTimeout(sync,30);
+  },true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(sync,100);});else setTimeout(sync,100);
+  window.addEventListener('resize',function(){setTimeout(sync,30);});
 })();
 </script>
 </body>
@@ -7458,7 +7591,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V17.10.16</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.4</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7503,9 +7636,9 @@ html,body{overscroll-behavior-y:none!important;}
         if(navigator.share) navigator.share(shareData).catch(function(){});
         else alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management');
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V17.10.16');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.4');
       }else if(action==='update'){
-        alert('ALPHA STORE\nYou are using V17.10.16.');
+        alert('ALPHA STORE\nYou are using V18.1.4.');
       }else if(action==='address'){
         var ast=data.settings||{}; var addr=ast.address||'Not added';
         alert('ALPHA STORE\n\n📍 Shop Address\n'+addr);
@@ -7513,7 +7646,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V17.10.16');
+        alert('ALPHA STORE\n\nApp Version: V18.1.4');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
