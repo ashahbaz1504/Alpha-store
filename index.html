@@ -798,9 +798,9 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <style id="v17-6-7-desktop-version-label">
 @media (min-width:701px){
   .app > .side > .nav > #versionBadge span{font-size:0!important;}
-  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.10.11"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 17.10.13"!important;font-size:10px!important;display:inline!important;}
   .app > .side > .owner .label{font-size:0!important;}
-  .app > .side > .owner .label:after{content:"Version 17.10.11"!important;font-size:11px!important;}
+  .app > .side > .owner .label:after{content:"Version 17.10.13"!important;font-size:11px!important;}
 }
 </style>
 
@@ -1595,8 +1595,8 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   <span class="alphaHomePageTabIcon17628">⌂</span><span class="alphaHomePageTabText17628">HOME PAGE</span>
 </div>
 <div class="nav" style="margin-top:0!important;padding-top:0!important;">
-<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.10.11"><i class="navIcon">Ⓥ</i><span>VERSION 17.10.11</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.10.11</span></div></aside>
+<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 17.10.13"><i class="navIcon">Ⓥ</i><span>VERSION 17.10.13</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 17.10.13</span></div></aside>
 <main class="main">
 <div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea" style="display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; gap:10px !important; width:100% !important; position:relative !important; box-sizing:border-box !important; overflow:visible !important;"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off" style="display:block !important; flex:1 1 auto !important; width:auto !important; min-width:0 !important; max-width:none !important; position:relative !important; margin:0 !important; box-sizing:border-box !important;"><button type="button" id="globalSearchBtn" class="globalSearchBtn" onclick="searchProducts(document.getElementById('globalSearch').value)" style="display:flex !important; flex:0 0 92px !important; width:92px !important; min-width:92px !important; max-width:92px !important; height:44px !important; position:relative !important; margin:0 !important; align-items:center !important; justify-content:center !important; box-sizing:border-box !important; white-space:nowrap !important;">Search</button><div id="searchSuggestions" class="searchSuggestions" style="position:absolute !important; left:0 !important; right:102px !important; top:calc(100% + 6px) !important; width:auto !important; z-index:9999 !important;"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
@@ -4994,7 +4994,7 @@ function reportWindow(){let now=Date.now();if(reportPeriod==='all')return ()=>tr
 function renderReports(){let inWindow=reportWindow(),salesList=data.sales.filter(inWindow),expenseList=data.expenses.filter(e=>reportPeriod==='all'||new Date(e.date).getTime()>=(Date.now()-(reportPeriod==='today'?1:reportPeriod==='week'?7:30)*86400000));let sales=salesList.reduce((a,s)=>a+Number(s.total||0),0),expense=expenseList.reduce((a,e)=>a+Number(e.amount||0),0),gross=salesList.reduce((a,s)=>a+saleGrossProfit(s),0),gst=salesList.reduce((a,s)=>a+Number(s.gst||0),0),net=gross-expense;document.getElementById('rSales').textContent=money(sales);document.getElementById('rProfit').textContent=money(gross);document.getElementById('rExpense').textContent=money(expense);document.getElementById('rBills').textContent=salesList.length;let pay={Cash:0,UPI:0,Card:0,'Credit / उधार':0};salesList.forEach(s=>{let k=s.payment||'Cash';pay[k]=(pay[k]||0)+Number(s.total||0)});let products={};salesList.forEach(s=>(s.items||[]).forEach(i=>{products[i.name]=(products[i.name]||0)+Number(i.qty||0)}));let best=Object.entries(products).sort((a,b)=>b[1]-a[1]).slice(0,8),credit=salesList.filter(s=>String(s.payment||'').toLowerCase().includes('credit')).reduce((a,s)=>a+Number(s.total||0),0);let chart=salesList.length?`<h3>Sales vs Gross Profit</h3><div style="display:flex;align-items:flex-end;gap:10px;height:180px;padding:15px 5px;border-bottom:1px solid var(--line)">${salesList.slice(-10).map(s=>{let sp=Number(s.total||0),pr=saleGrossProfit(s),h=Math.max(8,Math.min(150,sp/Math.max(sales,1)*150)),hp=Math.max(5,Math.min(150,Math.max(0,pr)/Math.max(sales,1)*150));return `<div style="flex:1;text-align:center"><div style="height:${h}px;background:#d79b16;border-radius:5px 5px 0 0" title="Sales ${money(sp)}"></div><div style="height:${hp}px;background:#2fba67;border-radius:5px 5px 0 0;margin-top:3px" title="Gross Profit ${money(pr)}"></div><small>${new Date(s.date).toLocaleDateString()}</small></div>`}).join('')}</div><div class="label" style="margin-top:8px">Gold = Sales • Green = Gross Profit</div>`:'<div class="empty">No sales in selected period.</div>';document.getElementById('reportChart').innerHTML=chart;document.getElementById('reportTable').innerHTML=`<div class="settingsGrid"><div class="card"><h3>Financial Summary</h3><table class="table"><tr><th>Sales</th><td>${money(sales)}</td></tr><tr><th>GST Collected</th><td>${money(gst)}</td></tr><tr><th>Gross Profit</th><td>${money(gross)}</td></tr><tr><th>Expenses</th><td>${money(expense)}</td></tr><tr><th>Net Profit</th><td><b>${money(net)}</b></td></tr><tr><th>Credit Sales</th><td>${money(credit)}</td></tr></table></div><div class="card"><h3>Payment-wise Sales</h3><table class="table"><tr><th>Mode</th><th>Amount</th></tr>${Object.entries(pay).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${money(v)}</td></tr>`).join('')}</table></div><div class="card"><h3>Best-selling Products</h3><table class="table"><tr><th>Product</th><th>Qty</th></tr>${best.map(x=>`<tr><td>${esc(x[0])}</td><td>${x[1]}</td></tr>`).join('')||'<tr><td colspan="2">No data</td></tr>'}</table></div></div><div class="card" style="margin-top:14px"><h3>Highest-profit Products</h3><table class="table"><tr><th>Product</th><th>Qty</th><th>Profit</th></tr>${Object.entries(salesList.flatMap(s=>s.items||[]).reduce((m,i)=>{let p=data.products.find(p=>p.id===i.id);let profit=p?(Number(p.price||0)-Number(p.cost||0))*Number(i.qty||0):0;let k=i.name||'Unknown';if(!m[k])m[k]={qty:0,profit:0};m[k].qty+=Number(i.qty||0);m[k].profit+=profit;return m},{})).sort((a,b)=>b[1].profit-a[1].profit).slice(0,8).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.qty}</td><td>${money(v.profit)}</td></tr>`).join('')||'<tr><td colspan="3">No data</td></tr>'}</table></div><div class="card" style="margin-top:14px"><h3>GST Summary</h3><table class="table"><tr><th>GST Rate</th><th>Tax</th></tr>${[0,5,12,18].map(r=>`<tr><td>${r}%</td><td>${money(salesList.reduce((a,s)=>a+(Number(s.gstRate||0)===r?Number(s.gst||0):0),0))}</td></tr>`).join('')}<tr><th>Total GST</th><th>${money(gst)}</th></tr></table></div>`}
 function renderSettings(){['Name','Address','Phone','Email','Gstin','Low','Footer'].forEach(k=>{let el=document.getElementById('set'+k);if(!el)return;let key={Name:'storeName',Address:'address',Phone:'phone',Email:'email',Gstin:'gstin',Low:'lowStock',Footer:'footer'}[k];el.value=data.settings[key]??''}); if(document.getElementById('setCurrency'))document.getElementById('setCurrency').value=data.settings.currency||'₹'; if(document.getElementById('setDefaultGst'))document.getElementById('setDefaultGst').value=data.settings.defaultGst??0; if(document.getElementById('setUpi'))document.getElementById('setUpi').value=data.settings.upiId||''; if(document.getElementById('setAutoBackup'))document.getElementById('setAutoBackup').checked=data.settings.autoBackup!==false; if(document.getElementById('logoPreview')){let lp=document.getElementById('logoPreview');lp.src=data.settings.logo||'';lp.style.display=data.settings.logo?'block':'none'}}
 function saveSettings(){if(!ownerOnly())return;data.settings.storeName=(document.getElementById('setName').value.trim()||'ALPHA STORE');data.settings.address=document.getElementById('setAddress').value.trim();data.settings.phone=document.getElementById('setPhone').value.trim();data.settings.email=document.getElementById('setEmail')?.value.trim()||'';data.settings.gstin=document.getElementById('setGstin').value.trim();data.settings.lowStock=Math.max(0,Number(document.getElementById('setLow').value)||0);data.settings.footer=document.getElementById('setFooter').value.trim()||'Thank you for shopping with us!';data.settings.currency=document.getElementById('setCurrency')?.value.trim()||'₹';data.settings.defaultGst=Math.max(0,Number(document.getElementById('setDefaultGst')?.value)||0);data.settings.upiId=document.getElementById('setUpi')?.value.trim()||'';data.settings.autoBackup=document.getElementById('setAutoBackup')?.checked!==false;persist();renderAll();alert('Settings saved.')}
-/* V17.10.12 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
+/* V17.10.13 — Store Information fields auto-save locally as entered, so values remain visible when Settings is reopened. */
 (function(){
   const map={setName:'storeName',setAddress:'address',setPhone:'phone',setEmail:'email',setGstin:'gstin'};
   function bindStoreInfoAutoSave(){
@@ -6404,7 +6404,7 @@ html,body{overscroll-behavior-y:none!important;}
 })();
 </script>
 
-<!-- ALPHA STORE V17.10.12 — Live Update Checker. Does not clear or modify app data. -->
+<!-- ALPHA STORE V17.10.13 — Live Update Checker. Does not clear or modify app data. -->
 <style id="alphaUpdateSystem171012">
 #alphaUpdateOverlay171012{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;z-index:2147483000;padding:20px}
 #alphaUpdateOverlay171012.open{display:flex}
@@ -6431,7 +6431,7 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V17.10.12';
+  var CURRENT='V17.10.13';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
@@ -7398,7 +7398,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V17.10.12</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V17.10.13</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7443,7 +7443,7 @@ html,body{overscroll-behavior-y:none!important;}
         if(navigator.share) navigator.share(shareData).catch(function(){});
         else alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management');
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V17.10.12');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V17.10.13');
       }else if(action==='update'){
         alert('ALPHA STORE\nYou are using V17.7.8.');
       }else if(action==='address'){
@@ -7453,7 +7453,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V17.10.12');
+        alert('ALPHA STORE\n\nApp Version: V17.10.13');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
@@ -7554,7 +7554,8 @@ html,body{overscroll-behavior-y:none!important;}
 <div id="alphaDashFloat17627" aria-hidden="true">
   <section class="dashPanel" role="dialog" aria-modal="true" aria-label="ALPHA STORE Dashboard">
     <div class="dashHead"><div class="dashTitle">ALPHA STORE • Dashboard</div><button class="dashClose" type="button" aria-label="Close dashboard">×</button></div>
-    <div class="dashMenu17627" aria-label="ALPHA STORE Menu"><div class="dashMenuTitle17627">STORE MENU</div><div class="dashMenuGrid17627"><button onclick="alphaDashGo17627('products',this)"><i class="navIcon">▦</i><span>Products</span></button>
+    <div class="dashMenu17627" aria-label="ALPHA STORE Menu"><div class="dashMenuTitle17627">STORE MENU</div><div class="dashMenuGrid17627"><button onclick="alphaDashGo17627('dashboard',this)"><i class="navIcon">⌂</i><span>Home</span></button>
+<button onclick="alphaDashGo17627('products',this)"><i class="navIcon">▦</i><span>Products</span></button>
 <button onclick="alphaDashGo17627('billing',this)"><i class="navIcon">▤</i><span>Billing (POS)</span></button>
 <button onclick="alphaDashGo17627('sales',this)"><i class="navIcon">↗</i><span>Sales History</span></button>
 <button onclick="alphaDashGo17627('customers',this)"><i class="navIcon">♙</i><span>Customers</span></button><button onclick="alphaDashGo17627('udhaar',this)"><i class="navIcon">◇</i><span>Udhaar / उधार</span></button>
