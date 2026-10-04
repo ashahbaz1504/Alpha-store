@@ -1689,7 +1689,7 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 }
 </style>
 <style id="v18-1-21-customer-detail-overlay-layer">
-/* V18.1.22 — Customer Details only: keep the main sticky header out of the detail overlay while it is open. */
+/* V18.1.23 — Customer Details only: keep the main sticky header out of the detail overlay while it is open. */
 #customerDetailModal{z-index:2147483647!important;}
 #customerDetailModal>.card{z-index:2147483647!important;}
 </style>
@@ -5232,7 +5232,7 @@ document.addEventListener('keydown',e=>{if(e.key==='F6'){e.preventDefault();hold
 </script>
 
 <style id="v18118-expense-modal-safe-layer">
-/* V18.1.22 — Expenses: keep the existing Add Expense action clickable and its existing modal above dashboard layers. */
+/* V18.1.23 — Expenses: keep the existing Add Expense action clickable and its existing modal above dashboard layers. */
 #expenses .sectionHead button[onclick="openExpenseModal()"]{position:relative!important;z-index:10001!important;pointer-events:auto!important;touch-action:manipulation!important;}
 #expenseModal{z-index:10000!important;pointer-events:auto!important;}
 #expenseModal .modalbox{position:relative!important;z-index:10001!important;}
@@ -6646,7 +6646,7 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V18.1.22';
+  var CURRENT='V18.1.23';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
@@ -7672,7 +7672,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.22</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.23</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7737,7 +7737,7 @@ html,body{overscroll-behavior-y:none!important;}
         }else window.prompt('Copy referral link:',referralUrl);
         return false;
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.22');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.23');
       }else if(action==='update'){
         /* Manual update check must never trigger dashboard/home navigation or any underlying click handler. */
         e.preventDefault(); e.stopPropagation();
@@ -7752,7 +7752,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V18.1.22');
+        alert('ALPHA STORE\n\nApp Version: V18.1.23');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
