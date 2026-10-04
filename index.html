@@ -798,9 +798,9 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 <style id="v17-6-7-desktop-version-label">
 @media (min-width:701px){
   .app > .side > .nav > #versionBadge span{font-size:0!important;}
-  .app > .side > .nav > #versionBadge span:after{content:"VERSION 18.1.9"!important;font-size:10px!important;display:inline!important;}
+  .app > .side > .nav > #versionBadge span:after{content:"VERSION 18.1.20"!important;font-size:10px!important;display:inline!important;}
   .app > .side > .owner .label{font-size:0!important;}
-  .app > .side > .owner .label:after{content:"Version 18.1.9"!important;font-size:11px!important;}
+  .app > .side > .owner .label:after{content:"Version 18.1.20"!important;font-size:11px!important;}
 }
 </style>
 
@@ -1666,6 +1666,39 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
 .lowStockManageActions button{white-space:nowrap}
 @media(max-width:700px){.lowStockManageRow{align-items:flex-start;flex-direction:column}.lowStockManageActions{width:100%;display:grid;grid-template-columns:1fr 1fr}.lowStockManageActions button{width:100%;min-height:40px}}
 </style>
+<style id="v18-1-19-customer-detail-top-fix">
+#customerDetailModal{position:fixed!important;inset:0!important;display:none;background:rgba(0,0,0,.68)!important;z-index:2147482000!important;padding:14px!important;overflow:auto!important;overflow-x:auto!important;box-sizing:border-box!important;-webkit-overflow-scrolling:touch!important;}
+#customerDetailModal>.card{position:relative!important;width:min(900px,100%)!important;max-width:900px!important;margin:0 auto!important;max-height:calc(100vh - 28px)!important;overflow:auto!important;overflow-x:auto!important;padding:22px!important;box-sizing:border-box!important;}
+#customerDetailModal>.card>button[onclick="closeCustomerDetail()"]{position:fixed!important;right:22px!important;top:20px!important;z-index:2147483000!important;min-width:42px!important;min-height:42px!important;}
+#customerDetailModal #customerDetailBody{padding-top:6px!important;min-width:0!important;}
+#customerDetailModal #customerDetailBody>.sectionHead{padding-right:92px!important;align-items:flex-start!important;position:sticky!important;top:0!important;z-index:100!important;background:linear-gradient(180deg,rgba(17,24,35,.99) 0%,rgba(17,24,35,.97) 88%,rgba(17,24,35,0) 100%)!important;padding-top:8px!important;padding-bottom:14px!important;margin-top:0!important;}
+#customerDetailModal #customerDetailBody>.sectionHead>div:last-child{display:flex!important;flex-wrap:wrap!important;gap:7px!important;justify-content:flex-end!important;}
+#customerDetailModal #customerDetailBody>.sectionHead .gold{white-space:nowrap!important;}
+#customerDetailModal #customerDetailBody>.grid{position:relative!important;z-index:1!important;}
+#customerDetailModal #customerDetailBody .table{min-width:620px!important;}
+@media(max-width:700px){
+  #customerDetailModal{padding:8px!important;}
+  #customerDetailModal>.card{width:100%!important;max-width:none!important;max-height:calc(100vh - 16px)!important;margin:0!important;padding:58px 12px 18px!important;border-radius:17px!important;overflow:auto!important;overflow-x:auto!important;}
+  #customerDetailModal>.card>button[onclick="closeCustomerDetail()"]{right:16px!important;top:16px!important;}
+  #customerDetailModal #customerDetailBody{padding-top:0!important;}
+  #customerDetailModal #customerDetailBody>.sectionHead{padding-right:0!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important;position:sticky!important;top:0!important;padding-top:8px!important;padding-bottom:12px!important;}
+  #customerDetailModal #customerDetailBody>.sectionHead>div:first-child{width:100%!important;}
+  #customerDetailModal #customerDetailBody>.sectionHead>div:last-child{width:100%!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:7px!important;justify-content:stretch!important;}
+  #customerDetailModal #customerDetailBody>.sectionHead>div:last-child .gold{width:100%!important;min-height:42px!important;padding:10px 8px!important;font-size:11px!important;white-space:normal!important;}
+  #customerDetailModal #customerDetailBody>.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+</style>
+<style id="v18-1-21-customer-detail-overlay-layer">
+/* V18.1.22 — Customer Details only: keep the main sticky header out of the detail overlay while it is open. */
+#customerDetailModal{z-index:2147483647!important;}
+#customerDetailModal>.card{z-index:2147483647!important;}
+</style>
+
+<style id="v18-1-22-customer-detail-scroll-fix">
+/* Customer Details: the customer header must scroll naturally with the detail content. */
+#customerDetailModal #customerDetailBody>.sectionHead{position:static!important;top:auto!important;z-index:1!important;background:transparent!important;}
+@media(max-width:700px){#customerDetailModal #customerDetailBody>.sectionHead{position:static!important;top:auto!important;z-index:1!important;background:transparent!important;}}
+</style>
 </head>
 <body class="login-locked"><div id="stockWarningOverlay"><div class="stockWarningBox"><h2 class="stockWarningTitle">⚠ LOW STOCK ALERT</h2><div class="stockWarningSub">Kuch products ka stock low ho gaya hai. Refill karna zaroori hai.</div><div id="stockWarningList" class="stockWarningList"></div><button class="stockWarningClose" onclick="closeStockWarning()">OK, GOT IT</button></div></div>
 <div id="loginOverlay" class="alphaIdLoginOverlay">
@@ -1717,8 +1750,8 @@ body[data-theme="light"] .suggestItem:hover{background:#f1f5f9}
   <span class="alphaHomePageTabIcon17628">⌂</span><span class="alphaHomePageTabText17628">HOME PAGE</span>
 </div>
 <div class="nav" style="margin-top:0!important;padding-top:0!important;">
-<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 18.1.9"><i class="navIcon">Ⓥ</i><span>VERSION 18.1.9</span></button>
-</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 18.1.9</span></div></aside>
+<button type="button" id="roleBadge" class="roleBadge owner" aria-label="Owner Access"><i class="navIcon">♛</i><span>OWNER ACCESS</span></button><button type="button" id="versionBadge" class="versionBadge" title="ALPHA STORE version 18.1.20"><i class="navIcon">Ⓥ</i><span>VERSION 18.1.20</span></button>
+</div><div class="owner"><strong>♛ ALPHA STORE</strong><br><br><span class="label"><br>Version 18.1.20</span></div></aside>
 <main class="main">
 <div class="top dashboardTopLayout"><div class="dashboardSearchLeft"><div class="searchArea" style="display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; gap:10px !important; width:100% !important; position:relative !important; box-sizing:border-box !important; overflow:visible !important;"><input class="search" id="globalSearch" placeholder="⌕  Search products by name or barcode..." oninput="searchProducts(this.value)" autocomplete="off" style="display:block !important; flex:1 1 auto !important; width:auto !important; min-width:0 !important; max-width:none !important; position:relative !important; margin:0 !important; box-sizing:border-box !important;"><button type="button" id="globalSearchBtn" class="globalSearchBtn" onclick="searchProducts(document.getElementById('globalSearch').value)" style="display:flex !important; flex:0 0 92px !important; width:92px !important; min-width:92px !important; max-width:92px !important; height:44px !important; position:relative !important; margin:0 !important; align-items:center !important; justify-content:center !important; box-sizing:border-box !important; white-space:nowrap !important;">Search</button><div id="searchSuggestions" class="searchSuggestions" style="position:absolute !important; left:0 !important; right:102px !important; top:calc(100% + 6px) !important; width:auto !important; z-index:9999 !important;"></div></div></div><div class="dashboardOwnerRight"><button class="gold" type="button" id="topNewBillBtn">＋ New Bill</button><button class="secondary" type="button" id="dashboardSyncNowBtn" onclick="alphaCloudPush()">🔄 Sync Now</button><button class="secondary" type="button" id="dashboardRefreshBtn" onclick="refreshDashboardWithFeedback(this)">⟳ Refresh</button><button class="danger" type="button" id="dashboardLogoutBtn">🚪 Logout</button></div></div>
 
@@ -3727,6 +3760,8 @@ function receiptHtml(){if(!cart.length)return null;let c=billCalc(),no='AS-'+Str
 </style>
 
 
+
+
 <style id="v17933-mobile-action-buttons-visible-final">
 /* V17.9.39 — MOBILE ONLY: restore the existing New Bill / Sync / Refresh / Logout row.
    Keep it integrated into the same Main Display shell; no handlers, data, or desktop changes. */
@@ -4294,8 +4329,8 @@ function renderCustomers(){let el=document.getElementById('customerTable');if(!e
 function addCustomer(){if(!ownerOnly())return;let n=(prompt('Customer name:')||'').trim();if(!n)return;let phone=(prompt('Phone number (optional):')||'').trim();let existing=data.customers.find(c=>c.name.toLowerCase()===n.toLowerCase());if(existing){if(phone)existing.phone=phone;persist();renderAll();return alert('Customer already exists. Details updated.')}if(phone&&!/^[0-9+()\-\s]{7,20}$/.test(phone))return alert('Please enter a valid phone number.');data.customers.push({id:Date.now(),name:n,phone,due:0});persist();renderAll()}
 let selectedUdhaarCustomerId=null;
 function selectUdhaarCustomer(customerId){selectedUdhaarCustomerId=customerId;document.querySelectorAll("#udhaarTable tr.selected-udhaar").forEach(function(r){r.classList.remove("selected-udhaar")});var b=document.querySelector("#udhaarTable .linkBtn[data-customer-id=\""+customerId+"\"]");if(b&&b.closest("tr"))b.closest("tr").classList.add("selected-udhaar");customerDetail(customerId);}
-function customerDetail(customerId){let c=data.customers.find(x=>x.id===customerId);if(!c)return;let bills=data.sales.filter(s=>(s.customer||'').toLowerCase()===c.name.toLowerCase()),creditBills=bills.filter(s=>(s.payment||'').toLowerCase().includes('credit')||Number(s.due||0)>0),payments=data.creditPayments.filter(p=>p.customerId===c.id||(p.customer||'').toLowerCase()===c.name.toLowerCase()),paid=payments.reduce((a,p)=>a+Number(p.amount||0),0),spend=bills.reduce((a,s)=>a+Number(s.total||0),0),creditTotal=creditBills.reduce((a,s)=>a+Number(s.total||0),0);let body=document.getElementById('customerDetailBody');body.innerHTML=`<div class="sectionHead"><div><h2>${esc(c.name)}</h2><span class="label">${esc(c.phone||'No phone')}</span></div><div><button class="gold" onclick="receivePayment(${c.id});setTimeout(()=>customerDetail(${c.id}),50)">＋ Receive Payment</button> <button class="gold" onclick="printCustomerStatement(${c.id})">🖨 Print Statement</button></div></div><div class="grid" style="grid-template-columns:repeat(4,1fr);margin:15px 0"><div class="card"><div class="label">TOTAL SPEND</div><div class="value">${money(spend)}</div></div><div class="card"><div class="label">TOTAL UDHAAR</div><div class="value">${money(creditTotal)}</div></div><div class="card"><div class="label">TOTAL PAID</div><div class="value">${money(paid)}</div></div><div class="card"><div class="label">CURRENT DUE</div><div class="value">${money(c.due||0)}</div></div></div><h3>Purchase History / खरीदारी इतिहास</h3>${bills.length?`<table class="table"><tr><th>Invoice</th><th>Date</th><th>Payment</th><th>Items</th><th>Total</th></tr>${bills.slice().reverse().map(s=>`<tr><td>${esc(s.invoice||s.id||'-')}</td><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.payment||'Cash')}</td><td>${(s.items||[]).reduce((a,x)=>a+Number(x.qty||0),0)}</td><td><b>${money(s.total)}</b></td></tr>`).join('')}</table>`:'<div class="empty">No purchases found.</div>'}<h3 style="margin-top:20px">Udhaar Bills / उधार बिल</h3>${creditBills.length?`<table class="table"><tr><th>Invoice</th><th>Date</th><th>Total</th><th>Current Due</th></tr>${creditBills.slice().reverse().map(s=>`<tr><td>${esc(s.invoice||s.id||'-')}</td><td>${new Date(s.date).toLocaleString()}</td><td>${money(s.total)}</td><td>${money(s.due||0)}</td></tr>`).join('')}</table>`:'<div class="empty">No pending/credit bills.</div>'}<h3 style="margin-top:20px">Payment Ledger / भुगतान इतिहास</h3>${payments.length?`<table class="table"><tr><th>Date</th><th>Received</th><th>Remaining</th></tr>${payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${money(p.amount)}</td><td>${money(p.remaining||0)}</td></tr>`).join('')}</table>`:'<div class="empty">No payments received yet.</div>'}`;document.getElementById('customerDetailModal').style.display='block'}
-function closeCustomerDetail(){let m=document.getElementById('customerDetailModal');if(m)m.style.display='none'}
+function customerDetail(customerId){let c=data.customers.find(x=>x.id===customerId);if(!c)return;let bills=data.sales.filter(s=>(s.customer||'').toLowerCase()===c.name.toLowerCase()),creditBills=bills.filter(s=>(s.payment||'').toLowerCase().includes('credit')||Number(s.due||0)>0),payments=data.creditPayments.filter(p=>p.customerId===c.id||(p.customer||'').toLowerCase()===c.name.toLowerCase()),paid=payments.reduce((a,p)=>a+Number(p.amount||0),0),spend=bills.reduce((a,s)=>a+Number(s.total||0),0),creditTotal=creditBills.reduce((a,s)=>a+Number(s.total||0),0);let body=document.getElementById('customerDetailBody');body.innerHTML=`<div class="sectionHead"><div><h2>${esc(c.name)}</h2><span class="label">${esc(c.phone||'No phone')}</span></div><div><button class="gold" onclick="receivePayment(${c.id});setTimeout(()=>customerDetail(${c.id}),50)">＋ Receive Payment</button> <button class="gold" onclick="printCustomerStatement(${c.id})">🖨 Print Statement</button></div></div><div class="grid" style="grid-template-columns:repeat(4,1fr);margin:15px 0"><div class="card"><div class="label">TOTAL SPEND</div><div class="value">${money(spend)}</div></div><div class="card"><div class="label">TOTAL UDHAAR</div><div class="value">${money(creditTotal)}</div></div><div class="card"><div class="label">TOTAL PAID</div><div class="value">${money(paid)}</div></div><div class="card"><div class="label">CURRENT DUE</div><div class="value">${money(c.due||0)}</div></div></div><h3>Purchase History / खरीदारी इतिहास</h3>${bills.length?`<table class="table"><tr><th>Invoice</th><th>Date</th><th>Payment</th><th>Items</th><th>Total</th></tr>${bills.slice().reverse().map(s=>`<tr><td>${esc(s.invoice||s.id||'-')}</td><td>${new Date(s.date).toLocaleString()}</td><td>${esc(s.payment||'Cash')}</td><td>${(s.items||[]).reduce((a,x)=>a+Number(x.qty||0),0)}</td><td><b>${money(s.total)}</b></td></tr>`).join('')}</table>`:'<div class="empty">No purchases found.</div>'}<h3 style="margin-top:20px">Udhaar Bills / उधार बिल</h3>${creditBills.length?`<table class="table"><tr><th>Invoice</th><th>Date</th><th>Total</th><th>Current Due</th></tr>${creditBills.slice().reverse().map(s=>`<tr><td>${esc(s.invoice||s.id||'-')}</td><td>${new Date(s.date).toLocaleString()}</td><td>${money(s.total)}</td><td>${money(s.due||0)}</td></tr>`).join('')}</table>`:'<div class="empty">No pending/credit bills.</div>'}<h3 style="margin-top:20px">Payment Ledger / भुगतान इतिहास</h3>${payments.length?`<table class="table"><tr><th>Date</th><th>Received</th><th>Remaining</th></tr>${payments.slice().reverse().map(p=>`<tr><td>${new Date(p.date).toLocaleString()}</td><td>${money(p.amount)}</td><td>${money(p.remaining||0)}</td></tr>`).join('')}</table>`:'<div class="empty">No payments received yet.</div>'}`;let customerModal=document.getElementById('customerDetailModal');if(customerModal){let top=document.querySelector('.app>.main>.top');if(top){top.style.visibility='hidden';top.style.pointerEvents='none';}let customerCard=customerModal.querySelector(':scope > .card');customerModal.style.display='block';customerModal.scrollTop=0;if(customerCard){customerCard.scrollTop=0;customerCard.scrollLeft=0;}requestAnimationFrame(()=>{customerModal.scrollTop=0;if(customerCard){customerCard.scrollTop=0;customerCard.scrollLeft=0;}requestAnimationFrame(()=>{customerModal.scrollTop=0;if(customerCard){customerCard.scrollTop=0;customerCard.scrollLeft=0;}});});} }
+function closeCustomerDetail(){let m=document.getElementById('customerDetailModal');if(m)m.style.display='none';let top=document.querySelector('.app>.main>.top');if(top){top.style.visibility='';top.style.pointerEvents='';}}
 function printCustomerStatement(customerId){let c=data.customers.find(x=>x.id===customerId);if(!c)return;let bills=data.sales.filter(s=>(s.customer||'').toLowerCase()===c.name.toLowerCase()),payments=data.creditPayments.filter(p=>p.customerId===c.id||(p.customer||'').toLowerCase()===c.name.toLowerCase()),paid=payments.reduce((a,p)=>a+Number(p.amount||0),0),spend=bills.reduce((a,s)=>a+Number(s.total||0),0);let w=window.open('','_blank','width=700,height=800');if(!w)return alert('Popup blocked. Please allow popups for ALPHA STORE.');w.document.write(`<html><head><title>Customer Statement - ${esc(c.name)}</title><style>body{font-family:Arial;padding:28px;color:#111}h1{margin:0 0 4px}.meta{color:#666;margin-bottom:20px}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #ccc;padding:8px;text-align:left}th{background:#f4f4f4}.summary{display:flex;gap:12px;flex-wrap:wrap}.box{border:1px solid #ddd;padding:12px;min-width:140px}.total{font-size:20px;font-weight:bold}</style><style id="v6-top-login-logo-fix">
 @media(max-width:700px){.logo{transform:none!important}.loginBrandBadge{transform:translateY(18px)!important}}
 </style>
@@ -5194,6 +5229,29 @@ renderAll();
 if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 document.addEventListener('keydown',e=>{if(e.key==='F2'){e.preventDefault();focusBarcode()} if(e.key==='Escape'&&document.getElementById('modal')?.classList.contains('show'))closeModal(); if(e.key==='F4'){e.preventDefault();clearCart()}});
 document.addEventListener('keydown',e=>{if(e.key==='F6'){e.preventDefault();holdBill()}if(e.key==='F7'){e.preventDefault();resumeBill()}});
+</script>
+
+<style id="v18118-expense-modal-safe-layer">
+/* V18.1.22 — Expenses: keep the existing Add Expense action clickable and its existing modal above dashboard layers. */
+#expenses .sectionHead button[onclick="openExpenseModal()"]{position:relative!important;z-index:10001!important;pointer-events:auto!important;touch-action:manipulation!important;}
+#expenseModal{z-index:10000!important;pointer-events:auto!important;}
+#expenseModal .modalbox{position:relative!important;z-index:10001!important;}
+</style>
+
+<script id="v18118-expense-add-expense-click-safe">
+(function(){
+  function bindExpenseAddButton(){
+    var b=document.querySelector('#expenses .sectionHead button[onclick="openExpenseModal()"]');
+    if(!b||b.dataset.expenseBound==='1') return;
+    b.dataset.expenseBound='1';
+    b.addEventListener('click',function(ev){
+      ev.preventDefault(); ev.stopPropagation();
+      if(typeof window.openExpenseModal==='function') window.openExpenseModal();
+    },true);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bindExpenseAddButton); else bindExpenseAddButton();
+  window.addEventListener('load',bindExpenseAddButton);
+})();
 </script>
 
 <style id="final-right-column-below-login-fix">
@@ -6588,7 +6646,7 @@ html,body{overscroll-behavior-y:none!important;}
 <script id="alphaUpdateSystemScript171012">
 (function(){
   'use strict';
-  var CURRENT='V18.1.13';
+  var CURRENT='V18.1.22';
   var KEY='alpha_store_update_dismissed_171012';
   function versionParts(v){var m=String(v||'').match(/V(\d+)\.(\d+)\.(\d+)/i);return m?[+m[1],+m[2],+m[3]]:null;}
   function newer(a,b){var x=versionParts(a),y=versionParts(b);if(!x||!y)return false;for(var i=0;i<3;i++){if(x[i]!==y[i])return x[i]>y[i];}return false;}
@@ -7614,7 +7672,7 @@ html,body{overscroll-behavior-y:none!important;}
       <button class="menuItem" type="button" data-alpha-menu-action="address"><span class="miIcon">⌖</span><span class="miText"><b>Shop Address</b><small id="alphaMenuAddress17616">Loading address…</small></span></button>
       <button class="menuItem" type="button" data-alpha-menu-action="access"><span class="miIcon">♙</span><span class="miText"><b id="alphaMenuAccess17616">Access</b><small>Current access mode</small></span></button>
     </div>
-    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.13</b><small>Current installed version</small></span></button>
+    <button class="menuItem menuVersionItem" type="button" data-alpha-menu-action="version"><span class="miIcon">✓</span><span class="miText"><b>App Version • V18.1.22</b><small>Current installed version</small></span></button>
   </aside>
 </div>
 <script id="alpha-store-v17614-menu-js">
@@ -7655,11 +7713,31 @@ html,body{overscroll-behavior-y:none!important;}
         }
         close();
       }else if(action==='share'){
-        var shareData={title:'ALPHA STORE',text:'Premium Grocery Store POS, Billing, Inventory and Expense Management'};
-        if(navigator.share) navigator.share(shareData).catch(function(){});
-        else alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management');
+        e.preventDefault(); e.stopPropagation();
+        if(typeof e.stopImmediatePropagation==='function') e.stopImmediatePropagation();
+        var refCode='';
+        try{
+          refCode=localStorage.getItem('alpha_store_referral_code')||'';
+          if(!refCode){
+            refCode='AS-'+Math.random().toString(36).slice(2,8).toUpperCase();
+            localStorage.setItem('alpha_store_referral_code',refCode);
+          }
+        }catch(_){ refCode='AS-'+Math.random().toString(36).slice(2,8).toUpperCase(); }
+        var baseUrl=(location.protocol==='http:'||location.protocol==='https:')?(location.origin+location.pathname):'https://ashahbaz1504.github.io/Alpha-store/';
+        var referralUrl=baseUrl+(baseUrl.indexOf('?')>=0?'&':'?')+'ref='+encodeURIComponent(refCode);
+        var shareText='ALPHA STORE - Premium Grocery Store POS, Billing, Inventory and Expense Management\n\nJoin / Open ALPHA STORE using my referral link:';
+        var shareData={title:'ALPHA STORE • Refer & Share',text:shareText,url:referralUrl};
+        if(navigator.share){
+          navigator.share(shareData).catch(function(){
+            if(navigator.clipboard) navigator.clipboard.writeText(referralUrl).then(function(){alert('Referral link copied\n\n'+referralUrl)}).catch(function(){window.prompt('Copy referral link:',referralUrl)});
+            else window.prompt('Copy referral link:',referralUrl);
+          });
+        }else if(navigator.clipboard){
+          navigator.clipboard.writeText(referralUrl).then(function(){alert('Referral link copied\n\n'+referralUrl)}).catch(function(){window.prompt('Copy referral link:',referralUrl)});
+        }else window.prompt('Copy referral link:',referralUrl);
+        return false;
       }else if(action==='about'){
-        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.13');
+        alert('ALPHA STORE\nPremium Grocery Store POS, Billing, Inventory and Expense Management\n\nVersion: V18.1.22');
       }else if(action==='update'){
         /* Manual update check must never trigger dashboard/home navigation or any underlying click handler. */
         e.preventDefault(); e.stopPropagation();
@@ -7674,7 +7752,7 @@ html,body{overscroll-behavior-y:none!important;}
         var roleText=(typeof sessionRole!=='undefined' && sessionRole==='owner')?'Owner Access':'Staff Access';
         syncInfo(); alert('ALPHA STORE\n\n'+roleText);
       }else if(action==='version'){
-        alert('ALPHA STORE\n\nApp Version: V18.1.13');
+        alert('ALPHA STORE\n\nApp Version: V18.1.22');
       }
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
